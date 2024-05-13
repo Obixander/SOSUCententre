@@ -1,5 +1,4 @@
 # Sosu Centre SYSTEMBESKRIVELSE
----
 Et antal ældreplejecentre har indgået et samarbejde, med henblik på at udvikle et system til den daglige drift.
 
 ## Formål
