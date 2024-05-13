@@ -9,7 +9,10 @@ Typisk er disse opgaver planlagt til at blive løst i et bestemt tidsinterval.
 Foreningen vil gerne have et system der understøtter følgende:
 1. Se alle beboere på plejecenteret.
 2. Se alle opgaver for en beboer med tidspunkt og om den er gjørt.
-3. Se Detjailer for en opgave som ikke er gjørt.
+3. Se Detjailer for en opgave som ikke er gjørt.	
+4. Tilføje en ny beboer til plejecentret.
+5. Tilføje en ny opgave til en beboer.
+ 
 
 
 ## 1. Se alle beboere.
@@ -20,3 +23,9 @@ Denne del af system skal understøtte at ved tap på en beboer i appen, vises en l
 
 ## 3. Opgaveløsing
 Denne del af system skal understøtte at ved tap på en opgave der endnu ikke er løst, vises detaljer om opgaven: start- og sluttidspunkt som i førnævnte visning, samt et felt til at indskrive notater om opgaveløsningen. Når medarbejderen har udført opgaven markeres dette i appen.
+
+## 4. Tilføjelse af beboer
+Denne del af system skal understøtte at en administrator kan tilføje en ny beboer til plejecentret. Her skal administrator kunne indtaste navn, adresse, telefonnummer, evt medicin og evt diagnose på beboeren.
+
+## 5. Tilføjelse af opgave
+Denne del af system skal understøtte at en administrator kan tilføje en ny opgave til en beboer. Her skal administrator kunne indtaste en beskrivelse af opgaven, samt start- og sluttidspunkt for opgaven.
