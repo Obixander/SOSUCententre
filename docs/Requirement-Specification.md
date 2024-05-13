@@ -11,7 +11,7 @@ Eftersom at alle subsystems bliver til et system, så er der kun to aktører i det
 1. En medarbejder skal kunne se en liste over alle beboere.
 
 ## Subsystem 02: Se alle opgaver for en beboer.
-1. En medarbejder skal kunne trukke en beboer.
+1. En medarbejder skal kunne trukke på en beboer i appen.
 2. En medarbejder skal kunne se en liste over alle opgaver for en beboer.
 3. En medarbejder skal kunne se hvornår en opgave er blevet planlagt til.											
 4. En medarbejder skal kunne se om en opgave er blevet lavet.
