@@ -1,4 +1,4 @@
-## KRAVSPECIFIKATION Sosu Centre test
+## KRAVSPECIFIKATION Sosu Centre
 
 ## Aktører
 Eftersom at alle subsystems bliver til et system, så er der kun to aktører i dette system og de gør igen mellem alle subsystems.
