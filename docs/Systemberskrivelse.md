@@ -13,11 +13,11 @@ Foreningen vil gerne have et system der understøtter følgende:
 3. Se Detjailer for en opgave som ikke er gjørt.
 
 
-## 1. Se alle beboere på plejecenteret.
-Denne del af system skal understøtte at Når appen åbner får medarbejderen vist en liste over alle beboere på plejecenteret
+## 1. Se alle beboere.
+Denne del af system skal understøtte at når appen åbner får medarbejderen vist en liste over alle beboere på plejecenteret
 
-## 2. Se alle opgaver for en beboer med tidspunkt og om den er gjørt.
-Denne del af system skal understøtte at Ved tap på en beboer i appen, vises en liste af de opgaver der skal løses i løbet af dagen for denne beboer, samt hvornår de er planlagt til. Her vises der samtidig om opgaven allerede er løst af en anden medarbejder, og hvem der har løst den med medarbejderens initialer.
+## 2. Se alle opgaver for en beboer.
+Denne del af system skal understøtte at ved tap på en beboer i appen, vises en liste af de opgaver der skal løses i løbet af dagen for denne beboer, samt hvornår de er planlagt til. Her vises der samtidig om opgaven allerede er løst af en anden medarbejder, og hvem der har løst den med medarbejderens initialer.
 
 ## 3. Opgaveløsing
-Denne del af system skal understøtte at Ved tap på en opgave der endnu ikke er løst, vises detaljer om opgaven: start- og sluttidspunkt som i førnævnte visning, samt et felt til at indskrive notater om opgaveløsningen. Når medarbejderen har udført opgaven markeres dette i appen.
+Denne del af system skal understøtte at ved tap på en opgave der endnu ikke er løst, vises detaljer om opgaven: start- og sluttidspunkt som i førnævnte visning, samt et felt til at indskrive notater om opgaveløsningen. Når medarbejderen har udført opgaven markeres dette i appen.
