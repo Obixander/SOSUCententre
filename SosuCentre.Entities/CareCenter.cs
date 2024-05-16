@@ -27,6 +27,7 @@ namespace SosuCentre.Entities
             get;
             set;
         }
+        //This iCollection<Resident> is going to hold all the residents in the carecenter 
         [Required]
         public ICollection<Resident> Residents
         {
