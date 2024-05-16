@@ -1,34 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace SosuCentre.Entities
 {
-    public class CareCenter
+    public class Prescription
     {
 
 
         #region Properties
-
         [Key]
-        public int CareCenterId
+        public int PrescriptionId
         {
             get;
             set;
         }
         [Required]
-        public string Name
+        public int Name
         {
             get;
             set;
         }
-        [Required]
-        public Address Address
+
+        public int Amount
         {
             get;
             set;
         }
-        [Required]
-        public ICollection<Resident> Residents
+
+        public string Unit
         {
             get;
             set;

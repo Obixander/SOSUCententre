@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SosuCentre.Entities\SosuCentre.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

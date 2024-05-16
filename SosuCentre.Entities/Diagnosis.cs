@@ -1,16 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SosuCentre.Entities
 {
-    public class CareCenter
+    public class Diagnosis
     {
 
-
         #region Properties
-
         [Key]
-        public int CareCenterId
+        public int DiagnosisId
         {
             get;
             set;
@@ -21,14 +24,8 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        [Required]
-        public Address Address
-        {
-            get;
-            set;
-        }
-        [Required]
-        public ICollection<Resident> Residents
+        
+        public string Description
         {
             get;
             set;

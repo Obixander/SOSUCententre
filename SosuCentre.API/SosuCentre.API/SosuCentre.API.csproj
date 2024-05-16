@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SosuCentre.DataAccess\SosuCentre.DataAccess.csproj" />
     <ProjectReference Include="..\..\SosuCentre.Entities\SosuCentre.Entities.csproj" />
   </ItemGroup>
 
