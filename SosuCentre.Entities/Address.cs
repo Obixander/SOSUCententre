@@ -8,14 +8,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SosuCentre.Entities
 {
-    public class Address
-    {       
 
+    public class Address
+    {
+        private int addressId;
+        public Address(int addressId)
+        {
+            AddressId = addressId;
+        }
+        public Address()
+        {
+            
+        }
         [Key]
         public int AddressId
         {
-            get;
-            set;
+            get => addressId;
+            set => addressId = value;
         }
         [Required]
         public string Street

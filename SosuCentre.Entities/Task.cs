@@ -43,8 +43,8 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-
-        public ICollection<Medicine>? Medicines
+        //This maybe cause problems
+        public ICollection<Medicine> Medicines
         {
             get;
             set;

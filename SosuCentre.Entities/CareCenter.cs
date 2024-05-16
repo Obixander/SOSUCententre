@@ -21,7 +21,9 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        [Required]
+
+        // How the fuck do work!!=!3=!==1!???21!1?1
+        [Required]        
         public Address Address
         {
             get;
