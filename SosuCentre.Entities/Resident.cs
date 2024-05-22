@@ -12,19 +12,16 @@ namespace SosuCentre.Entities
 
 
         #region Properties
-        [Key]
         public int ResidentId
         {
             get;
             set;
         }
-        [Required]
         public string Name
         {
             get;
             set;
         }
-        [Required]
         public string RoomNumber
         {
             get;

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240522093547_SomethingChangedAgain2")]
+    partial class SomethingChangedAgain2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,8 +407,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Name = "Giv Medicin",
                             Notes = "Husk at give vand med medicinet",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 5, 22, 13, 36, 54, 203, DateTimeKind.Local).AddTicks(7085),
-                            TimeStart = new DateTime(2024, 5, 22, 11, 36, 54, 203, DateTimeKind.Local).AddTicks(7037)
+                            TimeEnd = new DateTime(2024, 5, 22, 13, 35, 47, 476, DateTimeKind.Local).AddTicks(1314),
+                            TimeStart = new DateTime(2024, 5, 22, 11, 35, 47, 476, DateTimeKind.Local).AddTicks(1268)
                         });
                 });
 

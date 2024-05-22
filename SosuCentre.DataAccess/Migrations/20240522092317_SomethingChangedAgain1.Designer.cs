@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240522092317_SomethingChangedAgain1")]
+    partial class SomethingChangedAgain1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,10 +241,9 @@ namespace SosuCentre.DataAccess.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<int>("Name")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("TaskId")
                         .HasColumnType("int");
@@ -256,17 +258,6 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("TaskId");
 
                     b.ToTable("Medicines");
-
-                    b.HasData(
-                        new
-                        {
-                            MedicineId = 1,
-                            Administered = false,
-                            Amount = 20,
-                            Name = "Tyrol",
-                            TaskId = 1,
-                            Unit = "mg"
-                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
@@ -395,18 +386,6 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("Tasks");
-
-                    b.HasData(
-                        new
-                        {
-                            TaskId = 1,
-                            Completed = false,
-                            Name = "Giv Medicin",
-                            Notes = "Husk at give vand med medicinet",
-                            ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 5, 22, 13, 36, 54, 203, DateTimeKind.Local).AddTicks(7085),
-                            TimeStart = new DateTime(2024, 5, 22, 11, 36, 54, 203, DateTimeKind.Local).AddTicks(7037)
-                        });
                 });
 
             modelBuilder.Entity("EmployeeRole", b =>

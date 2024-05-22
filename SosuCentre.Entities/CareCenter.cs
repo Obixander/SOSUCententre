@@ -9,13 +9,11 @@ namespace SosuCentre.Entities
 
         #region Properties
 
-        [Key]
         public int CareCenterId
         {
             get;
             set;
         }
-        [Required]
         public string Name
         {
             get;
@@ -23,14 +21,12 @@ namespace SosuCentre.Entities
         }
 
         // How the fuck do work!!=!3=!==1!???21!1?1
-        [Required]        
         public Address Address
         {
             get;
             set;
         }
         //This iCollection<Resident> is going to hold all the residents in the carecenter 
-        [Required]
         public ICollection<Resident> Residents
         {
             get;

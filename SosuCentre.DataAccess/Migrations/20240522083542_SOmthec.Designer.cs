@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240522083542_SOmthec")]
+    partial class SOmthec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace SosuCentre.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("EmployeeRole", b =>
-                {
-                    b.Property<int>("EmployeesEmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeesEmployeeId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("EmployeeRoles", (string)null);
-                });
 
             modelBuilder.Entity("EmployeeTask", b =>
                 {
@@ -49,7 +37,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("TasksTaskId");
 
-                    b.ToTable("TaskEmployees", (string)null);
+                    b.ToTable("EmployeeTask");
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Address", b =>
@@ -180,8 +168,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
 
@@ -231,42 +218,26 @@ namespace SosuCentre.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicineId"));
 
                     b.Property<bool>("Administered")
-                        .HasMaxLength(255)
                         .HasColumnType("bit");
 
                     b.Property<int>("Amount")
-                        .HasMaxLength(255)
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
 
                     b.Property<int?>("TaskId")
                         .HasColumnType("int");
 
                     b.Property<string>("Unit")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MedicineId");
 
                     b.HasIndex("TaskId");
 
                     b.ToTable("Medicines");
-
-                    b.HasData(
-                        new
-                        {
-                            MedicineId = 1,
-                            Administered = false,
-                            Amount = 20,
-                            Name = "Tyrol",
-                            TaskId = 1,
-                            Unit = "mg"
-                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
@@ -278,11 +249,9 @@ namespace SosuCentre.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionId"));
 
                     b.Property<int>("Amount")
-                        .HasMaxLength(255)
                         .HasColumnType("int");
 
                     b.Property<int>("Name")
-                        .HasMaxLength(255)
                         .HasColumnType("int");
 
                     b.Property<int?>("ResidentId")
@@ -290,8 +259,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.Property<string>("Unit")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PrescriptionId");
 
@@ -313,18 +281,15 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Notes")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoomNumber")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResidentId");
 
@@ -351,12 +316,16 @@ namespace SosuCentre.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RoleName")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RoleId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Roles");
                 });
@@ -374,11 +343,6 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ResidentId")
@@ -395,33 +359,6 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("Tasks");
-
-                    b.HasData(
-                        new
-                        {
-                            TaskId = 1,
-                            Completed = false,
-                            Name = "Giv Medicin",
-                            Notes = "Husk at give vand med medicinet",
-                            ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 5, 22, 13, 36, 54, 203, DateTimeKind.Local).AddTicks(7085),
-                            TimeStart = new DateTime(2024, 5, 22, 11, 36, 54, 203, DateTimeKind.Local).AddTicks(7037)
-                        });
-                });
-
-            modelBuilder.Entity("EmployeeRole", b =>
-                {
-                    b.HasOne("SosuCentre.Entities.Employee", null)
-                        .WithMany()
-                        .HasForeignKey("EmployeesEmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SosuCentre.Entities.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("EmployeeTask", b =>
@@ -489,6 +426,13 @@ namespace SosuCentre.DataAccess.Migrations
                         .HasForeignKey("CareCenterId");
                 });
 
+            modelBuilder.Entity("SosuCentre.Entities.Role", b =>
+                {
+                    b.HasOne("SosuCentre.Entities.Employee", null)
+                        .WithMany("Role")
+                        .HasForeignKey("EmployeeId");
+                });
+
             modelBuilder.Entity("SosuCentre.Entities.Task", b =>
                 {
                     b.HasOne("SosuCentre.Entities.Resident", "Resident")
@@ -503,6 +447,11 @@ namespace SosuCentre.DataAccess.Migrations
             modelBuilder.Entity("SosuCentre.Entities.CareCenter", b =>
                 {
                     b.Navigation("Residents");
+                });
+
+            modelBuilder.Entity("SosuCentre.Entities.Employee", b =>
+                {
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Resident", b =>

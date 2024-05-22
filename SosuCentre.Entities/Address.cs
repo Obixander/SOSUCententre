@@ -21,31 +21,26 @@ namespace SosuCentre.Entities
             
         }
 
-        [Key]
         public int AddressId
         {
             get => addressId;
             set => addressId = value;
         }
-        [Required]
         public string Street
         {
             get;
             set;
         }
-        [Required]
         public string City
         {
             get;
             set;
         }
-        [Required]
         public string State
         {
             get;
             set;
         }
-        [Required]
         public string ZipCode
         {
             get;

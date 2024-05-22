@@ -12,7 +12,6 @@ namespace SosuCentre.Entities
     {
        
         #region Properties
-        [Key]
         public int EmployeeId
         {
             get;
@@ -24,19 +23,16 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        [Required]
         public ICollection<Role> Role
         {
             get;
             set;
         }
-        [Required]
         public string Name
         {
             get;
             set;
         }
-        [Required]
         public CareCenter CareCenter
         {
             get;

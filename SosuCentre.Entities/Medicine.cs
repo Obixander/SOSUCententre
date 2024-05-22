@@ -13,14 +13,12 @@ namespace SosuCentre.Entities
   
         #region Properties
 
-        [Key]
         public int MedicineId
         {
             get;
             set;
         }
-        [Required]
-        public int Name
+        public string Name
         {
             get;
             set;

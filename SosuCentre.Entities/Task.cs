@@ -7,31 +7,27 @@ namespace SosuCentre.Entities
 
         #region Properties
 
-        [Key]
+        
         public int TaskId
         {
             get;
             set;
         }
-        [Required]
         public string Name
         {
             get;
             set;
         }
-        [Required]
         public DateTime TimeStart
         {
             get;
             set;
         }
-        [Required]
         public DateTime TimeEnd
         {
             get;
             set;
         }
-        [Required]
         public Resident Resident
         {
             get;
@@ -45,6 +41,11 @@ namespace SosuCentre.Entities
         }
         //This maybe cause problems
         public ICollection<Medicine> Medicines
+        {
+            get;
+            set;
+        }
+        public string Notes
         {
             get;
             set;

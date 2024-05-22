@@ -12,14 +12,18 @@ namespace SosuCentre.Entities
 
 
         #region Properties
-        [Key]
         public int RoleId
         {
             get;
             set;
         }
-        [Required]
         public string RoleName
+        {
+            get;
+            set;
+        }
+
+        public List<Employee> Employees
         {
             get;
             set;

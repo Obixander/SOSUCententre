@@ -3,53 +3,45 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SosuCentre.DataAccess;
 using SosuCentre.Entities;
+using System.Threading.Tasks;
 namespace SosuCentre.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskController : ControllerBase
+    public class TaskController(ITaskRepository repository) : Controller
     {
-        private readonly SosuCentreContext context;
-
-        public TaskController(SosuCentreContext context)
-        {
-            this.context = context;
-        }
+        private readonly ITaskRepository repository = repository;
 
         [HttpPut("{id}")]
-        public void UpdateBy(int id) 
+        public void UpdateBy(Entities.Task task) 
         {
-            //TODO: make this work please
-            //context.Tasks.Update();
-            context.SaveChanges();
+            repository.Update(task);
         }
 
 
         [HttpGet("{id}")]
         public ActionResult<Entities.Task> GetBy(int id)
-        {
-            Entities.Task? task = context.Tasks
-                .Include(t => t.Resident)
-                .FirstOrDefault(t => t.TaskId == id);
-            return task;
+        {        
+            return repository.GetById(id);
         }
 
         [HttpGet]
+        [HttpGet(nameof(GetTasksFor))]
         public IEnumerable<Entities.Task> GetTasksFor(DateTime date = default)
         {
-            List<Entities.Task> tasks = context.Tasks
-                .Where(t => t.TimeStart.Date == date.Date)
-                .ToList();
-            return tasks;
+            return repository.GetAssignmentsOn(date);
         }
 
         [HttpPost]
         public void AddNew(Entities.Task task)
         {
-            //this is used to allow
-            context.Entry(task.Resident).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.Tasks.Add(task);
-            context.SaveChanges();
+           repository.Add(task);
+           
+        }
+        [HttpDelete]
+        public void DeleteBy(Entities.Task task)
+        {
+            repository.Delete(task);
         }
 
     }

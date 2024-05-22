@@ -17,6 +17,8 @@ namespace SosuCentre.API
                 )
             );
 
+            builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
