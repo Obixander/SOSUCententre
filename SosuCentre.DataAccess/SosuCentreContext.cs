@@ -9,6 +9,13 @@ namespace SosuCentre.DataAccess
 {
     public class SosuCentreContext : DbContext
     {
+
+        public SosuCentreContext(DbContextOptions<SosuCentreContext> options)
+            : base(options)
+        {
+
+        }
+
         public DbSet<Address> Address { get; set; } = null!;
         public DbSet<CareCenter> CareCenters { get; set; } = null!;
         public DbSet<Diagnosis> Diagnoses { get; set; } = null!;
@@ -18,11 +25,6 @@ namespace SosuCentre.DataAccess
         public DbSet<Resident> Residents { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<Entities.Task> Tasks { get; set; } = null!;
-        
-
-
-        
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SosuCentreDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
@@ -31,7 +33,7 @@ namespace SosuCentre.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Entity<Address>().HasData(new Address { AddressId = 1, City = "Vejle", State = "Midt Jylland", Street = "Boulevarden 31", ZipCode="7100"});
+            modelBuilder.Entity<Address>().HasData(new Address { AddressId = 1, City = "Vejle", State = "Syd Jylland", Street = "Boulevarden 31", ZipCode="7100"});
             modelBuilder.Entity<CareCenter>().HasData(new { CareCenterId = 1, Name = "SosuCenter Vejle", AddressId = 1 });
 
             modelBuilder.Entity<Diagnosis>().HasData(new Diagnosis { DiagnosisId = 1, Name = "Alzheimer", Description = "Alzheimer er en sygdom, der angriber hjernen og fører til en gradvis nedbrydning af hukommelse, tænkning og evnen til at udføre daglige opgaver." });

@@ -20,6 +20,7 @@ namespace SosuCentre.Entities
         {
             
         }
+
         [Key]
         public int AddressId
         {
