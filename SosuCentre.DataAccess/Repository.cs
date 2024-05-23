@@ -18,8 +18,8 @@ public class Repository<T> : IRepository<T> where T : class
 
     public void Delete(int id)
     {
-        context.Remove(id);
-        context.SaveChanges();
+        T entity = GetBy(id);
+        Delete(entity);
     }
 
     public void Delete(T Entity)
@@ -30,7 +30,7 @@ public class Repository<T> : IRepository<T> where T : class
 
     public IEnumerable<T> GetAll()
     {
-        return default;
+        return context.Set<T>().ToList();
     }
 
     public T GetBy(int Id)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SosuCentre.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace SosuCentre.DataAccess
             return context.Tasks.Where(a => a.TimeStart == date.Date);
         }
 
+        public IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee)
+        {
+            return context.Tasks.Where(a => a.Employees.Contains(employee));
+        }
 
     }
 

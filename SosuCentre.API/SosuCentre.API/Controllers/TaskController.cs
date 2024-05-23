@@ -18,18 +18,22 @@ namespace SosuCentre.API.Controllers
             repository.Update(task);
         }
 
-
         [HttpGet("{id}")]
         public ActionResult<Entities.Task> GetBy(int id)
         {        
             return repository.GetById(id);
-        }
+        }        
 
-        [HttpGet]
         [HttpGet(nameof(GetTasksFor))]
         public IEnumerable<Entities.Task> GetTasksFor(DateTime date = default)
         {
             return repository.GetAssignmentsOn(date);
+        }
+
+        [HttpGet(nameof(GetAssignmentsForEmployee))]
+        public IEnumerable<Entities.Task> GetAssignmentsForEmployee(Employee employee)
+        {
+            return repository.GetAssignmentsFor(employee);
         }
 
         [HttpPost]
@@ -38,6 +42,7 @@ namespace SosuCentre.API.Controllers
            repository.Add(task);
            
         }
+
         [HttpDelete]
         public void DeleteBy(Entities.Task task)
         {

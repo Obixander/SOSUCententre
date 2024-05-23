@@ -23,7 +23,7 @@ namespace SosuCentre.DataAccess
     public interface ITaskRepository : IRepository<Entities.Task>
     {
         IEnumerable<Entities.Task> GetAssignmentsOn(DateTime date);
-
+        IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee);
         Entities.Task GetById(int id);
     }
 }
