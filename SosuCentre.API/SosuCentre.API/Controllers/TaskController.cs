@@ -13,16 +13,16 @@ namespace SosuCentre.API.Controllers
         private readonly ITaskRepository repository = repository;
 
         [HttpPut("{id}")]
-        public void UpdateBy(Entities.Task task) 
+        public void UpdateBy(Entities.Task task)
         {
             repository.Update(task);
         }
 
         [HttpGet("{id}")]
         public ActionResult<Entities.Task> GetBy(int id)
-        {        
+        {
             return repository.GetById(id);
-        }        
+        }
 
         [HttpGet(nameof(GetTasksFor))]
         public IEnumerable<Entities.Task> GetTasksFor(DateTime date = default)
@@ -31,7 +31,7 @@ namespace SosuCentre.API.Controllers
         }
 
         [HttpGet(nameof(GetAssignmentsForEmployee))]
-        public IEnumerable<Entities.Task> GetAssignmentsForEmployee(Employee employee)
+        public IEnumerable<Entities.Task> GetAssignmentsForEmployee([FromQuery] Employee employee)
         {
             return repository.GetAssignmentsFor(employee);
         }
