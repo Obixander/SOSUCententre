@@ -26,4 +26,10 @@ namespace SosuCentre.DataAccess
         IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee);
         Entities.Task GetById(int id);
     }
+
+    public interface IEmployeeRepository : IRepository<Employee> 
+    {
+         Employee GetById(int id);
+    }
+
 }

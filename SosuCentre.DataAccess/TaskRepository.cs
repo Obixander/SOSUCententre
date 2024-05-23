@@ -25,7 +25,12 @@ namespace SosuCentre.DataAccess
 
         public IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee)
         {
-            return context.Tasks.Where(a => a.Employees.Contains(employee));
+            return context.Tasks
+                .Where(a => a.Employees.Contains(employee))
+                .Include(t => t.Resident)
+                .Include(t => t.Medicines)
+                //.Include(t => t.Employees)
+                .ToList();
         }
 
     }
