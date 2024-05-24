@@ -14,5 +14,21 @@ namespace SosuCentre.DataAccess
         {
             return context.Employees.FirstOrDefault(t => t.EmployeeId == id);
         }
+
+        public IEnumerable<Employee> GetAllBy(Role role)
+        {
+            return context.Employees.Where(e => e.Role.Contains(role))
+                .Include(e=>e.Role)
+                .Include(e=>e.CareCenter);
+        }
+
+        public IEnumerable<Employee> GetAll()
+        {
+            return context.Employees
+                .Include(e => e.Role)
+                .Include(e => e.CareCenter)
+                .ToList();
+        }
+
     }
 }

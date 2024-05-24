@@ -12,12 +12,14 @@ namespace SosuCentre.API.Controllers
     {
         private readonly ITaskRepository repository = repository;
 
-        [HttpPut("{id}")]
-        public void UpdateBy(Entities.Task task)
+        [HttpPut]
+        public void UpdateBy([FromQuery] Entities.Task task)
         {
             repository.Update(task);
         }
 
+        //TODO: FIX SOON
+        //this is not working as there a circuler ref between Task and Employee 
         [HttpGet("{id}")]
         public ActionResult<Entities.Task> GetBy(int id)
         {

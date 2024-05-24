@@ -30,6 +30,11 @@ namespace SosuCentre.DataAccess
     public interface IEmployeeRepository : IRepository<Employee> 
     {
          Employee GetById(int id);
+        IEnumerable<Employee> GetAllBy(Role role);
     }
 
+    public interface IRoleRepository : IRepository<Role>
+    {
+        Role GetById(int id);
+    }
 }

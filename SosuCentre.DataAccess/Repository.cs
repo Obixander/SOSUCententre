@@ -1,4 +1,6 @@
-﻿using SosuCentre.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using SosuCentre.DataAccess;
+using SosuCentre.Entities;
 
 public class Repository<T> : IRepository<T> where T : class
 {
@@ -30,8 +32,9 @@ public class Repository<T> : IRepository<T> where T : class
 
     public IEnumerable<T> GetAll()
     {
-        return context.Set<T>().ToList();
-    }
+        return context.Set<T>()
+            .ToList();
+    }  
 
     public T GetBy(int Id)
     {

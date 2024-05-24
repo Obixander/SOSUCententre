@@ -44,7 +44,7 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        public string Notes
+        public string? Notes
         {
             get;
             set;
