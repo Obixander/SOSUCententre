@@ -24,7 +24,9 @@ namespace SosuCentre.DataAccess
     {
         IEnumerable<Entities.Task> GetAssignmentsOn(DateTime date);
         IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee);
-        Entities.Task GetById(int id);
+        Entities.Task GetBy(int id);
+        void AddEmployeeToTask(Entities.Task task, int EmployeeId);
+
     }
 
     public interface IEmployeeRepository : IRepository<Employee> 

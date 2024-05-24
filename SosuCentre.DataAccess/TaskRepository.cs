@@ -10,7 +10,7 @@ namespace SosuCentre.DataAccess
 {
     public class TaskRepository(SosuCentreContext context) : Repository<Entities.Task>(context), ITaskRepository
     {
-        public Entities.Task GetById(int id)
+        public override Entities.Task GetBy(int id)
         {
             return context.Tasks
                  .Include(t => t.Employees)
@@ -25,12 +25,20 @@ namespace SosuCentre.DataAccess
 
         public IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee)
         {
-            return context.Tasks
+            
+            List<Entities.Task> tasks = context.Tasks
                 .Where(a => a.Employees.Contains(employee))
                 .Include(t => t.Resident)
                 .Include(t => t.Medicines)
-                //.Include(t => t.Employees)
+                .Include(t => t.Employees)
                 .ToList();
+            return tasks;
+        }
+
+        public void AddEmployeeToTask(Entities.Task task, int EmployeeId)
+        {
+            task.Employees.Add(context.Employees.FirstOrDefault(e => e.EmployeeId == EmployeeId));
+            context.SaveChanges();
         }
 
         

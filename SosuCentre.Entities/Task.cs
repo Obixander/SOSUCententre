@@ -33,11 +33,11 @@ namespace SosuCentre.Entities
             set;
         }
 
-        public ICollection<Employee> Employees
+        public ICollection<Employee> Employees 
         {
             get;
             set;
-        }
+        } = new List<Employee>();
         //This maybe cause problems
         public ICollection<Medicine> Medicines
         {

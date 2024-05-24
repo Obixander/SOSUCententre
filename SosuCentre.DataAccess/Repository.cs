@@ -36,7 +36,7 @@ public class Repository<T> : IRepository<T> where T : class
             .ToList();
     }  
 
-    public T GetBy(int Id)
+    public virtual T GetBy(int Id)
     {
         return context.Set<T>().Find(Id);
     }

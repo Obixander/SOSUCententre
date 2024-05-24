@@ -23,7 +23,7 @@ namespace SosuCentre.API.Controllers
         [HttpGet("{id}")]
         public ActionResult<Entities.Task> GetBy(int id)
         {
-            return repository.GetById(id);
+            return repository.GetBy(id);
         }
 
         [HttpGet(nameof(GetTasksFor))]
@@ -51,5 +51,13 @@ namespace SosuCentre.API.Controllers
             repository.Delete(task);
         }
 
+        //Will move later
+        [HttpPost]
+        [Route("AddEmployeeToTask")]
+        public void AddEmployeeToTask([FromQuery] Entities.Task task, [FromQuery] int EmployeeId)
+        {
+            repository.AddEmployeeToTask(task, EmployeeId);
+            
+        }
     }
 }
