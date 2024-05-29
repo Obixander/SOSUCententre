@@ -1,25 +1,20 @@
-﻿namespace SosuCentre.CareApp.Views
+﻿using SosuCentre.CareApp.ViewModels;
+
+namespace SosuCentre.CareApp.Views
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
+            BindingContext = viewModel;
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            base.OnAppearing();
         }
+
     }
 
 }
