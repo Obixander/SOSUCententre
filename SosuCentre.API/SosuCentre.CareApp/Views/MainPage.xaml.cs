@@ -1,4 +1,4 @@
-﻿namespace SosuCentre.CareApp
+﻿namespace SosuCentre.CareApp.Views
 {
     public partial class MainPage : ContentPage
     {
