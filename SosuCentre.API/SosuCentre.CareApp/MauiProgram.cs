@@ -8,6 +8,7 @@ namespace SosuCentre.CareApp
 {
     public static class MauiProgram
     {
+        private const string uri = "https://localhost:7044/api/";
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -18,10 +19,10 @@ namespace SosuCentre.CareApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
+            Uri baseUri = new Uri(uri);
+            builder.Services.AddScoped<ISosuService>(x=> new ApiService(baseUri));
             builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddScoped<ISosuService, ApiService>();
 
 #if DEBUG
             builder.Logging.AddDebug();

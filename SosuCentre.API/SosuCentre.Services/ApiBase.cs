@@ -1,5 +1,7 @@
-﻿using SosuCentre.Entities;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using SosuCentre.Entities;
 using System.Net.Http.Json;
+using System.Runtime.InteropServices.Marshalling;
 
 
 namespace SosuCentre.Services
@@ -18,6 +20,28 @@ namespace SosuCentre.Services
             
         }
 
+        protected virtual async Task<HttpResponseMessage> GetHttpAsync(string url, int EmployeeId, DateTime date)
+        {
+            
+
+            UriBuilder uriBuilder = new(baseUri + url);
+            uriBuilder.Query = $"EmployeeId={EmployeeId}&date={date.ToString("yyyy-MM-dd")}";
+            using HttpClient client = new();
+            //This returns null fix
+
+            var response = await client.GetAsync(uriBuilder.Uri);
+            if (response.IsSuccessStatusCode)
+            {
+                List<Entities.Task> tasks = new List<Entities.Task>();
+                tasks = response.Content.ReadFromJsonAsync<List<Entities.Task>>().Result;
+                return response;
+            }
+            else
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+        }
+
     }
 
     public class ApiService : ApiBase, ISosuService
@@ -31,16 +55,12 @@ namespace SosuCentre.Services
         {
         }
 
-        public List<Entities.Task> GetTasksFor(DateTime date, Employee employee)
+        public async Task<List<Entities.Task>> GetTasksForAsync(DateTime date, Employee employee)
         {
-            UriBuilder uriBuilder = new UriBuilder(baseUri);
-            uriBuilder.Path = "Assignment/GetAssignmentsForEmployeeByDate";
-            using HttpClient client = new();
-            client.BaseAddress = uriBuilder.Uri;
-
-            var response = client.GetAsync(uriBuilder.Uri.AbsoluteUri).Result;
+            string url = @$"Task/GetTasksFor";
+            var response = await GetHttpAsync(url, employee.EmployeeId, date);
             var result = response.Content.ReadFromJsonAsAsyncEnumerable<Entities.Task>();
-            List<Entities.Task> assignments = result.ToListAsync().Result;
+            List<Entities.Task> assignments = await result.ToListAsync();
 
             return assignments;
         }
@@ -48,6 +68,6 @@ namespace SosuCentre.Services
 
     public interface ISosuService
     {
-        List<Entities.Task> GetTasksFor(DateTime date, Employee employee);
+        Task<List<Entities.Task>> GetTasksForAsync(DateTime date, Employee employee);
     }
 }

@@ -13,7 +13,21 @@ namespace SosuCentre.CareApp.ViewModels
         {
             Title = "FORSIDEN";
             this.sosuService = sosuService;
+            UpdateAssignments();
         }
+
+        private async System.Threading.Tasks.Task UpdateAssignments()
+        {
+            TodaysAssignments.Clear();
+            //TODO: change to use real employee
+            var tasks = await sosuService.GetTasksForAsync(DateTime.Now, new Employee() { EmployeeId = 1});
+            foreach (var task in tasks)
+            {
+                TodaysAssignments.Add(task);
+            }
+            
+        }
+
     }
 
 }
