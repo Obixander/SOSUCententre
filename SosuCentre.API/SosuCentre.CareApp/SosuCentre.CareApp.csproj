@@ -65,6 +65,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\SosuCentre.Entities\SosuCentre.Entities.csproj" />
+	  <ProjectReference Include="..\SosuCentre.Services\SosuCentre.Services.csproj" />
 	</ItemGroup>
 
 </Project>

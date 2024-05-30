@@ -18,9 +18,15 @@ namespace SosuCentre.DataAccess
                  .Include(t => t.Resident)
                  .FirstOrDefault(t => t.TaskId == id);
         }
-        public IEnumerable<Entities.Task> GetAssignmentsOn(DateTime date)
+        public IEnumerable<Entities.Task> GetAssignmentsOn(Employee employee,DateTime date)
         {
-            return context.Tasks.Where(a => a.TimeStart == date.Date);
+            IEnumerable<Entities.Task> tasks = context.Tasks
+                .Where(a => a.Employees.Contains(employee) && a.TimeStart == date.Date)
+                .Include(t => t.Resident)
+                .Include(t => t.Medicines)
+                .Include(t => t.Employees)
+                .ToList();  
+            return tasks;
         }
 
         public IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee)

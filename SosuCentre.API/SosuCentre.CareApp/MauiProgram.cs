@@ -2,6 +2,7 @@
 
 using SosuCentre.CareApp.ViewModels;
 using SosuCentre.CareApp.Views;
+using SosuCentre.Services;
 
 namespace SosuCentre.CareApp
 {
@@ -20,7 +21,7 @@ namespace SosuCentre.CareApp
 
             builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddSingleton<MainPage>();
-
+            builder.Services.AddScoped<ISosuService, ApiService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
