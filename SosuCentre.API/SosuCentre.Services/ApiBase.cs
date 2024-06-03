@@ -28,7 +28,8 @@ namespace SosuCentre.Services
             uriBuilder.Query = $"EmployeeId={EmployeeId}&date={date.ToString("yyyy-MM-dd")}";
             using HttpClient client = new();
             //This returns null fix
-
+            //this does not work as the android emulator is a considered a external device and cannot access localhost(127.0.0.1) where the api is hosted
+            //atleast that is what i think based on testing and research
             var response = await client.GetAsync(uriBuilder.Uri);
             if (response.IsSuccessStatusCode)
             {

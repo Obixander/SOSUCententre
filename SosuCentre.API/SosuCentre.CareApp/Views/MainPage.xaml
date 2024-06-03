@@ -21,7 +21,8 @@
                 Grid.Column="0"
                 Margin="5"
                 FontSize="Medium"
-                Padding="0" />
+                Padding="0"                
+                />
         <Label Text="Mads Mikkel"
                Grid.Row="0"
                Grid.Column="1"
