@@ -4,7 +4,7 @@ using SosuCentre.DataAccess;
 using SosuCentre.Entities;
 using System.Security.Cryptography.Xml;
 using System.Text.Json.Serialization;
-
+using Microsoft.Extensions.DependencyInjection;
 namespace SosuCentre.API
 {
     public class Program
@@ -24,10 +24,18 @@ namespace SosuCentre.API
                 )
             );
 
+            builder.Services.AddControllers()
+           .AddNewtonsoftJson(options =>
+           {
+               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+               options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+           });
+
+
             builder.Services.AddScoped<ITaskRepository, TaskRepository>();
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             builder.Services.AddScoped<IRepository<Role>, Repository<Role>>();
-
+            builder.Services.AddScoped<IRepository<Resident>, Repository<Resident>>();
 
             builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

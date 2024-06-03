@@ -37,7 +37,7 @@ namespace SosuCentre.Entities
         {
             get;
             set;
-        } = new List<Employee>();
+        }
         //This maybe cause problems
         public ICollection<Medicine> Medicines
         {

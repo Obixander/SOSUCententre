@@ -19,6 +19,11 @@ namespace SosuCentre.DataAccess
         T GetBy(int id);
     }
 
+    public interface IResidentRepository : IRepository<Resident>
+    {
+        Resident GetById(int id);
+    }
+
 
     public interface ITaskRepository : IRepository<Entities.Task>
     {

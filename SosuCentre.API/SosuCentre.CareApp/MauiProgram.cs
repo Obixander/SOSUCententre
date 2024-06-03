@@ -8,8 +8,8 @@ namespace SosuCentre.CareApp
 {
     public static class MauiProgram
     {
-        private const string uri = "https://localhost:7044/api/";
-        //private const string uri = "https://10.0.2.2:7044/api/";
+       // private const string uri = "https://localhost:7044/api/";
+        private const string uri = "https://10.0.2.2:7044/api/";
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
