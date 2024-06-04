@@ -41,13 +41,13 @@
                Grid.ColumnSpan="2"
                Margin="5"
                Padding="0" />
-        
+
         <CollectionView BackgroundColor="AliceBlue"
                         Grid.Row="2"
                         Grid.RowSpan="2"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding TodaysAssignments}">
-            
+
             <CollectionView.ItemTemplate>                
                 <DataTemplate x:DataType="model:Task">                    
                     <Grid Padding="10">
@@ -58,16 +58,18 @@
                             <Grid RowDefinitions="50,200,50"
                                   ColumnDefinitions="50,*,50">
                                 
-                                <Label Text="CN"
+                                <Label Text="{Binding TaskId}"
                                        Grid.Row="0"
                                        Grid.Column="0" />
                                 
                                 <Label Grid.Row="0"
-                                       Grid.Column="1">
+                                       Grid.Column="1"
+                                       HorizontalTextAlignment="Center">
+                                       
                                     <Label.Text>
                                         <MultiBinding Converter="{StaticResource TimeRangeConverter}">
-                                            <Binding Path="StartTime" />
-                                            <Binding Path="EndTime" />
+                                            <Binding Path="TimeStart" />
+                                            <Binding Path="TimeEnd" />
                                         </MultiBinding>
                                     </Label.Text>
                                 </Label>
@@ -75,13 +77,18 @@
                                 <Label Text="Room X"
                                        Grid.Row="0"
                                        Grid.Column="2" />
+                                                               
                                 
                                 <Label Text="{Binding Resident.Name}"
                                        Grid.Row="1"
                                        Grid.ColumnSpan="3" />
                                 
                                 <CheckBox Grid.Column="2"
-                                          Grid.Row="2" />
+                                          Grid.Row="2" 
+                                          IsChecked="{Binding Completed}"
+                                          WidthRequest="25"
+                                          HeightRequest="25"
+                                          />
                                 
                             </Grid>
                             
@@ -94,6 +101,15 @@
             </CollectionView.ItemTemplate>
             
         </CollectionView>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsEnabled="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="3"
+                           Grid.ColumnSpan="2">
+            
+        </ActivityIndicator>
         
     </Grid>
     

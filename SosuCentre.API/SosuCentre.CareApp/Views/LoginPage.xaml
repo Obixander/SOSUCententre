@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SosuCentre.CareApp.Views.LoginPage"
+             xmlns:model="clr-namespace:SosuCentre.Entities;assembly=SosuCentre.Entities"
+             xmlns:converters="clr-namespace:SosuCentre.CareApp.Converter"
+             xmlns:viewmodel="clr-namespace:SosuCentre.CareApp.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             Title="LoginPage">
+    <Grid BackgroundColor="Aqua" RowDefinitions="*" ColumnDefinitions="*">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Log ind" FontSize="Title" />
+            <Entry Placeholder="Indtast Burger ID..."  />
+            <Button Text="Log ind"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

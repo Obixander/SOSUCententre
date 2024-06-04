@@ -25,7 +25,7 @@ namespace SosuCentre.Services
             
 
             UriBuilder uriBuilder = new(baseUri + url);
-            uriBuilder.Query = $"EmployeeId={EmployeeId}&date={date.ToString("yyyy-MM-dd")}";
+            uriBuilder.Query = $"EmployeeId={EmployeeId}&date={DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")}";
             //testing
                 HttpClientHandler handler = new HttpClientHandler()
                 {
@@ -33,21 +33,16 @@ namespace SosuCentre.Services
                 };
                 using HttpClient client = new(handler);
            
-            //This returns null fix
-            //this does not work as the android emulator is a considered a external device and cannot access localhost(127.0.0.1) where the api is hosted
-            //atleast that is what i think based on testing and research
+     
 
             var response = await client.GetAsync(uriBuilder.Uri);
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                List<Entities.Task> tasks = new List<Entities.Task>();
-                tasks = await response.Content.ReadFromJsonAsync<List<Entities.Task>>();
-                return response;
+                //List<Entities.Task> tasks = new List<Entities.Task>();
+                //tasks = await response.Content.ReadFromJsonAsync<List<Entities.Task>>();
+                throw new Exception($"Error: {response.StatusCode} - {response.ReasonPhrase}");
             }
-            else
-            {
-                throw new HttpRequestException(response.ReasonPhrase);
-            }
+            return response;
         }
 
     }

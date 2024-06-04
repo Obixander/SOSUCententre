@@ -22,6 +22,10 @@ namespace SosuCentre.CareApp
                 });
             Uri baseUri = new Uri(uri);
             builder.Services.AddScoped<ISosuService>(x=> new ApiService(baseUri));
+
+            builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<LoginPage>();
+
             builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddSingleton<MainPage>();
 
