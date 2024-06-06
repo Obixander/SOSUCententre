@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606121512_AddedTestDataAgain9")]
+    partial class AddedTestDataAgain9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -344,7 +347,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("MedicineId");
 
-                    b.ToTable("MedicineTasks");
+                    b.ToTable("MedicineTasks", (string)null);
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
@@ -520,7 +523,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("AssignmentId");
 
-                    b.ToTable("SubTasks");
+                    b.ToTable("SubTasks", (string)null);
                 });
 
             modelBuilder.Entity("AssignmentEmployee", b =>

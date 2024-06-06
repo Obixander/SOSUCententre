@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace SosuCentre.Entities
 {
-    public class MedicineTask : SubTask
-    {        
-        //public int MedicineTaskId
-        //{
-        //    get;
-        //    set;
-        //}
+    public class MedicineTask 
+    {
+        public int MedicineTaskId
+        {
+            get;
+            set;
+        }
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public bool IsCompleted
+        {
+            get;
+            set;
+        }
 
         public Medicine Medicine
         {

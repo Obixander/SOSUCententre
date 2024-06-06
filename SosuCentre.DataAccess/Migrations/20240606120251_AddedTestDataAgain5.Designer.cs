@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606120251_AddedTestDataAgain5")]
+    partial class AddedTestDataAgain5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,6 +118,17 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("Assignment");
+
+                    b.HasData(
+                        new
+                        {
+                            AssignmentId = 1,
+                            Completed = false,
+                            Notes = "Husk at give vand med medicinet",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 6, 16, 2, 51, 96, DateTimeKind.Local).AddTicks(5741),
+                            TimeStart = new DateTime(2024, 6, 6, 14, 2, 51, 96, DateTimeKind.Local).AddTicks(5696)
+                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.CareCenter", b =>
@@ -344,7 +358,17 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("MedicineId");
 
-                    b.ToTable("MedicineTasks");
+                    b.ToTable("MedicineTasks", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            MedicineTaskId = 1,
+                            Amount = 2,
+                            IsCompleted = false,
+                            MedicineId = 1,
+                            Unit = "dl"
+                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
@@ -520,7 +544,16 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("AssignmentId");
 
-                    b.ToTable("SubTasks");
+                    b.ToTable("SubTasks", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SubTaskId = 1,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Giv vand"
+                        });
                 });
 
             modelBuilder.Entity("AssignmentEmployee", b =>

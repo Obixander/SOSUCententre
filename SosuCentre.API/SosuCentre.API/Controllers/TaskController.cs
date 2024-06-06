@@ -26,12 +26,13 @@ namespace SosuCentre.API.Controllers
             return repository.GetBy(id);
         }
 
-        [HttpGet(nameof(GetTasksFor))]
-        public IEnumerable<Entities.Assignment> GetTasksFor([FromQuery] Employee employee, [FromQuery]DateTime date = default)
+        [HttpGet(nameof(GetAssignmentsOn))]
+        public IEnumerable<Entities.Assignment> GetAssignmentsOn([FromQuery] Employee employee, [FromQuery]DateTime date = default)
         {
             return repository.GetAssignmentsOn(employee,date);
         }
 
+        //Dont use not working
         [HttpGet(nameof(GetAssignmentsForEmployee))]
         public IEnumerable<Entities.Assignment> GetAssignmentsForEmployee([FromQuery] Employee employee)
         {
