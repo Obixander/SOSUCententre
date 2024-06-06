@@ -25,12 +25,12 @@ namespace SosuCentre.DataAccess
     }
 
 
-    public interface ITaskRepository : IRepository<Entities.Task>
+    public interface ITaskRepository : IRepository<Entities.Assignment>
     {
-        IEnumerable<Entities.Task> GetAssignmentsOn(Employee employee, DateTime date);
-        IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee);
-        Entities.Task GetBy(int id);
-        void AddEmployeeToTask(Entities.Task task, int EmployeeId);
+        IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee, DateTime date);
+        IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee);
+        Entities.Assignment GetBy(int id);
+        void AddEmployeeToTask(Entities.Assignment task, int EmployeeId);
 
     }
 

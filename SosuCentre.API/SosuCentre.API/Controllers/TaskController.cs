@@ -13,7 +13,7 @@ namespace SosuCentre.API.Controllers
         private readonly ITaskRepository repository = repository;
 
         [HttpPut]
-        public void UpdateBy([FromQuery] Entities.Task task)
+        public void UpdateBy([FromQuery] Entities.Assignment task)
         {
             repository.Update(task);
         }
@@ -21,32 +21,32 @@ namespace SosuCentre.API.Controllers
         //TODO: FIX SOON
         //this is not working as there a circuler ref between Task and Employee 
         [HttpGet("{id}")]
-        public ActionResult<Entities.Task> GetBy(int id)
+        public ActionResult<Entities.Assignment> GetBy(int id)
         {
             return repository.GetBy(id);
         }
 
         [HttpGet(nameof(GetTasksFor))]
-        public IEnumerable<Entities.Task> GetTasksFor([FromQuery] Employee employee, [FromQuery]DateTime date = default)
+        public IEnumerable<Entities.Assignment> GetTasksFor([FromQuery] Employee employee, [FromQuery]DateTime date = default)
         {
             return repository.GetAssignmentsOn(employee,date);
         }
 
         [HttpGet(nameof(GetAssignmentsForEmployee))]
-        public IEnumerable<Entities.Task> GetAssignmentsForEmployee([FromQuery] Employee employee)
+        public IEnumerable<Entities.Assignment> GetAssignmentsForEmployee([FromQuery] Employee employee)
         {
             return repository.GetAssignmentsFor(employee);
         }
 
         [HttpPost]
-        public void AddNew(Entities.Task task)
+        public void AddNew(Entities.Assignment task)
         {
            repository.Add(task);
            
         }
 
         [HttpDelete]
-        public void DeleteBy(Entities.Task task)
+        public void DeleteBy(Entities.Assignment task)
         {
             repository.Delete(task);
         }
@@ -54,7 +54,7 @@ namespace SosuCentre.API.Controllers
         //Will move later
         [HttpPost]
         [Route("AddEmployeeToTask")]
-        public void AddEmployeeToTask([FromQuery] Entities.Task task, [FromQuery] int EmployeeId)
+        public void AddEmployeeToTask([FromQuery] Entities.Assignment task, [FromQuery] int EmployeeId)
         {
             repository.AddEmployeeToTask(task, EmployeeId);
             

@@ -58,12 +58,12 @@ namespace SosuCentre.Services
         {
         }
 
-        public async Task<List<Entities.Task>> GetTasksForAsync(DateTime date, Employee employee)
+        public async Task<List<Entities.Assignment>> GetTasksForAsync(DateTime date, Employee employee)
         {
             string url = @$"Task/GetTasksFor";
             var response = await GetHttpAsync(url, employee.EmployeeId, date);
-            var result = response.Content.ReadFromJsonAsAsyncEnumerable<Entities.Task>();
-            List<Entities.Task> assignments = await result.ToListAsync();
+            var result = response.Content.ReadFromJsonAsAsyncEnumerable<Entities.Assignment>();
+            List<Entities.Assignment> assignments = await result.ToListAsync();
 
             return assignments;
         }
@@ -71,6 +71,6 @@ namespace SosuCentre.Services
 
     public interface ISosuService
     {
-        Task<List<Entities.Task>> GetTasksForAsync(DateTime date, Employee employee);
+        Task<List<Entities.Assignment>> GetTasksForAsync(DateTime date, Employee employee);
     }
 }

@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SosuCentre.Entities
 {
-    public class Medicine
+    public class SubTask
     {
-  
-        #region Properties
-
-        public int MedicineId
+        public int SubTaskId
         {
             get;
             set;
         }
+
         public string Name
         {
             get;
             set;
         }
 
-        #endregion
+        public bool IsCompleted
+        { 
+            get;
+            set;
+        }
     }
 }

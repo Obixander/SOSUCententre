@@ -20,11 +20,11 @@ namespace SosuCentre.CareApp.ViewModels
         {
             Title = "FORSIDEN";
             this.sosuService = sosuService;
-            TodaysAssignments = new ObservableCollection<Entities.Task>();
+            TodaysAssignments = new ObservableCollection<Entities.Assignment>();
             UpdateAssignments();
 
         }
-        public ObservableCollection<Entities.Task> TodaysAssignments { get; set; }
+        public ObservableCollection<Entities.Assignment> TodaysAssignments { get; set; }
         public string EmployeeName { 
             get => employeeName;
             set

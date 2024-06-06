@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace SosuCentre.DataAccess
 {
-    public class TaskRepository(SosuCentreContext context) : Repository<Entities.Task>(context), ITaskRepository
+    public class TaskRepository(SosuCentreContext context) : Repository<Entities.Assignment>(context), ITaskRepository
     {
-        public override Entities.Task GetBy(int id)
+        public override Entities.Assignment GetBy(int id)
         {
             return context.Tasks
                  .Include(t => t.Employees)
                  .Include(t => t.Medicines)
                  .Include(t => t.Resident)
-                 .FirstOrDefault(t => t.TaskId == id);
+                 .FirstOrDefault(t => t.AssignmentId == id);
         }
-        public IEnumerable<Entities.Task> GetAssignmentsOn(Employee employee,DateTime date)
+        public IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee,DateTime date)
         {
-            IEnumerable<Entities.Task> tasks = context.Tasks
+            IEnumerable<Entities.Assignment> tasks = context.Tasks
                 .Where(a => a.Employees.Contains(employee) && a.TimeStart == date.Date)
                 .Include(t => t.Resident)
                 .Include(t => t.Medicines)
@@ -29,10 +29,10 @@ namespace SosuCentre.DataAccess
             return tasks;
         }
 
-        public IEnumerable<Entities.Task> GetAssignmentsFor(Employee employee)
+        public IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee)
         {
             
-            List<Entities.Task> tasks = context.Tasks
+            List<Entities.Assignment> tasks = context.Tasks
                 .Where(a => a.Employees.Contains(employee))
                 .Include(t => t.Resident)
                 .Include(t => t.Medicines)
@@ -41,7 +41,7 @@ namespace SosuCentre.DataAccess
             return tasks;
         }
 
-        public void AddEmployeeToTask(Entities.Task task, int EmployeeId)
+        public void AddEmployeeToTask(Entities.Assignment task, int EmployeeId)
         {
             task.Employees.Add(context.Employees.FirstOrDefault(e => e.EmployeeId == EmployeeId));
             context.SaveChanges();

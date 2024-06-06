@@ -1,22 +1,16 @@
 ﻿
 namespace SosuCentre.Entities
 {
-    public class Task
+    public class Assignment
     {
 
-        #region Properties
+        #region Properties        
+        public int AssignmentId
+        {
+            get;
+            set;
+        }
 
-        
-        public int TaskId
-        {
-            get;
-            set;
-        }
-        public string Name
-        {
-            get;
-            set;
-        }
         public DateTime TimeStart
         {
             get;
@@ -38,12 +32,19 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        //This maybe cause problems
-        public ICollection<Medicine> Medicines
+        List<SubTask> SubTasks
         {
             get;
             set;
         }
+        List<MedicineTask> MedicineTasks
+        {
+            get;
+            set;
+        }
+
+        //These might be needed later i dont know yet
+
         public string? Notes
         {
             get;

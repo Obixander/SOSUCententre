@@ -17,7 +17,7 @@ namespace SosuCentre.Entities
             set;
         }
         
-        public ICollection<Task> Tasks
+        public ICollection<Assignment> Tasks
         {
             get;
             set;
