@@ -32,12 +32,12 @@ namespace SosuCentre.Entities
             get;
             set;
         }
-        List<SubTask> SubTasks
+        public List<SubTask> SubTasks
         {
             get;
             set;
         }
-        List<MedicineTask> MedicineTasks
+        public List<MedicineTask> MedicineTasks
         {
             get;
             set;

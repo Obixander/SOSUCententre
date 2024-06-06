@@ -8,6 +8,11 @@ namespace SosuCentre.Entities
 {
     public class MedicineTask : SubTask
     {        
+        //public int MedicineTaskId
+        //{
+        //    get;
+        //    set;
+        //}
 
         public Medicine Medicine
         {

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606101614_UpdatedEntities7")]
+    partial class UpdatedEntities7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,8 +266,7 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     b.Property<int>("SubTaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("MedicineTaskId");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubTaskId"));
 
@@ -294,10 +296,12 @@ namespace SosuCentre.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("AssignmentId1")
-                        .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MedicineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicineTaskId")
                         .HasColumnType("int");
 
                     b.Property<string>("Unit")

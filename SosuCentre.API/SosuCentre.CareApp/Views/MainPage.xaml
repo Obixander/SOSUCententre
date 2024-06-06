@@ -49,7 +49,7 @@
                         ItemsSource="{Binding TodaysAssignments}">
 
             <CollectionView.ItemTemplate>                
-                <DataTemplate x:DataType="model:Task">                    
+                <DataTemplate x:DataType="model:Assignment">                    
                     <Grid Padding="10">
                         
                         <Frame BackgroundColor="Teal"
@@ -58,7 +58,7 @@
                             <Grid RowDefinitions="50,200,50"
                                   ColumnDefinitions="50,*,50">
                                 
-                                <Label Text="{Binding TaskId}"
+                                <Label Text="{Binding AssignmentId}"
                                        Grid.Row="0"
                                        Grid.Column="0" />
                                 

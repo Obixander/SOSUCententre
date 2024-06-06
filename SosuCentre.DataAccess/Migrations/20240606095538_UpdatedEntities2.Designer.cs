@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606095538_UpdatedEntities2")]
+    partial class UpdatedEntities2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,7 +107,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("ResidentId");
 
-                    b.ToTable("Assignment");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.CareCenter", b =>
@@ -263,13 +266,14 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     b.Property<int>("SubTaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("MedicineTaskId");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubTaskId"));
 
-                    b.Property<int?>("AssignmentId")
-                        .HasColumnType("int");
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
@@ -279,11 +283,11 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasKey("SubTaskId");
 
-                    b.HasIndex("AssignmentId");
+                    b.ToTable("SubTasks");
 
-                    b.ToTable("SubTasks", (string)null);
+                    b.HasDiscriminator<string>("Discriminator").HasValue("SubTask");
 
-                    b.UseTptMappingStrategy();
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
@@ -293,21 +297,15 @@ namespace SosuCentre.DataAccess.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AssignmentId1")
-                        .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
-
                     b.Property<int?>("MedicineId")
                         .HasColumnType("int");
 
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AssignmentId1");
-
                     b.HasIndex("MedicineId");
 
-                    b.ToTable("MedicineTasks", (string)null);
+                    b.HasDiscriminator().HasValue("MedicineTask");
                 });
 
             modelBuilder.Entity("AssignmentEmployee", b =>
@@ -388,37 +386,13 @@ namespace SosuCentre.DataAccess.Migrations
                         .HasForeignKey("CareCenterId");
                 });
 
-            modelBuilder.Entity("SosuCentre.Entities.SubTask", b =>
-                {
-                    b.HasOne("SosuCentre.Entities.Assignment", null)
-                        .WithMany("SubTasks")
-                        .HasForeignKey("AssignmentId");
-                });
-
             modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
                 {
-                    b.HasOne("SosuCentre.Entities.Assignment", null)
-                        .WithMany("MedicineTasks")
-                        .HasForeignKey("AssignmentId1");
-
                     b.HasOne("SosuCentre.Entities.Medicine", "Medicine")
                         .WithMany()
                         .HasForeignKey("MedicineId");
 
-                    b.HasOne("SosuCentre.Entities.SubTask", null)
-                        .WithOne()
-                        .HasForeignKey("SosuCentre.Entities.MedicineTask", "SubTaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Medicine");
-                });
-
-            modelBuilder.Entity("SosuCentre.Entities.Assignment", b =>
-                {
-                    b.Navigation("MedicineTasks");
-
-                    b.Navigation("SubTasks");
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.CareCenter", b =>

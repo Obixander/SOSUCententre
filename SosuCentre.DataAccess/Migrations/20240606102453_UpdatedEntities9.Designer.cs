@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606102453_UpdatedEntities9")]
+    partial class UpdatedEntities9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,8 +297,7 @@ namespace SosuCentre.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("AssignmentId1")
-                        .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
+                        .HasColumnType("int");
 
                     b.Property<int?>("MedicineId")
                         .HasColumnType("int");

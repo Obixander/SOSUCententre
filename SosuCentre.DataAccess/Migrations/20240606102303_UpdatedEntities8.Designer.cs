@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240606102303_UpdatedEntities8")]
+    partial class UpdatedEntities8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -293,9 +296,12 @@ namespace SosuCentre.DataAccess.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AssignmentId1")
+                    b.Property<int>("AssignmentId1")
                         .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
+                        .HasColumnName("AssignmentId");
+
+                    b.Property<int?>("AssignmentId2")
+                        .HasColumnType("int");
 
                     b.Property<int?>("MedicineId")
                         .HasColumnType("int");
@@ -303,7 +309,7 @@ namespace SosuCentre.DataAccess.Migrations
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AssignmentId1");
+                    b.HasIndex("AssignmentId2");
 
                     b.HasIndex("MedicineId");
 
@@ -399,7 +405,7 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     b.HasOne("SosuCentre.Entities.Assignment", null)
                         .WithMany("MedicineTasks")
-                        .HasForeignKey("AssignmentId1");
+                        .HasForeignKey("AssignmentId2");
 
                     b.HasOne("SosuCentre.Entities.Medicine", "Medicine")
                         .WithMany()

@@ -12,18 +12,16 @@ namespace SosuCentre.DataAccess
     {
         public override Entities.Assignment GetBy(int id)
         {
-            return context.Tasks
+            return context.Assignment
                  .Include(t => t.Employees)
-                 .Include(t => t.Medicines)
                  .Include(t => t.Resident)
                  .FirstOrDefault(t => t.AssignmentId == id);
         }
         public IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee,DateTime date)
         {
-            IEnumerable<Entities.Assignment> tasks = context.Tasks
+            IEnumerable<Entities.Assignment> tasks = context.Assignment
                 .Where(a => a.Employees.Contains(employee) && a.TimeStart == date.Date)
                 .Include(t => t.Resident)
-                .Include(t => t.Medicines)
                 .Include(t => t.Employees)
                 .ToList();  
             return tasks;
@@ -32,10 +30,9 @@ namespace SosuCentre.DataAccess
         public IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee)
         {
             
-            List<Entities.Assignment> tasks = context.Tasks
+            List<Entities.Assignment> tasks = context.Assignment
                 .Where(a => a.Employees.Contains(employee))
                 .Include(t => t.Resident)
-                .Include(t => t.Medicines)
                 .Include(t => t.Employees)
                 .ToList();
             return tasks;
