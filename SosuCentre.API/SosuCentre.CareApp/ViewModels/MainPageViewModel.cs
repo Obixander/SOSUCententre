@@ -6,21 +6,25 @@ using System.Collections.ObjectModel;
 
 namespace SosuCentre.CareApp.ViewModels
 {
-    [QueryProperty("UserId", "UserId")]
     public partial class MainPageViewModel : BaseViewModel
     {
-        //TODO: change to use real employee by getting the employee from the login page
+        //change later
+        private int id;
+        
 
         private readonly ISosuService sosuService;
+        //remove later
         private string employeeName;
-        [ObservableProperty]
-        private int userId;
 
-        public MainPageViewModel(ISosuService sosuService)
+
+
+
+        public MainPageViewModel(ISosuService sosuService, IUserService userService)
         {
             Title = "FORSIDEN";
             this.sosuService = sosuService;
             TodaysAssignments = new ObservableCollection<Entities.Assignment>();
+            Id = userService.GetUserId();
             UpdateAssignments();
 
         }
@@ -37,8 +41,8 @@ namespace SosuCentre.CareApp.ViewModels
             }
         }
 
+        public int Id { get => id; set => id = value; }
 
-        
         [RelayCommand]
         private async System.Threading.Tasks.Task UpdateAssignments()
         {
@@ -48,7 +52,7 @@ namespace SosuCentre.CareApp.ViewModels
                 TodaysAssignments.Clear();
                 //TODO: change to use real employee
                 
-                var tasks = await sosuService.GetTasksForAsync(DateTime.Now, new Employee { EmployeeId = UserId });
+                var tasks = await sosuService.GetTasksForAsync(DateTime.Now, new Employee { EmployeeId = Id});
                 foreach (var task in tasks)
                 {
                     TodaysAssignments.Add(task);
@@ -62,6 +66,7 @@ namespace SosuCentre.CareApp.ViewModels
             }
             
         }
+
 
     }
 

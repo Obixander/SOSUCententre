@@ -5,13 +5,15 @@
              xmlns:model="clr-namespace:SosuCentre.Entities;assembly=SosuCentre.Entities"
              xmlns:converters="clr-namespace:SosuCentre.CareApp.Converter"
              xmlns:viewmodel="clr-namespace:SosuCentre.CareApp.ViewModels"
-             x:DataType="viewmodel:MainPageViewModel"
+             x:DataType="viewmodel:LoginPageViewModel"
              Title="LoginPage">
     <Grid BackgroundColor="Aqua" RowDefinitions="*" ColumnDefinitions="*">
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Log ind" FontSize="Title" />
-            <Entry Placeholder="Indtast Burger ID..."  />
-            <Button Text="Log ind"/>
+            <Entry x:Name="userId" Placeholder="Indtast Burger ID..."  />
+            <Button Text="Log ind"
+                    Command="{Binding GoToMainCommand}"
+                    CommandParameter="{Binding Text, Source={x:Reference userId}}"/>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

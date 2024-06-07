@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace SosuCentre.Services
 {
+    //DO SERPATORIONS OF CONCERNS SOON
     public abstract class ApiBase
     {
         protected Uri baseUri;
@@ -73,4 +74,28 @@ namespace SosuCentre.Services
     {
         Task<List<Entities.Assignment>> GetTasksForAsync(DateTime date, Employee employee);
     }
+
+    public interface IUserService
+    {
+        void SetUserId(int value);
+        int GetUserId();
+    }
+
+    public class UserService : IUserService
+    {
+        private static int userId;
+
+        public int UserId { get => userId; set => userId = value; }
+
+        public int GetUserId()
+        {
+            return UserId;
+        }
+
+        public void SetUserId(int value)
+        {
+            UserId = value;
+        }        
+    }
+
 }

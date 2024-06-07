@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using SosuCentre.CareApp.Views;
+using SosuCentre.Entities;
+using SosuCentre.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,15 +25,23 @@ namespace SosuCentre.CareApp.ViewModels
             set => SetProperty(ref userId, value);
         }
         [RelayCommand]
-        async Task GoToMainAsync(int UserId)
+        async Task GoToMainAsync(string UserInput)
         {
-            if (UserId != 0)
+
+            if (int.TryParse(UserInput, out int id))
             {
-                await Shell.Current.GoToAsync($"{nameof(MainPage)}", true, new Dictionary<string, object>
+                if (id > 0)
                 {
-                    {"UserId", UserId }
-                });
+                    UserId = id;
+
+                    UserService userService = new UserService();
+                    userService.SetUserId(UserId);
+                    await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+                    
+                }
+
             }
+            return;
         }
 
 
