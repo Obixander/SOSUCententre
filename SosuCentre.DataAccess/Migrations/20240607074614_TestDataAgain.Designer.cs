@@ -12,8 +12,8 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    [Migration("20240606113010_AddedTestData")]
-    partial class AddedTestData
+    [Migration("20240607074614_TestDataAgain")]
+    partial class TestDataAgain
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,10 +124,46 @@ namespace SosuCentre.DataAccess.Migrations
                         {
                             AssignmentId = 1,
                             Completed = false,
-                            Notes = "Husk at give vand med medicinet",
+                            Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 6, 15, 30, 10, 407, DateTimeKind.Local).AddTicks(9774),
-                            TimeStart = new DateTime(2024, 6, 6, 13, 30, 10, 407, DateTimeKind.Local).AddTicks(9732)
+                            TimeEnd = new DateTime(2024, 6, 7, 11, 46, 14, 426, DateTimeKind.Local).AddTicks(7805),
+                            TimeStart = new DateTime(2024, 6, 7, 9, 46, 14, 426, DateTimeKind.Local).AddTicks(7761)
+                        },
+                        new
+                        {
+                            AssignmentId = 2,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 12, 46, 14, 426, DateTimeKind.Local).AddTicks(7825),
+                            TimeStart = new DateTime(2024, 6, 7, 11, 46, 14, 426, DateTimeKind.Local).AddTicks(7824)
+                        },
+                        new
+                        {
+                            AssignmentId = 3,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 14, 46, 14, 426, DateTimeKind.Local).AddTicks(7840),
+                            TimeStart = new DateTime(2024, 6, 7, 12, 46, 14, 426, DateTimeKind.Local).AddTicks(7839)
+                        },
+                        new
+                        {
+                            AssignmentId = 4,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 18, 46, 14, 426, DateTimeKind.Local).AddTicks(7855),
+                            TimeStart = new DateTime(2024, 6, 7, 15, 46, 14, 426, DateTimeKind.Local).AddTicks(7854)
+                        },
+                        new
+                        {
+                            AssignmentId = 5,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 20, 46, 14, 426, DateTimeKind.Local).AddTicks(7871),
+                            TimeStart = new DateTime(2024, 6, 7, 18, 46, 14, 426, DateTimeKind.Local).AddTicks(7869)
                         });
                 });
 
@@ -325,6 +361,42 @@ namespace SosuCentre.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
+                {
+                    b.Property<int>("MedicineTaskId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicineTaskId"));
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("AssignmentId")
+                        .HasColumnType("int")
+                        .HasColumnName("MedicineAssignmentId");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("MedicineId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MedicineTaskId");
+
+                    b.HasIndex("AssignmentId");
+
+                    b.HasIndex("MedicineId");
+
+                    b.ToTable("MedicineTasks");
+                });
+
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
                 {
                     b.Property<int>("PrescriptionId")
@@ -481,8 +553,7 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     b.Property<int>("SubTaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("MedicineTaskId");
+                        .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubTaskId"));
 
@@ -499,9 +570,7 @@ namespace SosuCentre.DataAccess.Migrations
 
                     b.HasIndex("AssignmentId");
 
-                    b.ToTable("SubTasks", (string)null);
-
-                    b.UseTptMappingStrategy();
+                    b.ToTable("SubTasks");
 
                     b.HasData(
                         new
@@ -510,40 +579,104 @@ namespace SosuCentre.DataAccess.Migrations
                             AssignmentId = 1,
                             IsCompleted = false,
                             Name = "Giv vand"
-                        });
-                });
-
-            modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
-                {
-                    b.HasBaseType("SosuCentre.Entities.SubTask");
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AssignmentId1")
-                        .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
-
-                    b.Property<int?>("MedicineId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Unit")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("AssignmentId1");
-
-                    b.HasIndex("MedicineId");
-
-                    b.ToTable("MedicineTasks", (string)null);
-
-                    b.HasData(
+                        },
                         new
                         {
-                            SubTaskId = -1,
+                            SubTaskId = 2,
+                            AssignmentId = 1,
                             IsCompleted = false,
-                            Amount = 2,
-                            MedicineId = 1,
-                            Unit = "dl"
+                            Name = "Hjælp med medicin"
+                        },
+                        new
+                        {
+                            SubTaskId = 3,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Planlægning af måltider"
+                        },
+                        new
+                        {
+                            SubTaskId = 4,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Overvågning af helbred"
+                        },
+                        new
+                        {
+                            SubTaskId = 5,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            Name = "Transport til aftaler"
+                        },
+                        new
+                        {
+                            SubTaskId = 6,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            Name = "Rengøring"
+                        },
+                        new
+                        {
+                            SubTaskId = 7,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Indkøb"
+                        },
+                        new
+                        {
+                            SubTaskId = 8,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Social kontakt"
+                        },
+                        new
+                        {
+                            SubTaskId = 9,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Assistance med daglig pleje"
+                        },
+                        new
+                        {
+                            SubTaskId = 10,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Hjælp med regninger"
+                        },
+                        new
+                        {
+                            SubTaskId = 11,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Planlægning af aktiviteter"
+                        },
+                        new
+                        {
+                            SubTaskId = 12,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Hjælp med teknologi"
+                        },
+                        new
+                        {
+                            SubTaskId = 13,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Følelsesmæssig støtte"
+                        },
+                        new
+                        {
+                            SubTaskId = 14,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Koordinering med sundhedstjenester"
+                        },
+                        new
+                        {
+                            SubTaskId = 15,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Støtte til mobilitet"
                         });
                 });
 
@@ -611,6 +744,19 @@ namespace SosuCentre.DataAccess.Migrations
                     b.Navigation("CareCenter");
                 });
 
+            modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
+                {
+                    b.HasOne("SosuCentre.Entities.Assignment", null)
+                        .WithMany("MedicineTasks")
+                        .HasForeignKey("AssignmentId");
+
+                    b.HasOne("SosuCentre.Entities.Medicine", "Medicine")
+                        .WithMany()
+                        .HasForeignKey("MedicineId");
+
+                    b.Navigation("Medicine");
+                });
+
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
                 {
                     b.HasOne("SosuCentre.Entities.Resident", null)
@@ -630,25 +776,6 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasOne("SosuCentre.Entities.Assignment", null)
                         .WithMany("SubTasks")
                         .HasForeignKey("AssignmentId");
-                });
-
-            modelBuilder.Entity("SosuCentre.Entities.MedicineTask", b =>
-                {
-                    b.HasOne("SosuCentre.Entities.Assignment", null)
-                        .WithMany("MedicineTasks")
-                        .HasForeignKey("AssignmentId1");
-
-                    b.HasOne("SosuCentre.Entities.Medicine", "Medicine")
-                        .WithMany()
-                        .HasForeignKey("MedicineId");
-
-                    b.HasOne("SosuCentre.Entities.SubTask", null)
-                        .WithOne()
-                        .HasForeignKey("SosuCentre.Entities.MedicineTask", "SubTaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Medicine");
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Assignment", b =>

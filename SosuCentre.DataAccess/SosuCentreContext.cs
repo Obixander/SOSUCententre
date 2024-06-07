@@ -43,7 +43,7 @@ namespace SosuCentre.DataAccess
            
 
             //this changes the AssignmentId1 to MedicinAssignmentId in the MedicineTask table
-            modelBuilder.Entity<MedicineTask>().Property("AssignmentId").HasColumnName("MedicinAssignmentId");
+            modelBuilder.Entity<MedicineTask>().Property("AssignmentId").HasColumnName("MedicineAssignmentId");
 
             #region Address
             modelBuilder.Entity<Address>().HasData(new Address { AddressId = 1, City = "Vejle", State = "Syd Jylland", Street = "Boulevarden 31", ZipCode = "7100" });
@@ -95,17 +95,50 @@ namespace SosuCentre.DataAccess
 
             #region SubTask
             //When adding a new SubTask, remember to add a AssignmentId
-            //modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 1, Name = "Giv vand",IsCompleted = false, AssignmentId = 1});
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 1, Name = "Giv vand", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 2, Name = "Hjælp med medicin", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 3, Name = "Planlægning af måltider", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 4, Name = "Overvågning af helbred", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 5, Name = "Transport til aftaler", IsCompleted = false, AssignmentId = 2 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 6, Name = "Rengøring", IsCompleted = false, AssignmentId = 2 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 7, Name = "Indkøb", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 8, Name = "Social kontakt", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 9, Name = "Assistance med daglig pleje", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 10, Name = "Hjælp med regninger", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 11, Name = "Planlægning af aktiviteter", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 12, Name = "Hjælp med teknologi", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 13, Name = "Følelsesmæssig støtte", IsCompleted = false, AssignmentId = 5 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 14, Name = "Koordinering med sundhedstjenester", IsCompleted = false, AssignmentId = 5 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 15, Name = "Støtte til mobilitet", IsCompleted = false, AssignmentId = 5 });
             #endregion
 
             #region MedicineTask
-            //The medicineTaskId is the subtaskId that the medicineTask inherits from subtask
-            //When adding a new SubTask, remember to add a MedicineAssignmentIds
-            //modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 1,  MedicineId = 1, Amount = 2, Unit = "dl", IsCompleted = false, MedicineAssignmentId = 1 });
+            //When adding a new MediciineTask, remember to add a AssignmentId with in the database is "MedicineAssignmentId"
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 1, Name = "PlaceHolder", MedicineId = 7, Amount = 2.0, Unit = "dl", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 2, Name = "PlaceHolder", MedicineId = 3, Amount = 1.0, Unit = "tablet", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 3, Name = "PlaceHolder", MedicineId = 9, Amount = 5.0, Unit = "ml", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 4, Name = "PlaceHolder", MedicineId = 2, Amount = 2.5, Unit = "g", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 5, Name = "PlaceHolder", MedicineId = 10, Amount = 10.0, Unit = "mg", IsCompleted = false, AssignmentId = 1 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 6, Name = "PlaceHolder", MedicineId = 1, Amount = 20.0, Unit = "ml", IsCompleted = false, AssignmentId = 2 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 7, Name = "PlaceHolder", MedicineId = 6, Amount = 0.5, Unit = "l", IsCompleted = false, AssignmentId = 2 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 8, Name = "PlaceHolder", MedicineId = 8, Amount = 15.0, Unit = "units", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 9, Name = "PlaceHolder", MedicineId = 4, Amount = 1.5, Unit = "teaspoon", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 10, Name = "PlaceHolder", MedicineId = 5, Amount = 3.0, Unit = "tablespoon", IsCompleted = false, AssignmentId = 3 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 11, Name = "PlaceHolder", MedicineId = 2, Amount = 30.0, Unit = "ml", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 12, Name = "PlaceHolder", MedicineId = 7, Amount = 50.0, Unit = "mg", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 13, Name = "PlaceHolder", MedicineId = 3, Amount = 4.0, Unit = "capsules", IsCompleted = false, AssignmentId = 4 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 14, Name = "PlaceHolder", MedicineId = 1, Amount = 0.25, Unit = "liters", IsCompleted = false, AssignmentId = 5 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 15, Name = "PlaceHolder", MedicineId = 5, Amount = 75.0, Unit = "units", IsCompleted = false, AssignmentId = 5 });
             #endregion
 
             #region Assignment
-            //modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 1, TimeStart = DateTime.Now, TimeEnd = DateTime.Now.AddHours(2), ResidentId = 1, Notes = "Husk at give vand med medicinet", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 1, TimeStart = DateTime.Now, TimeEnd = DateTime.Now.AddHours(2), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 2, TimeStart = DateTime.Now.AddHours(2), TimeEnd = DateTime.Now.AddHours(3), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 3, TimeStart = DateTime.Now.AddHours(3), TimeEnd = DateTime.Now.AddHours(5), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 4, TimeStart = DateTime.Now.AddHours(6), TimeEnd = DateTime.Now.AddHours(9), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 5, TimeStart = DateTime.Now.AddHours(9), TimeEnd = DateTime.Now.AddHours(11), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+
+
             #endregion
 
 

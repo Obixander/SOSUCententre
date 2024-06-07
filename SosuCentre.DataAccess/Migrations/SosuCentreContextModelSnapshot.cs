@@ -115,6 +115,53 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("ResidentId");
 
                     b.ToTable("Assignment");
+
+                    b.HasData(
+                        new
+                        {
+                            AssignmentId = 1,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 11, 52, 7, 708, DateTimeKind.Local).AddTicks(1909),
+                            TimeStart = new DateTime(2024, 6, 7, 9, 52, 7, 708, DateTimeKind.Local).AddTicks(1866)
+                        },
+                        new
+                        {
+                            AssignmentId = 2,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 12, 52, 7, 708, DateTimeKind.Local).AddTicks(1929),
+                            TimeStart = new DateTime(2024, 6, 7, 11, 52, 7, 708, DateTimeKind.Local).AddTicks(1927)
+                        },
+                        new
+                        {
+                            AssignmentId = 3,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 14, 52, 7, 708, DateTimeKind.Local).AddTicks(1945),
+                            TimeStart = new DateTime(2024, 6, 7, 12, 52, 7, 708, DateTimeKind.Local).AddTicks(1943)
+                        },
+                        new
+                        {
+                            AssignmentId = 4,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 18, 52, 7, 708, DateTimeKind.Local).AddTicks(1960),
+                            TimeStart = new DateTime(2024, 6, 7, 15, 52, 7, 708, DateTimeKind.Local).AddTicks(1959)
+                        },
+                        new
+                        {
+                            AssignmentId = 5,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 7, 20, 52, 7, 708, DateTimeKind.Local).AddTicks(1976),
+                            TimeStart = new DateTime(2024, 6, 7, 18, 52, 7, 708, DateTimeKind.Local).AddTicks(1974)
+                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.CareCenter", b =>
@@ -319,12 +366,12 @@ namespace SosuCentre.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MedicineTaskId"));
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
 
                     b.Property<int?>("AssignmentId")
                         .HasColumnType("int")
-                        .HasColumnName("MedicinAssignmentId");
+                        .HasColumnName("MedicineAssignmentId");
 
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
@@ -345,6 +392,158 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("MedicineId");
 
                     b.ToTable("MedicineTasks");
+
+                    b.HasData(
+                        new
+                        {
+                            MedicineTaskId = 1,
+                            Amount = 2.0,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            MedicineId = 7,
+                            Name = "PlaceHolder",
+                            Unit = "dl"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 2,
+                            Amount = 1.0,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            MedicineId = 3,
+                            Name = "PlaceHolder",
+                            Unit = "tablet"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 3,
+                            Amount = 5.0,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            MedicineId = 9,
+                            Name = "PlaceHolder",
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 4,
+                            Amount = 2.5,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            MedicineId = 2,
+                            Name = "PlaceHolder",
+                            Unit = "g"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 5,
+                            Amount = 10.0,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            MedicineId = 10,
+                            Name = "PlaceHolder",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 6,
+                            Amount = 20.0,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            MedicineId = 1,
+                            Name = "PlaceHolder",
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 7,
+                            Amount = 0.5,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            MedicineId = 6,
+                            Name = "PlaceHolder",
+                            Unit = "l"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 8,
+                            Amount = 15.0,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            MedicineId = 8,
+                            Name = "PlaceHolder",
+                            Unit = "units"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 9,
+                            Amount = 1.5,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            MedicineId = 4,
+                            Name = "PlaceHolder",
+                            Unit = "teaspoon"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 10,
+                            Amount = 3.0,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            MedicineId = 5,
+                            Name = "PlaceHolder",
+                            Unit = "tablespoon"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 11,
+                            Amount = 30.0,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            MedicineId = 2,
+                            Name = "PlaceHolder",
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 12,
+                            Amount = 50.0,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            MedicineId = 7,
+                            Name = "PlaceHolder",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 13,
+                            Amount = 4.0,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            MedicineId = 3,
+                            Name = "PlaceHolder",
+                            Unit = "capsules"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 14,
+                            Amount = 0.25,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            MedicineId = 1,
+                            Name = "PlaceHolder",
+                            Unit = "liters"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 15,
+                            Amount = 75.0,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            MedicineId = 5,
+                            Name = "PlaceHolder",
+                            Unit = "units"
+                        });
                 });
 
             modelBuilder.Entity("SosuCentre.Entities.Prescription", b =>
@@ -521,6 +720,113 @@ namespace SosuCentre.DataAccess.Migrations
                     b.HasIndex("AssignmentId");
 
                     b.ToTable("SubTasks");
+
+                    b.HasData(
+                        new
+                        {
+                            SubTaskId = 1,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Giv vand"
+                        },
+                        new
+                        {
+                            SubTaskId = 2,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Hjælp med medicin"
+                        },
+                        new
+                        {
+                            SubTaskId = 3,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Planlægning af måltider"
+                        },
+                        new
+                        {
+                            SubTaskId = 4,
+                            AssignmentId = 1,
+                            IsCompleted = false,
+                            Name = "Overvågning af helbred"
+                        },
+                        new
+                        {
+                            SubTaskId = 5,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            Name = "Transport til aftaler"
+                        },
+                        new
+                        {
+                            SubTaskId = 6,
+                            AssignmentId = 2,
+                            IsCompleted = false,
+                            Name = "Rengøring"
+                        },
+                        new
+                        {
+                            SubTaskId = 7,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Indkøb"
+                        },
+                        new
+                        {
+                            SubTaskId = 8,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Social kontakt"
+                        },
+                        new
+                        {
+                            SubTaskId = 9,
+                            AssignmentId = 3,
+                            IsCompleted = false,
+                            Name = "Assistance med daglig pleje"
+                        },
+                        new
+                        {
+                            SubTaskId = 10,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Hjælp med regninger"
+                        },
+                        new
+                        {
+                            SubTaskId = 11,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Planlægning af aktiviteter"
+                        },
+                        new
+                        {
+                            SubTaskId = 12,
+                            AssignmentId = 4,
+                            IsCompleted = false,
+                            Name = "Hjælp med teknologi"
+                        },
+                        new
+                        {
+                            SubTaskId = 13,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Følelsesmæssig støtte"
+                        },
+                        new
+                        {
+                            SubTaskId = 14,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Koordinering med sundhedstjenester"
+                        },
+                        new
+                        {
+                            SubTaskId = 15,
+                            AssignmentId = 5,
+                            IsCompleted = false,
+                            Name = "Støtte til mobilitet"
+                        });
                 });
 
             modelBuilder.Entity("AssignmentEmployee", b =>

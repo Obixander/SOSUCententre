@@ -31,7 +31,7 @@ namespace SosuCentre.Entities
             set;
         }
 
-        public int Amount
+        public double Amount
         {
             get;
             set;
