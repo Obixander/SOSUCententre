@@ -30,7 +30,7 @@ namespace SosuCentre.DataAccess
         IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee, DateTime date);
         IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee);
         Entities.Assignment GetBy(int id);
-        void AddEmployeeToTask(Entities.Assignment task, int EmployeeId);
+        void AddEmployeeToTask(int taskId, int employeeId);
 
     }
 

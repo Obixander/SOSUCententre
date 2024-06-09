@@ -23,10 +23,8 @@ namespace SosuCentre.Services
 
         protected virtual async Task<HttpResponseMessage> GetHttpAsync(string url, int EmployeeId, DateTime date)
         {
-            
-
             UriBuilder uriBuilder = new(baseUri + url);
-            uriBuilder.Query = $"EmployeeId={EmployeeId}&date={DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")}";
+            uriBuilder.Query = $"EmployeeId={EmployeeId}&date={DateTime.Now.ToString("yyyy-MM-dd")}";
             //testing
                 HttpClientHandler handler = new HttpClientHandler()
                 {
@@ -61,7 +59,7 @@ namespace SosuCentre.Services
 
         public async Task<List<Entities.Assignment>> GetTasksForAsync(DateTime date, Employee employee)
         {
-            string url = @$"Task/GetTasksFor";
+            string url = @$"Task/GetAssignmentsOn";
             var response = await GetHttpAsync(url, employee.EmployeeId, date);
             var result = response.Content.ReadFromJsonAsAsyncEnumerable<Entities.Assignment>();
             List<Entities.Assignment> assignments = await result.ToListAsync();
@@ -81,9 +79,10 @@ namespace SosuCentre.Services
         int GetUserId();
     }
 
+    //this has unecessary methods as you could just use the property directly
     public class UserService : IUserService
     {
-        private static int userId;
+        private int userId;
 
         public int UserId { get => userId; set => userId = value; }
 

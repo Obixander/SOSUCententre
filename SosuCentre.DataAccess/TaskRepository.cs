@@ -12,15 +12,15 @@ namespace SosuCentre.DataAccess
     {
         public override Entities.Assignment GetBy(int id)
         {
-            return context.Assignment
+            return context.Assignments
                  .Include(t => t.Employees)
                  .Include(t => t.Resident)
                  .FirstOrDefault(t => t.AssignmentId == id);
         }
         public IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee,DateTime date)
         {
-            IEnumerable<Entities.Assignment> tasks = context.Assignment
-                .Where(a => a.Employees.Contains(employee) && a.TimeStart == date.Date)
+            IEnumerable<Entities.Assignment> tasks = context.Assignments
+                .Where(a => a.Employees.Contains(employee) && a.TimeStart.Date == date.Date)
                 .Include(t => t.Resident)
                 .Include(t => t.Employees)
                 .ToList();  
@@ -30,7 +30,7 @@ namespace SosuCentre.DataAccess
         public IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee)
         {
             
-            List<Entities.Assignment> tasks = context.Assignment
+            List<Entities.Assignment> tasks = context.Assignments
                 .Where(a => a.Employees.Contains(employee))
                 .Include(t => t.Resident)
                 .Include(t => t.Employees)
@@ -38,9 +38,19 @@ namespace SosuCentre.DataAccess
             return tasks;
         }
 
-        public void AddEmployeeToTask(Entities.Assignment task, int EmployeeId)
+        //rewrite this!
+        public void AddEmployeeToTask(int taskid, int employeeId)
         {
-            task.Employees.Add(context.Employees.FirstOrDefault(e => e.EmployeeId == EmployeeId));
+            //find task based on id
+            Assignment task = context.Assignments
+                .Include(t => t.Employees)
+                .FirstOrDefault(t => t.AssignmentId == taskid);
+
+            //find employee based on id
+            Employee employee = context.Employees.Find(employeeId);
+            //adds employee to a task
+            task.Employees.Add(employee);
+
             context.SaveChanges();
         }
 

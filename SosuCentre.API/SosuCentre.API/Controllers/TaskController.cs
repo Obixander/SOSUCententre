@@ -26,6 +26,8 @@ namespace SosuCentre.API.Controllers
             return repository.GetBy(id);
         }
 
+
+        //this is the main endpoint that will be used
         [HttpGet(nameof(GetAssignmentsOn))]
         public IEnumerable<Entities.Assignment> GetAssignmentsOn([FromQuery] Employee employee, [FromQuery]DateTime date = default)
         {
@@ -55,9 +57,9 @@ namespace SosuCentre.API.Controllers
         //Will move later
         [HttpPost]
         [Route("AddEmployeeToTask")]
-        public void AddEmployeeToTask([FromQuery] Entities.Assignment task, [FromQuery] int EmployeeId)
+        public void AddEmployeeToTask([FromQuery] int taskId, [FromQuery] int employeeId)
         {
-            repository.AddEmployeeToTask(task, EmployeeId);
+            repository.AddEmployeeToTask(taskId, employeeId);
             
         }
     }

@@ -12,18 +12,14 @@ namespace SosuCentre.CareApp.ViewModels
 {
     public partial class LoginPageViewModel : BaseViewModel
     {
-        private int userId;
-
-        public LoginPageViewModel()
+        private IUserService userService;
+        //dependency injection of IUserService to set the userId
+        public LoginPageViewModel(IUserService userService)
         {
-            
+            this.userService = userService;
         }
 
-        public int UserId
-        {
-            get => userId;
-            set => SetProperty(ref userId, value);
-        }
+
         [RelayCommand]
         async Task GoToMainAsync(string UserInput)
         {
@@ -32,10 +28,7 @@ namespace SosuCentre.CareApp.ViewModels
             {
                 if (id > 0)
                 {
-                    UserId = id;
-
-                    UserService userService = new UserService();
-                    userService.SetUserId(UserId);
+                    userService.SetUserId(id);
                     await Shell.Current.GoToAsync($"{nameof(MainPage)}");
                     
                 }

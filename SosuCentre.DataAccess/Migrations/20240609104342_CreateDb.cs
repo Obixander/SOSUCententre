@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SosuCentre.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class ATest : Migration
+    public partial class CreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -139,7 +139,7 @@ namespace SosuCentre.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Assignment",
+                name: "Assignments",
                 columns: table => new
                 {
                     AssignmentId = table.Column<int>(type: "int", nullable: false)
@@ -152,9 +152,9 @@ namespace SosuCentre.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assignment", x => x.AssignmentId);
+                    table.PrimaryKey("PK_Assignments", x => x.AssignmentId);
                     table.ForeignKey(
-                        name: "FK_Assignment_Residents_ResidentId",
+                        name: "FK_Assignments_Residents_ResidentId",
                         column: x => x.ResidentId,
                         principalTable: "Residents",
                         principalColumn: "ResidentId");
@@ -212,9 +212,9 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_AssignmentEmployee", x => new { x.EmployeesEmployeeId, x.TasksAssignmentId });
                     table.ForeignKey(
-                        name: "FK_AssignmentEmployee_Assignment_TasksAssignmentId",
+                        name: "FK_AssignmentEmployee_Assignments_TasksAssignmentId",
                         column: x => x.TasksAssignmentId,
-                        principalTable: "Assignment",
+                        principalTable: "Assignments",
                         principalColumn: "AssignmentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -234,7 +234,7 @@ namespace SosuCentre.DataAccess.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsCompleted = table.Column<bool>(type: "bit", nullable: false),
                     MedicineId = table.Column<int>(type: "int", nullable: true),
-                    Amount = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false),
                     Unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MedicineAssignmentId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -242,9 +242,9 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_MedicineTasks", x => x.MedicineTaskId);
                     table.ForeignKey(
-                        name: "FK_MedicineTasks_Assignment_MedicineAssignmentId",
+                        name: "FK_MedicineTasks_Assignments_MedicineAssignmentId",
                         column: x => x.MedicineAssignmentId,
-                        principalTable: "Assignment",
+                        principalTable: "Assignments",
                         principalColumn: "AssignmentId");
                     table.ForeignKey(
                         name: "FK_MedicineTasks_Medicines_MedicineId",
@@ -267,9 +267,9 @@ namespace SosuCentre.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_SubTasks", x => x.SubTaskId);
                     table.ForeignKey(
-                        name: "FK_SubTasks_Assignment_AssignmentId",
+                        name: "FK_SubTasks_Assignments_AssignmentId",
                         column: x => x.AssignmentId,
-                        principalTable: "Assignment",
+                        principalTable: "Assignments",
                         principalColumn: "AssignmentId");
                 });
 
@@ -340,29 +340,70 @@ namespace SosuCentre.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Assignment",
+                table: "Assignments",
                 columns: new[] { "AssignmentId", "Completed", "Notes", "ResidentId", "TimeEnd", "TimeStart" },
-                values: new object[] { 1, false, "Husk at give vand med medicinet", 1, new DateTime(2024, 6, 7, 11, 24, 9, 239, DateTimeKind.Local).AddTicks(2569), new DateTime(2024, 6, 7, 9, 24, 9, 239, DateTimeKind.Local).AddTicks(2524) });
+                values: new object[,]
+                {
+                    { 1, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 14, 43, 42, 600, DateTimeKind.Local).AddTicks(3743), new DateTime(2024, 6, 9, 12, 43, 42, 600, DateTimeKind.Local).AddTicks(3712) },
+                    { 2, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 15, 43, 42, 600, DateTimeKind.Local).AddTicks(3757), new DateTime(2024, 6, 9, 14, 43, 42, 600, DateTimeKind.Local).AddTicks(3756) },
+                    { 3, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 17, 43, 42, 600, DateTimeKind.Local).AddTicks(3767), new DateTime(2024, 6, 9, 15, 43, 42, 600, DateTimeKind.Local).AddTicks(3766) },
+                    { 4, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 21, 43, 42, 600, DateTimeKind.Local).AddTicks(3777), new DateTime(2024, 6, 9, 18, 43, 42, 600, DateTimeKind.Local).AddTicks(3776) },
+                    { 5, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 23, 43, 42, 600, DateTimeKind.Local).AddTicks(3786), new DateTime(2024, 6, 9, 21, 43, 42, 600, DateTimeKind.Local).AddTicks(3785) }
+                });
 
             migrationBuilder.InsertData(
                 table: "MedicineTasks",
                 columns: new[] { "MedicineTaskId", "Amount", "MedicineAssignmentId", "IsCompleted", "MedicineId", "Name", "Unit" },
-                values: new object[] { 1, 2, 1, false, 1, null, "dl" });
+                values: new object[,]
+                {
+                    { 1, 2.0, 1, false, 7, "PlaceHolder", "dl" },
+                    { 2, 1.0, 1, false, 3, "PlaceHolder", "tablet" },
+                    { 3, 5.0, 1, false, 9, "PlaceHolder", "ml" },
+                    { 4, 2.5, 1, false, 2, "PlaceHolder", "g" },
+                    { 5, 10.0, 1, false, 10, "PlaceHolder", "mg" },
+                    { 6, 20.0, 2, false, 1, "PlaceHolder", "ml" },
+                    { 7, 0.5, 2, false, 6, "PlaceHolder", "l" },
+                    { 8, 15.0, 3, false, 8, "PlaceHolder", "units" },
+                    { 9, 1.5, 3, false, 4, "PlaceHolder", "teaspoon" },
+                    { 10, 3.0, 3, false, 5, "PlaceHolder", "tablespoon" },
+                    { 11, 30.0, 4, false, 2, "PlaceHolder", "ml" },
+                    { 12, 50.0, 4, false, 7, "PlaceHolder", "mg" },
+                    { 13, 4.0, 4, false, 3, "PlaceHolder", "capsules" },
+                    { 14, 0.25, 5, false, 1, "PlaceHolder", "liters" },
+                    { 15, 75.0, 5, false, 5, "PlaceHolder", "units" }
+                });
 
             migrationBuilder.InsertData(
                 table: "SubTasks",
                 columns: new[] { "SubTaskId", "AssignmentId", "IsCompleted", "Name" },
-                values: new object[] { 1, 1, false, "Giv vand" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Assignment_ResidentId",
-                table: "Assignment",
-                column: "ResidentId");
+                values: new object[,]
+                {
+                    { 1, 1, false, "Giv vand" },
+                    { 2, 1, false, "Hjælp med medicin" },
+                    { 3, 1, false, "Planlægning af måltider" },
+                    { 4, 1, false, "Overvågning af helbred" },
+                    { 5, 2, false, "Transport til aftaler" },
+                    { 6, 2, false, "Rengøring" },
+                    { 7, 3, false, "Indkøb" },
+                    { 8, 3, false, "Social kontakt" },
+                    { 9, 3, false, "Assistance med daglig pleje" },
+                    { 10, 4, false, "Hjælp med regninger" },
+                    { 11, 4, false, "Planlægning af aktiviteter" },
+                    { 12, 4, false, "Hjælp med teknologi" },
+                    { 13, 5, false, "Følelsesmæssig støtte" },
+                    { 14, 5, false, "Koordinering med sundhedstjenester" },
+                    { 15, 5, false, "Støtte til mobilitet" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AssignmentEmployee_TasksAssignmentId",
                 table: "AssignmentEmployee",
                 column: "TasksAssignmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assignments_ResidentId",
+                table: "Assignments",
+                column: "ResidentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CareCenters_AddressId",
@@ -441,7 +482,7 @@ namespace SosuCentre.DataAccess.Migrations
                 name: "Medicines");
 
             migrationBuilder.DropTable(
-                name: "Assignment");
+                name: "Assignments");
 
             migrationBuilder.DropTable(
                 name: "Residents");

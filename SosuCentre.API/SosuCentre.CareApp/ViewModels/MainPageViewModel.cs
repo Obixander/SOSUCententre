@@ -8,58 +8,42 @@ namespace SosuCentre.CareApp.ViewModels
 {
     public partial class MainPageViewModel : BaseViewModel
     {
-        //change later
-        private int id;
+     
         
 
         private readonly ISosuService sosuService;
-        //remove later
-        private string employeeName;
-
-
-
+        private IUserService userService;
 
         public MainPageViewModel(ISosuService sosuService, IUserService userService)
         {
-            Title = "FORSIDEN";
+            Title = "ToDo";
             this.sosuService = sosuService;
             TodaysAssignments = new ObservableCollection<Entities.Assignment>();
-            Id = userService.GetUserId();
+            this.userService = userService;
             UpdateAssignments();
 
         }
         public ObservableCollection<Entities.Assignment> TodaysAssignments { get; set; }
-        public string EmployeeName { 
-            get => employeeName;
-            set
-            {
-                if (employeeName != value)
-                {
-                    employeeName = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public int Id { get => id; set => id = value; }
-
+        
         [RelayCommand]
-        private async System.Threading.Tasks.Task UpdateAssignments()
+        private async Task UpdateAssignments()
         {
             try
             {
+                //this is used to show the loading spinner
                 IsBusy = true;
+                //clear the list of assignments to insure the list is empty before adding new assignments
                 TodaysAssignments.Clear();
-                //TODO: change to use real employee
-                
-                var tasks = await sosuService.GetTasksForAsync(DateTime.Now, new Employee { EmployeeId = Id});
+                var tasks = await sosuService.GetTasksForAsync(DateTime.Now, new Employee { EmployeeId = userService.GetUserId()});
                 foreach (var task in tasks)
                 {
                     TodaysAssignments.Add(task);
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                throw;
+            }
             finally
             {
                 IsBusy = false;

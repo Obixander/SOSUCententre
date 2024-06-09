@@ -26,8 +26,7 @@ namespace SosuCentre.DataAccess
         public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<SubTask> SubTasks { get; set; } = null!;
         public DbSet<MedicineTask> MedicineTasks { get; set; } = null!;
-
-        public DbSet<Entities.Assignment> Assignment { get; set; } = null!;
+        public DbSet<Entities.Assignment> Assignments { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SosuDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
