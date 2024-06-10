@@ -30,11 +30,11 @@
                 FontFamily="Segoe UI"
                 BackgroundColor="#B5ECE7"/>
         </Border>
-        
+
         <Label Text="Mads Mikkel"
                Grid.Row="0"
                Grid.Column="1"
-               FontSize="Medium"
+               FontSize="20"
                HorizontalOptions="End"
                VerticalOptions="Center"
                Margin="0,0,20,0"
@@ -42,7 +42,6 @@
                TextColor="White"
                FontAttributes="Bold"
                FontFamily="Segoe UI"
-               FontSize="Medium"
                />
 
         <Label Text="DAGENS OPGAVER"
@@ -56,6 +55,19 @@
                Margin="5"
                Padding="0" />
 
+<!-- Need later-->
+        <!--<Label Grid.Row="0"
+       Grid.Column="1"
+       HorizontalTextAlignment="Center">
+    <Label.Text>
+        <MultiBinding Converter="{StaticResource TimeRangeConverter}">
+            <Binding Path="TimeStart" />
+            <Binding Path="TimeEnd" />
+        </MultiBinding>
+    </Label.Text>
+</Label>-->
+
+
         <CollectionView BackgroundColor="AliceBlue"
                         Grid.Row="2"
                         Grid.RowSpan="2"
@@ -64,51 +76,7 @@
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Assignment">
-                    <Grid Padding="10">
-
-                        <Frame BackgroundColor="Teal"
-                               HeightRequest="125">
-
-                            <Grid RowDefinitions="50,200,50"
-                                  ColumnDefinitions="50,*,50">
-
-                                <Label Text="{Binding AssignmentId}"
-                                       Grid.Row="0"
-                                       Grid.Column="0" />
-
-                                <Label Grid.Row="0"
-                                       Grid.Column="1"
-                                       HorizontalTextAlignment="Center">
-
-                                    <Label.Text>
-                                        <MultiBinding Converter="{StaticResource TimeRangeConverter}">
-                                            <Binding Path="TimeStart" />
-                                            <Binding Path="TimeEnd" />
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-
-                                <Label Text="Room X"
-                                       Grid.Row="0"
-                                       Grid.Column="2" />
-
-
-                                <Label Text="{Binding Resident.Name}"
-                                       Grid.Row="1"
-                                       Grid.ColumnSpan="3" />
-
-                                <CheckBox Grid.Column="2"
-                                          Grid.Row="2" 
-                                          IsChecked="{Binding Completed}"
-                                          WidthRequest="25"
-                                          HeightRequest="25"
-                                          />
-
-                            </Grid>
-
-                        </Frame>
-
-                    </Grid>
+                        <!-- Make the Assignement Cards in here Later-->
 
                 </DataTemplate>
 
