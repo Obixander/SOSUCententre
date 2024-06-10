@@ -42,10 +42,11 @@
                TextColor="White"
                FontAttributes="Bold"
                FontFamily="Segoe UI"
+               FontSize="Medium"
                />
 
         <Label Text="DAGENS OPGAVER"
-               FontSize="35"
+               FontSize="30"
                TextColor="White"
                FontAttributes="Bold"
                FontFamily="Segoe UI"
