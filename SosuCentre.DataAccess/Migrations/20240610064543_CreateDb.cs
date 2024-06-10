@@ -344,11 +344,11 @@ namespace SosuCentre.DataAccess.Migrations
                 columns: new[] { "AssignmentId", "Completed", "Notes", "ResidentId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 14, 43, 42, 600, DateTimeKind.Local).AddTicks(3743), new DateTime(2024, 6, 9, 12, 43, 42, 600, DateTimeKind.Local).AddTicks(3712) },
-                    { 2, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 15, 43, 42, 600, DateTimeKind.Local).AddTicks(3757), new DateTime(2024, 6, 9, 14, 43, 42, 600, DateTimeKind.Local).AddTicks(3756) },
-                    { 3, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 17, 43, 42, 600, DateTimeKind.Local).AddTicks(3767), new DateTime(2024, 6, 9, 15, 43, 42, 600, DateTimeKind.Local).AddTicks(3766) },
-                    { 4, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 21, 43, 42, 600, DateTimeKind.Local).AddTicks(3777), new DateTime(2024, 6, 9, 18, 43, 42, 600, DateTimeKind.Local).AddTicks(3776) },
-                    { 5, false, "PlaceHolder", 1, new DateTime(2024, 6, 9, 23, 43, 42, 600, DateTimeKind.Local).AddTicks(3786), new DateTime(2024, 6, 9, 21, 43, 42, 600, DateTimeKind.Local).AddTicks(3785) }
+                    { 1, false, "PlaceHolder", 1, new DateTime(2024, 6, 10, 10, 45, 42, 445, DateTimeKind.Local).AddTicks(1599), new DateTime(2024, 6, 10, 8, 45, 42, 445, DateTimeKind.Local).AddTicks(1551) },
+                    { 2, false, "PlaceHolder", 1, new DateTime(2024, 6, 10, 11, 45, 42, 445, DateTimeKind.Local).AddTicks(1654), new DateTime(2024, 6, 10, 10, 45, 42, 445, DateTimeKind.Local).AddTicks(1651) },
+                    { 3, false, "PlaceHolder", 1, new DateTime(2024, 6, 10, 13, 45, 42, 445, DateTimeKind.Local).AddTicks(1670), new DateTime(2024, 6, 10, 11, 45, 42, 445, DateTimeKind.Local).AddTicks(1668) },
+                    { 4, false, "PlaceHolder", 1, new DateTime(2024, 6, 10, 17, 45, 42, 445, DateTimeKind.Local).AddTicks(1685), new DateTime(2024, 6, 10, 14, 45, 42, 445, DateTimeKind.Local).AddTicks(1683) },
+                    { 5, false, "PlaceHolder", 1, new DateTime(2024, 6, 10, 19, 45, 42, 445, DateTimeKind.Local).AddTicks(1700), new DateTime(2024, 6, 10, 17, 45, 42, 445, DateTimeKind.Local).AddTicks(1698) }
                 });
 
             migrationBuilder.InsertData(
