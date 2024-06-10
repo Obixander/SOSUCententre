@@ -7,13 +7,24 @@
              xmlns:viewmodel="clr-namespace:SosuCentre.CareApp.ViewModels"
              x:DataType="viewmodel:LoginPageViewModel"
              Title="LoginPage">
-    <Grid BackgroundColor="Aqua" RowDefinitions="*" ColumnDefinitions="*">
+    <Grid BackgroundColor="#79A9A6" RowDefinitions="*" ColumnDefinitions="*">
         <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Log ind" FontSize="Title" />
-            <Entry x:Name="userId" Placeholder="Indtast Burger ID..."  />
-            <Button Text="Log ind"
-                    Command="{Binding GoToMainCommand}"
-                    CommandParameter="{Binding Text, Source={x:Reference userId}}"/>
+
+            <Border StrokeShape="RoundRectangle 15,15,15,15">
+                <VerticalStackLayout BackgroundColor="#B5ECE7" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="320" HeightRequest="320">
+                    <Label TextColor="#0A716B" Text="Log ind" FontSize="Title" HorizontalOptions="Center" Padding="40" FontAttributes="Bold"/>
+
+                    <Border StrokeShape="Rectangle 10,10,10,10" WidthRequest="250">
+                        <Entry x:Name="userId" Placeholder="Indtast Burger ID..." BackgroundColor="White" WidthRequest="250"   PlaceholderColor="Black" />
+                    </Border>
+                    <Border StrokeShape="RoundRectangle 50,50,50,50" WidthRequest="200" Margin="50,50">
+                        <Button Text="Log ind" FontAttributes="Bold" FontSize="Medium" BackgroundColor="#009FFD"
+                        Command="{Binding GoToMainCommand}"
+                        CommandParameter="{Binding Text, Source={x:Reference userId}}"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

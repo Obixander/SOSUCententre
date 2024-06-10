@@ -8,12 +8,17 @@
     Title="SosuCentre.CareApp">
 
     <ShellContent 
-        Shell.NavBarIsVisible="True"
+        Shell.NavBarIsVisible="False"
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
+        Route="LoginPage"/>
 
-    
-        
-        
+    <ShellContent 
+        Shell.NavBarIsVisible="False"
+        Title="Main"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+        />
+
+
 </Shell>

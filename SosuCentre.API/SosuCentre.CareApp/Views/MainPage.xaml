@@ -5,8 +5,9 @@
              xmlns:converters="clr-namespace:SosuCentre.CareApp.Converter"
              xmlns:viewmodel="clr-namespace:SosuCentre.CareApp.ViewModels"
              x:DataType="viewmodel:MainPageViewModel"
-             x:Class="SosuCentre.CareApp.Views.MainPage">
-
+             x:Class="SosuCentre.CareApp.Views.MainPage"
+             Shell.NavBarIsVisible="False">
+              
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:TimeRangeConverter x:Key="TimeRangeConverter" />
@@ -15,7 +16,8 @@
 
 
     <Grid ColumnDefinitions="*,*"
-          RowDefinitions="50,50,*">
+          RowDefinitions="50,50,*"
+          BackgroundColor="#79A9A6">
         
         <Button Text="Recepter"
                 Grid.Row="0"
@@ -23,7 +25,8 @@
                 Margin="5"
                 FontSize="Medium"
                 Padding="0"                
-                />
+                TextColor="#0A716B"
+                BackgroundColor="#B5ECE7"/>
         <Label Text="Mads Mikkel"
                Grid.Row="0"
                Grid.Column="1"
