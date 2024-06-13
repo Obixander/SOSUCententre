@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using SosuCentre.CareApp.Views;
 using SosuCentre.Entities;
 namespace SosuCentre.CareApp.ViewModels
 {
@@ -17,12 +19,12 @@ namespace SosuCentre.CareApp.ViewModels
         [ObservableProperty]
         Assignment assignment;
 
-        //this was for testing
-        //partial void OnAssignmentChanged(Assignment value)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [RelayCommand]
+        private async Task GoToMainPageAsync()
+        {
+            await Shell.Current.GoToAsync($"{nameof(MainPage)}");
 
+        }
 
     }
 }
