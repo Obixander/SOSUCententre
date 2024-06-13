@@ -18,7 +18,7 @@
     </ContentPage.Resources>
 
     <!-- Container for the entire page -->
-    <VerticalStackLayout>
+    <VerticalStackLayout BackgroundColor="#79A9A6">
         <!-- Container for the Top bar with back button, task number, time range and room number -->
         <Grid ColumnDefinitions="20*,10*,40*,20*" BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
             <ImageButton Grid.Column="0" Source="BackArrow.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start" VerticalOptions="Center" Command="{Binding GoToMainPageCommand}"/>
@@ -42,9 +42,53 @@
         <Grid BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
             <Label Text="{Binding Assignment.Resident.Name}" FontAttributes="Bold" FontSize="25" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
-        
 
-     
+        <!-- Maybe add the dots to showcase which page you're on later -->
+
+        <!-- Container for the Subtasks -->
+
+        <CollectionView BackgroundColor="#79A9A6" VerticalOptions="FillAndExpand" HeightRequest="375"
+                Grid.Row="2"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                ItemsSource="{Binding Assignment.SubTasks}"
+                >
+
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:SubTask">
+
+                    <VerticalStackLayout BackgroundColor="#79A9A6">
+                        <!-- Card goes here -->
+                        <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black" StrokeShape="RoundRectangle, 20,20,20,20">
+                            <VerticalStackLayout x:Name="SubTaskCard" BackgroundColor="#B5ECE7" >
+                                <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="1*,6*,2*" Padding="5">
+                                    <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding SubTaskId}" VerticalOptions="Center" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+
+                                    <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Text="{Binding Name }" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+
+                                    <CheckBox Grid.Column="2" IsChecked="{Binding IsCompleted}" IsEnabled="True" HorizontalOptions="End" VerticalOptions="Center" Color="Black"/>
+                                </Grid>
+
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <!-- Note part goes here -->
+        <Label Text="Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
+
+        <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
+            <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
+        </Border>
+        
+        <!-- Finished button -->
+        
+        
         
     </VerticalStackLayout>
 

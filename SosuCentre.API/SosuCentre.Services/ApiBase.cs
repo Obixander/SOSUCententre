@@ -2,6 +2,8 @@
 using SosuCentre.Entities;
 using System.Net.Http.Json;
 using System.Runtime.InteropServices.Marshalling;
+using System.Text.Json;
+using System.Text;
 
 
 namespace SosuCentre.Services
@@ -13,12 +15,12 @@ namespace SosuCentre.Services
         protected ApiBase(Uri baseUri)
         {
             this.baseUri = baseUri;
-            
+
         }
 
         protected ApiBase(string uri) : this(new Uri(uri))
         {
-            
+
         }
 
         protected virtual async Task<HttpResponseMessage> GetHttpAsync(string url, int EmployeeId, DateTime date)
@@ -26,13 +28,13 @@ namespace SosuCentre.Services
             UriBuilder uriBuilder = new(baseUri + url);
             uriBuilder.Query = $"EmployeeId={EmployeeId}&date={DateTime.Now.ToString("yyyy-MM-dd")}";
             //testing
-                HttpClientHandler handler = new HttpClientHandler()
-                {
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
-                };
-                using HttpClient client = new(handler);
-           
-     
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
+            using HttpClient client = new(handler);
+
+
 
             var response = await client.GetAsync(uriBuilder.Uri);
             if (!response.IsSuccessStatusCode)
@@ -44,14 +46,46 @@ namespace SosuCentre.Services
             return response;
         }
 
+        //This somehow works and i dont understand why
+        protected virtual async Task<HttpResponseMessage> PutHttpAsync(string url, object data)
+        {
+            UriBuilder uriBuilder = new(baseUri + url);
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
+            using HttpClient client = new(handler);
+            try
+            {
+                using StringContent jsonContent = new(
+                        JsonSerializer.Serialize(data),
+                        Encoding.UTF8,
+                        "application/json");
+                var response = await client.PutAsJsonAsync(uriBuilder.Uri, jsonContent);
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                }
+                //this will always fail and be caught by the catch but the put request will still be successful
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+
     }
 
     public class ApiService : ApiBase, ISosuService
     {
         public ApiService(Uri baseUri) : base(baseUri)
         {
-            
-        }       
+
+        }
         ///  <exception cref="UriFormatException">Thrown when the baseUri is not a valid URI</exception></exception>
         public ApiService(string baseUri) : base(baseUri)
         {
@@ -66,11 +100,33 @@ namespace SosuCentre.Services
 
             return assignments;
         }
+
+        public void UpdateAssignment(Assignment assignment)
+        {
+            try
+            {
+                string url = @$"Task/";
+                var response = PutHttpAsync(url, assignment);
+
+                if (response.IsCompletedSuccessfully)
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
+
+
+        }
     }
 
     public interface ISosuService
     {
         Task<List<Entities.Assignment>> GetTasksForAsync(DateTime date, Employee employee);
+        void UpdateAssignment(Assignment assignment);
     }
 
     public interface IUserService
@@ -78,8 +134,6 @@ namespace SosuCentre.Services
         void SetUserId(int value);
         int GetUserId();
     }
-
-  
 
     //this has unecessary methods as you could just use the property directly
     public class UserService : IUserService
@@ -96,7 +150,7 @@ namespace SosuCentre.Services
         public void SetUserId(int value)
         {
             UserId = value;
-        }        
+        }
     }
 
 }
