@@ -21,8 +21,7 @@
     <VerticalStackLayout>
         <!-- Container for the Top bar with back button, task number, time range and room number -->
         <Grid ColumnDefinitions="20*,10*,40*,20*" BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
-            <!-- The button needs to be changed -->
-            <Button Grid.Column="0" Command="{Binding GoToMainPageCommand}" WidthRequest="80" HorizontalOptions="Start" Text="Back" CornerRadius="20"/>
+            <ImageButton Grid.Column="0" Source="BackArrow.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start" VerticalOptions="Center" Command="{Binding GoToMainPageCommand}"/>
             <Label Grid.Column="1" Text="{Binding Assignment.AssignmentId}" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
 
             <Label HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI">
@@ -37,8 +36,9 @@
             <Label Grid.Column="3" Text="{Binding Assignment.Resident.RoomNumber}" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI" HorizontalOptions="End" VerticalOptions="Center"/>
         </Grid>
 
-        <Border StrokeThickness="2" Stroke="Black"></Border>
+        <Border StrokeThickness="1.5" Stroke="Black"></Border>
 
+        <!-- Container for the buttom bar -->
         <Grid BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
             <Label Text="{Binding Assignment.Resident.Name}" FontAttributes="Bold" FontSize="25" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
