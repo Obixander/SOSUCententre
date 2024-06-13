@@ -10,6 +10,7 @@ namespace SosuCentre.CareApp
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+            Routing.RegisterRoute(nameof(SubTaskPage), typeof(SubTaskPage));
         }
     }
 }

@@ -15,25 +15,30 @@ namespace SosuCentre.DataAccess
             return context.Assignments
                  .Include(t => t.Employees)
                  .Include(t => t.Resident)
+                 .Include(t => t.SubTasks)
+
                  .FirstOrDefault(t => t.AssignmentId == id);
         }
-        public IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee,DateTime date)
+        public IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee, DateTime date)
         {
             IEnumerable<Entities.Assignment> tasks = context.Assignments
                 .Where(a => a.Employees.Contains(employee) && a.TimeStart.Date == date.Date)
                 .Include(t => t.Resident)
                 .Include(t => t.Employees)
-                .ToList();  
+                .Include(t => t.SubTasks)
+                .ToList();
             return tasks;
         }
 
         public IEnumerable<Entities.Assignment> GetAssignmentsFor(Employee employee)
         {
-            
+
             List<Entities.Assignment> tasks = context.Assignments
                 .Where(a => a.Employees.Contains(employee))
                 .Include(t => t.Resident)
                 .Include(t => t.Employees)
+                .Include(t => t.SubTasks)
+
                 .ToList();
             return tasks;
         }
@@ -54,7 +59,7 @@ namespace SosuCentre.DataAccess
             context.SaveChanges();
         }
 
-        
+
 
     }
 

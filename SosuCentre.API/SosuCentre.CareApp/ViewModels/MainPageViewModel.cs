@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SosuCentre.CareApp.Views;
 using SosuCentre.Entities;
 using SosuCentre.Services;
 using System.Collections.ObjectModel;
@@ -24,7 +25,27 @@ namespace SosuCentre.CareApp.ViewModels
 
         }
         public ObservableCollection<Entities.Assignment> TodaysAssignments { get; set; }
-        
+
+
+        //this is used by the tap gesture recognizer in the xaml file to navigate to the subtask page when an assignment is tapped
+        //the assignment is passed as a parameter to the method to be used in the subtask page to display the subtasks for the assignment
+        [RelayCommand]
+        private async Task GoToSubTaskPageAsync(Assignment assignment)
+        {
+            if (assignment == null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(SubTaskPage)}", true, new Dictionary<string, object>
+            {
+                {"Assignment", assignment }
+            });
+          
+        }
+
+
+
+
+
         [RelayCommand]
         private async Task UpdateAssignments()
         {

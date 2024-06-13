@@ -79,6 +79,8 @@ namespace SosuCentre.Services
         int GetUserId();
     }
 
+  
+
     //this has unecessary methods as you could just use the property directly
     public class UserService : IUserService
     {

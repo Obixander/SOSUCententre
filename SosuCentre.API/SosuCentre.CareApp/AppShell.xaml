@@ -19,6 +19,12 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
         />
+    <ShellContent
+        Shell.NavBarIsVisible="False"
+        Title="SubTask"
+        ContentTemplate="{DataTemplate local:SubTaskPage}"
+        Route="SubTaskPage"
+        />
 
 
 </Shell>

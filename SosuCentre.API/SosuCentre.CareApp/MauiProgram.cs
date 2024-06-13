@@ -30,6 +30,10 @@ namespace SosuCentre.CareApp
             builder.Services.AddSingleton<MainPageViewModel>();
             builder.Services.AddSingleton<MainPage>();
 
+            builder.Services.AddSingleton<SubTaskPageViewModel>();
+            builder.Services.AddSingleton<SubTaskPage>();
+
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
