@@ -69,13 +69,12 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Assignment">
 
-                    <VerticalStackLayout BackgroundColor="#B5ECE7">
+                    <VerticalStackLayout BackgroundColor="#79A9A6">
                         <!-- Card goes here -->
-                        <Frame BackgroundColor="#79A9A6" BorderColor="#79A9A6" CornerRadius="0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToSubTaskPageCommand}" />
-                            </Frame.GestureRecognizers>
-                            <Border WidthRequest="350" StrokeThickness="1" Margin="0,5" Stroke="Black">
+                            <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToSubTaskPageCommand}" />
+                                </Border.GestureRecognizers>
                                 <VerticalStackLayout x:Name="TaskCard" BackgroundColor="#B5ECE7" >
 
                                     <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*,*" Padding="5">
@@ -105,7 +104,6 @@
 
                                 </VerticalStackLayout>
                             </Border>
-                        </Frame>
                     </VerticalStackLayout>
                 </DataTemplate>
 
