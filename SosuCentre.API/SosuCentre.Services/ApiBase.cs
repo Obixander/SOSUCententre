@@ -34,8 +34,6 @@ namespace SosuCentre.Services
             };
             using HttpClient client = new(handler);
 
-
-
             var response = await client.GetAsync(uriBuilder.Uri);
             if (!response.IsSuccessStatusCode)
             {
@@ -47,7 +45,7 @@ namespace SosuCentre.Services
         }
 
         //This somehow works and i dont understand why
-        protected virtual async void PutHttpAsync(string url, object data)
+        protected virtual async void PutHttpAsync(string url, Assignment data)
         {
             UriBuilder uriBuilder = new(baseUri + url);
             HttpClientHandler handler = new HttpClientHandler()
@@ -57,11 +55,7 @@ namespace SosuCentre.Services
             using HttpClient client = new(handler);
             try
             {
-                using StringContent jsonContent = new(
-                        JsonSerializer.Serialize(data),
-                        Encoding.UTF8,
-                        "application/json");
-                var response = await client.PutAsJsonAsync(uriBuilder.Uri, jsonContent);
+                var response = await client.PutAsJsonAsync(uriBuilder.Uri, data);
                 
                 if (response.IsSuccessStatusCode)
                 {

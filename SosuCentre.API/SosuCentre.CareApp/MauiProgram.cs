@@ -25,13 +25,13 @@ namespace SosuCentre.CareApp
             builder.Services.AddSingleton<IUserService, UserService>();
 
             builder.Services.AddSingleton<LoginPageViewModel>();
-            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddScoped<LoginPage>();
 
             builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddScoped<MainPage>();
 
             builder.Services.AddSingleton<SubTaskPageViewModel>();
-            builder.Services.AddSingleton<SubTaskPage>();
+            builder.Services.AddScoped<SubTaskPage>();
 
 
 #if DEBUG

@@ -46,6 +46,12 @@ namespace SosuCentre.CareApp.ViewModels
 
                    await GoToMainPageAsync();
                 }
+                else
+                {
+                    Assignment.Completed = false;
+                    await GoToMainPageAsync();
+                }
+
             }
         }
 
