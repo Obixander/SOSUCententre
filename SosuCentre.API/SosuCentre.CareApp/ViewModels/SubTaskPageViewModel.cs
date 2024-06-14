@@ -35,5 +35,19 @@ namespace SosuCentre.CareApp.ViewModels
 
         }
 
+        public async void FinishedSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            //find a way to not hard code the 100 
+            if (e.NewValue == 100.0)
+            {
+                if (Assignment.SubTasks.All(x => x.IsCompleted))
+                {
+                    Assignment.Completed = true;
+
+                   await GoToMainPageAsync();
+                }
+            }
+        }
+
     }
 }

@@ -47,7 +47,7 @@ namespace SosuCentre.Services
         }
 
         //This somehow works and i dont understand why
-        protected virtual async Task<HttpResponseMessage> PutHttpAsync(string url, object data)
+        protected virtual async void PutHttpAsync(string url, object data)
         {
             UriBuilder uriBuilder = new(baseUri + url);
             HttpClientHandler handler = new HttpClientHandler()
@@ -63,12 +63,11 @@ namespace SosuCentre.Services
                         "application/json");
                 var response = await client.PutAsJsonAsync(uriBuilder.Uri, jsonContent);
                 
-                if (!response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
                 {
-                    throw new Exception($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    //do something later here
                 }
                 //this will always fail and be caught by the catch but the put request will still be successful
-                return response;
             }
             catch (Exception ex)
             {
@@ -106,12 +105,8 @@ namespace SosuCentre.Services
             try
             {
                 string url = @$"Task/";
-                var response = PutHttpAsync(url, assignment);
-
-                if (response.IsCompletedSuccessfully)
-                {
-                    return;
-                }
+                PutHttpAsync(url, assignment);
+               
             }
             catch (Exception ex)
             {

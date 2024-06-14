@@ -86,10 +86,11 @@
             <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
         </Border>
         
-        <!-- Finished button -->
-        
-        
-        
+        <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
+        <Slider x:Name="FinishedSlider" ValueChanged="FinishedSlider_ValueChanged" Maximum="100" Minimum="0" BackgroundColor="White" Margin="20,0" />
+
+
+
     </VerticalStackLayout>
 
 </ContentPage>
