@@ -12,11 +12,11 @@ using SosuCentre.Services;
 namespace SosuCentre.CareApp.ViewModels
 {
     [QueryProperty(nameof(Assignment), "Assignment")]
-    public partial class SubTaskPageViewModel : BaseViewModel
+    public partial class MedicinTaskPageViewModel : BaseViewModel
     {
-        private ISosuService sosuService;
+        private readonly ISosuService sosuService;
 
-        public SubTaskPageViewModel(ISosuService sosuService)
+        public MedicinTaskPageViewModel(ISosuService sosuService)
         {
             this.sosuService = sosuService;
         }
@@ -26,19 +26,18 @@ namespace SosuCentre.CareApp.ViewModels
 
 
         [RelayCommand]
-        private async Task GoToMedicinTaskPage()
+        private async Task GoToSubTaskPageAsync()
         {
             sosuService.UpdateAssignment(Assignment);
-            await Shell.Current.GoToAsync($"{nameof(MedicinTaskPage)}", true, new Dictionary<string, object>
+            await Shell.Current.GoToAsync($"{nameof(SubTaskPage)}", true, new Dictionary<string, object>
             {
                 {"Assignment", Assignment }
             });
         }
 
-
-        //this goes back to the main page and saves the assignment to the database
+        //maybe add these commands in the baseviewmodel as they get called both here and in SubTaskPageViewModel
         [RelayCommand]
-        private async Task GoToMainPageAsync()
+        private async Task GoToMainPageFromMedicinAsync()
         {
             sosuService.UpdateAssignment(Assignment);
             await Shell.Current.GoToAsync($"{nameof(MainPage)}");
@@ -52,15 +51,16 @@ namespace SosuCentre.CareApp.ViewModels
             {
                 Assignment.Completed = true;
 
-                await GoToMainPageAsync();
+                await GoToMainPageFromMedicinAsync();
             }
             else
             {
                 Assignment.Completed = false;
-                await GoToMainPageAsync();
+                await GoToMainPageFromMedicinAsync();
             }
 
-        }       
+        }
+
 
     }
 }

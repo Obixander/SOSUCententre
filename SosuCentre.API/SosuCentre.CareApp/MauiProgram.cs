@@ -28,10 +28,15 @@ namespace SosuCentre.CareApp
             builder.Services.AddScoped<LoginPage>();
 
             builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddScoped<MainPage>();
+
+            //im pretty sure this is causing problems by stacking but im not sure how to fix it
+            builder.Services.AddTransient<MainPage>();
 
             builder.Services.AddSingleton<SubTaskPageViewModel>();
-            builder.Services.AddScoped<SubTaskPage>();
+            builder.Services.AddSingleton<SubTaskPage>();
+
+            builder.Services.AddSingleton<MedicinTaskPageViewModel>();
+            builder.Services.AddSingleton<MedicinTaskPage>();
 
 
 #if DEBUG

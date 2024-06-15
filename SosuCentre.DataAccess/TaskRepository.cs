@@ -18,6 +18,7 @@ namespace SosuCentre.DataAccess
                  .Include(t => t.Employees)
                  .Include(t => t.Resident)/*.AsNoTracking()*/
                  .Include(t => t.SubTasks)
+                 .Include(t => t.MedicineTasks)
 
                  .FirstOrDefault(t => t.AssignmentId == id);
         }
@@ -28,6 +29,7 @@ namespace SosuCentre.DataAccess
                 .Include(t => t.Resident).AsNoTracking()
                 .Include(t => t.Employees)
                 .Include(t => t.SubTasks)
+                .Include(t => t.MedicineTasks)
                 .ToList();
             return tasks;
         }
@@ -40,7 +42,7 @@ namespace SosuCentre.DataAccess
                 .Include(t => t.Resident).AsNoTracking()
                 .Include(t => t.Employees)
                 .Include(t => t.SubTasks)
-
+                .Include(t => t.MedicineTasks)
                 .ToList();
             return tasks;
         }

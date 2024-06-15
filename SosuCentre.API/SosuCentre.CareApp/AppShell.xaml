@@ -11,19 +11,26 @@
         Shell.NavBarIsVisible="False"
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage"/>
+        
+        />
 
     <ShellContent 
         Shell.NavBarIsVisible="False"
         Title="Main"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"
+        
         />
     <ShellContent
         Shell.NavBarIsVisible="False"
         Title="SubTask"
         ContentTemplate="{DataTemplate local:SubTaskPage}"
-        Route="SubTaskPage"
+        
+        />
+    <ShellContent
+        Shell.NavBarIsVisible="False"
+        Title="MedicinTaskPage"
+        ContentTemplate="{DataTemplate local:MedicinTaskPage}"
+        
         />
 
 

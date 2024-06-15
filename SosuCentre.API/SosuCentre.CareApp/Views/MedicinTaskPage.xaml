@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SosuCentre.CareApp.Views.MedicinTaskPage"
+             xmlns:model="clr-namespace:SosuCentre.Entities;assembly=SosuCentre.Entities"
+             xmlns:converters="clr-namespace:SosuCentre.CareApp.Converter"
+             xmlns:viewmodel="clr-namespace:SosuCentre.CareApp.ViewModels"
+             x:DataType="viewmodel:MedicinTaskPageViewModel"
+             Title="MedicinTaskPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TimeRangeConverter x:Key="TimeRangeConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Container for the entire page -->
+    <Grid>
+        <VerticalStackLayout BackgroundColor="#79A9A6">
+            <VerticalStackLayout.GestureRecognizers>
+                <!--<SwipeGestureRecognizer Direction="Right" Command="{Binding }"/>-->
+            </VerticalStackLayout.GestureRecognizers>
+
+
+            <!-- Container for the Top bar with back button, task number, time range and room number -->
+            <Grid ColumnDefinitions="20*,10*,40*,20*" BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
+                <ImageButton Grid.Column="0" Source="BackArrow.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start" VerticalOptions="Center" Command="{Binding GoToMainPageFromMedicinCommand}"/>
+                <Label Grid.Column="1" Text="{Binding Assignment.AssignmentId}" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI">
+                    <Label.Text>
+                        <MultiBinding Converter="{StaticResource TimeRangeConverter}">
+                            <Binding Path="Assignment.TimeStart"/>
+                            <Binding Path="Assignment.TimeEnd"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+
+                <Label Grid.Column="3" Text="{Binding Assignment.Resident.RoomNumber}" FontAttributes="Bold" FontSize="20" FontFamily="Segoe UI" HorizontalOptions="End" VerticalOptions="Center"/>
+            </Grid>
+
+            <Border StrokeThickness="1.5" Stroke="Black"></Border>
+
+            <!-- Container for the buttom bar -->
+            <Grid BackgroundColor="#B5ECE7" HeightRequest="60" Padding="5,10,5,10">
+                <Label Text="{Binding Assignment.Resident.Name}" FontAttributes="Bold" FontSize="25" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- Maybe add the dots to showcase which page you're on later -->
+
+            <!-- Container for the Subtasks -->
+
+            <CollectionView BackgroundColor="#79A9A6" VerticalOptions="FillAndExpand" HeightRequest="375"
+               Grid.Row="2"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="2"
+               ItemsSource="{Binding Assignment.SubTasks}"
+               >
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:MedicineTask">
+
+                        <VerticalStackLayout BackgroundColor="#79A9A6">
+                            <!-- Card goes here -->
+                            <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black" StrokeShape="RoundRectangle, 20,20,20,20">
+                                <VerticalStackLayout x:Name="SubTaskCard" BackgroundColor="#B5ECE7" >
+                                    <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="1*,6*,2*" Padding="5">
+                                        <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding MedicineTaskId}" VerticalOptions="Center" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+
+                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+
+                                        <CheckBox Grid.Column="2" IsChecked="{Binding IsCompleted}" IsEnabled="True" HorizontalOptions="End" VerticalOptions="Center" Color="Black"/>
+                                    </Grid>
+
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- Note part goes here -->
+            <Label Text="Medicin Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
+
+            <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
+                <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
+            </Border>
+
+            <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
+
+            <SwipeView Margin="20,25" WidthRequest="350" Threshold="400">
+                <!-- SwipeEnded="OnSwipeEnded" -->
+
+                <SwipeView.LeftItems >
+                    <SwipeItems Mode="Execute">
+
+                        <SwipeItem Text="Saved" BackgroundColor="Green" Command="{Binding SwipeEndedCommand}"/>
+                        <!--<SwipeItemView>                        
+                       <Grid BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="350">
+                           <Label Text="Saved" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                       </Grid>
+                   </SwipeItemView>-->
+                    </SwipeItems>
+                </SwipeView.LeftItems>
+                <!-- Content to be swiped -->
+                <Grid BackgroundColor="White" Padding="10">
+                    <Label Text="Swipe to Complete - - >" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+            </SwipeView>
+
+
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout BackgroundColor="Transparent" >
+            <VerticalStackLayout.GestureRecognizers >
+                <SwipeGestureRecognizer Direction="Right" Command="{Binding GoToSubTaskPageCommand}" CommandParameter="{Binding Assignment}"/>
+            </VerticalStackLayout.GestureRecognizers>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

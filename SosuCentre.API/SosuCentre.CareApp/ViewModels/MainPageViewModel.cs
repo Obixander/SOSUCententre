@@ -42,10 +42,6 @@ namespace SosuCentre.CareApp.ViewModels
           
         }
 
-
-
-
-
         [RelayCommand]
         private async Task UpdateAssignments()
         {

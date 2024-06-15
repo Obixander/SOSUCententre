@@ -98,7 +98,7 @@
                                     <Grid x:Name="BottomRow" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand" Padding="5,20">
                                         <Label Text="{Binding Resident.Name}" FontAttributes="Bold" FontSize="Medium" FontFamily="Segoe UI"/>
 
-                                        <CheckBox  IsChecked="{Binding Completed}" WidthRequest="30" HeightRequest="30" Grid.Column="1" HorizontalOptions="End"/>
+                                        <CheckBox  IsChecked="{Binding Completed}" IsEnabled="False" WidthRequest="30" HeightRequest="30" Grid.Column="1" HorizontalOptions="End"/>
                                     </Grid>
 
 

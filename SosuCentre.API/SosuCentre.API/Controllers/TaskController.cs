@@ -13,7 +13,7 @@ namespace SosuCentre.API.Controllers
         private readonly ITaskRepository repository = repository;
 
         [HttpPut]
-        public void UpdateBy(Assignment dto)
+        public void UpdateBy(Assignment dto ) //dto = data transfer object
         {
             //move the logic to the Taskrepository later
             var assignment = repository.GetBy(dto.AssignmentId);
@@ -25,8 +25,7 @@ namespace SosuCentre.API.Controllers
             {
                 var dtoSubTask = dto.SubTasks.Find(x => x.SubTaskId == subTask.SubTaskId);
                 subTask.IsCompleted = dtoSubTask.IsCompleted;
-            }//end foreach
-
+            }
             repository.Update(assignment);
         }
 

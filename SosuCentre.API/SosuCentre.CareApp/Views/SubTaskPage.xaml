@@ -43,10 +43,26 @@
             <Label Text="{Binding Assignment.Resident.Name}" FontAttributes="Bold" FontSize="25" FontFamily="Segoe UI" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
 
-        <!-- Maybe add the dots to showcase which page you're on later -->
+        <!-- container for the Page indication-->
+
+
+
+        <Grid ColumnDefinitions="5*,5*" HorizontalOptions="FillAndExpand" HeightRequest="50">
+            <Grid.GestureRecognizers >
+                <SwipeGestureRecognizer Direction="Left" Command="{Binding GoToMedicinTaskPageCommand}" CommandParameter="{Binding Assignment}"/>
+            </Grid.GestureRecognizers>
+            <!-- add tap gesture to go to the right page-->
+            <Border WidthRequest="15" HeightRequest="15" HorizontalOptions="End" Margin="0,5,7.5,0" StrokeShape="RoundRectangle, 50" Stroke="Black">
+                <Label Grid.Column="0" BackgroundColor="Black"/>
+            </Border>
+            <Border Grid.Column="1" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" Margin="7.5,5,0,0" StrokeShape="RoundRectangle, 50">
+                 <Label Grid.Column="1" BackgroundColor="White"/>
+            </Border>
+        </Grid>
+
+
 
         <!-- Container for the Subtasks -->
-
         <CollectionView BackgroundColor="#79A9A6" VerticalOptions="FillAndExpand" HeightRequest="375"
                 Grid.Row="2"
                 Grid.RowSpan="2"
@@ -85,17 +101,21 @@
         <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
             <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
         </Border>
-        
+
         <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
 
-        <SwipeView Margin="20,25" WidthRequest="350" SwipeEnded="OnSwipeEnded">
+        <SwipeView Margin="20,25" WidthRequest="350" Threshold="400">
+            <!-- SwipeEnded="OnSwipeEnded" -->
+
             <SwipeView.LeftItems >
-                <SwipeItems Mode="Reveal">
-                    <SwipeItemView>
+                <SwipeItems Mode="Execute">
+
+                    <SwipeItem Text="Saved" BackgroundColor="Green" Command="{Binding SwipeEndedCommand}"/>
+                    <!--<SwipeItemView>                        
                         <Grid BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="350">
                             <Label Text="Saved" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
                         </Grid>
-                    </SwipeItemView>
+                    </SwipeItemView>-->
                 </SwipeItems>
             </SwipeView.LeftItems>
             <!-- Content to be swiped -->
@@ -106,5 +126,6 @@
 
 
     </VerticalStackLayout>
+
 
 </ContentPage>
