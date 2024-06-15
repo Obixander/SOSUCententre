@@ -87,8 +87,22 @@
         </Border>
         
         <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
-        <Slider x:Name="FinishedSlider" ValueChanged="FinishedSlider_ValueChanged" Maximum="100" Minimum="0" BackgroundColor="White" Margin="20,0" />
 
+        <SwipeView Margin="20,25" WidthRequest="350" SwipeEnded="OnSwipeEnded">
+            <SwipeView.LeftItems >
+                <SwipeItems Mode="Reveal">
+                    <SwipeItemView>
+                        <Grid BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="350">
+                            <Label Text="Saved" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"/>
+                        </Grid>
+                    </SwipeItemView>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <!-- Content to be swiped -->
+            <Grid BackgroundColor="White" Padding="10">
+                <Label Text="Swipe to Complete - - >" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </SwipeView>
 
 
     </VerticalStackLayout>

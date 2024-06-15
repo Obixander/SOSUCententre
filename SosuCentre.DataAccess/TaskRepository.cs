@@ -10,11 +10,13 @@ namespace SosuCentre.DataAccess
 {
     public class TaskRepository(SosuCentreContext context) : Repository<Entities.Assignment>(context), ITaskRepository
     {
+
+        //note the residen has AsNoTracking() because it should not be updated from the taskrepository
         public override Entities.Assignment GetBy(int id)
         {
             return context.Assignments
                  .Include(t => t.Employees)
-                 .Include(t => t.Resident)
+                 .Include(t => t.Resident)/*.AsNoTracking()*/
                  .Include(t => t.SubTasks)
 
                  .FirstOrDefault(t => t.AssignmentId == id);
@@ -23,7 +25,7 @@ namespace SosuCentre.DataAccess
         {
             IEnumerable<Entities.Assignment> tasks = context.Assignments
                 .Where(a => a.Employees.Contains(employee) && a.TimeStart.Date == date.Date)
-                .Include(t => t.Resident)
+                .Include(t => t.Resident).AsNoTracking()
                 .Include(t => t.Employees)
                 .Include(t => t.SubTasks)
                 .ToList();
@@ -35,7 +37,7 @@ namespace SosuCentre.DataAccess
 
             List<Entities.Assignment> tasks = context.Assignments
                 .Where(a => a.Employees.Contains(employee))
-                .Include(t => t.Resident)
+                .Include(t => t.Resident).AsNoTracking()
                 .Include(t => t.Employees)
                 .Include(t => t.SubTasks)
 

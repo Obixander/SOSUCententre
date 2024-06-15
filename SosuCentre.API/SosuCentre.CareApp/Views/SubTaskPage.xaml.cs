@@ -15,4 +15,9 @@ public partial class SubTaskPage : ContentPage
     {
         viewModel.FinishedSlider_ValueChanged(sender, e);
     }
+
+    private void OnSwipeEnded(object sender, SwipeEndedEventArgs e)
+    {
+        viewModel.OnSwipeEnded(sender, e);
+    }
 }

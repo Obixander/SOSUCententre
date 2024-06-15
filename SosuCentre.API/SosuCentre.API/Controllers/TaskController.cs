@@ -13,9 +13,21 @@ namespace SosuCentre.API.Controllers
         private readonly ITaskRepository repository = repository;
 
         [HttpPut]
-        public void UpdateBy([FromQuery] Entities.Assignment task)
+        public void UpdateBy(Assignment dto)
         {
-            repository.Update(task);
+            //move the logic to the Taskrepository later
+            var assignment = repository.GetBy(dto.AssignmentId);
+
+            //Update database entity with changes from dto
+            assignment.Completed = dto.Completed;
+            assignment.Notes = dto.Notes;
+            foreach (var subTask in assignment.SubTasks)
+            {
+                var dtoSubTask = dto.SubTasks.Find(x => x.SubTaskId == subTask.SubTaskId);
+                subTask.IsCompleted = dtoSubTask.IsCompleted;
+            }//end foreach
+
+            repository.Update(assignment);
         }
 
         //TODO: FIX SOON

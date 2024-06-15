@@ -55,5 +55,20 @@ namespace SosuCentre.CareApp.ViewModels
             }
         }
 
+        public async void OnSwipeEnded(object sender, SwipeEndedEventArgs e)
+        {
+            if (Assignment.SubTasks.All(x => x.IsCompleted))
+            {
+                Assignment.Completed = true;
+
+                await GoToMainPageAsync();
+            }
+            else
+            {
+                Assignment.Completed = false;
+                await GoToMainPageAsync();
+            }
+        }
+
     }
 }
