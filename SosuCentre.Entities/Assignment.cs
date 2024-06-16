@@ -44,12 +44,18 @@ namespace SosuCentre.Entities
         }
 
         //These might be needed later i dont know yet
-
         public string? Notes
         {
             get;
             set;
         }
+        
+        public string? MedicinNotes
+        {
+            get;
+            set;
+        }
+
 
         public bool Completed
         {
