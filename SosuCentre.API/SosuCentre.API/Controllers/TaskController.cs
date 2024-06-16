@@ -21,10 +21,16 @@ namespace SosuCentre.API.Controllers
             //Update database entity with changes from dto
             assignment.Completed = dto.Completed;
             assignment.Notes = dto.Notes;
+            assignment.MedicinNotes = dto.MedicinNotes;
             foreach (var subTask in assignment.SubTasks)
             {
                 var dtoSubTask = dto.SubTasks.Find(x => x.SubTaskId == subTask.SubTaskId);
                 subTask.IsCompleted = dtoSubTask.IsCompleted;
+            }
+            foreach (var MedicinTask in assignment.MedicineTasks)
+            {
+                var dtoMedicinTask = dto.MedicineTasks.Find(x => x.MedicineTaskId == MedicinTask.MedicineTaskId);
+                MedicinTask.IsCompleted = dtoMedicinTask.IsCompleted;
             }
             repository.Update(assignment);
         }
