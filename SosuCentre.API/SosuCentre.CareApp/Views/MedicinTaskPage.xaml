@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:TimeRangeConverter x:Key="TimeRangeConverter" />
+            <converters:MultiTextConverter x:Key="MultiTextConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -68,8 +69,6 @@
             Grid.ColumnSpan="2"
             ItemsSource="{Binding Assignment.MedicineTasks}"
             >
-
-
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:MedicineTask">
 
@@ -80,7 +79,15 @@
                                     <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="1*,6*,2*" Padding="5">
                                         <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding MedicineTaskId}" VerticalOptions="Center" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
 
-                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI">
+                                            <Label.Text>
+                                                <MultiBinding Converter="{StaticResource MultiTextConverter}">
+                                                    <Binding Path="Name"/>
+                                                    <Binding Path="Amount"/>
+                                                    <Binding Path="Unit"/>
+                                                </MultiBinding>
+                                            </Label.Text>
+                                        </Label>
 
                                         <CheckBox Grid.Column="2" IsChecked="{Binding IsCompleted}" IsEnabled="True" HorizontalOptions="End" VerticalOptions="Center" Color="Black"/>
                                     </Grid>
@@ -98,7 +105,7 @@
         <Label Text="Medicin Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
 
         <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
-            <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
+            <Entry  Text="{Binding Assignment.MedicinNotes}" Placeholder="Notater om Dagen.." BackgroundColor="White" />
         </Border>
 
         <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
