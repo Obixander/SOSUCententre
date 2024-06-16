@@ -53,48 +53,51 @@
             </Grid.GestureRecognizers>
             <!-- add tap gesture to go to the right page-->
             <Border WidthRequest="15" HeightRequest="15" HorizontalOptions="End" Margin="0,5,7.5,0" StrokeShape="RoundRectangle, 50" Stroke="Black">
+               
                 <Label Grid.Column="0" BackgroundColor="Black"/>
             </Border>
             <Border Grid.Column="1" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" Margin="7.5,5,0,0" StrokeShape="RoundRectangle, 50">
-                 <Label Grid.Column="1" BackgroundColor="White"/>
+                <Label Grid.Column="1" BackgroundColor="White"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToMedicinTaskPageCommand}" CommandParameter="{Binding Assignment}"/>
+                </Border.GestureRecognizers>
             </Border>
         </Grid>
 
 
 
         <!-- Container for the Subtasks -->
-        <CollectionView BackgroundColor="#79A9A6" VerticalOptions="FillAndExpand" HeightRequest="375"
+        <ScrollView HorizontalScrollBarVisibility="Always" HeightRequest="350">
+            <CollectionView BackgroundColor="#79A9A6" VerticalOptions="FillAndExpand"
                 Grid.Row="2"
                 Grid.RowSpan="2"
                 Grid.ColumnSpan="2"
                 ItemsSource="{Binding Assignment.SubTasks}"
                 >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:SubTask">
 
+                        <VerticalStackLayout BackgroundColor="#79A9A6">
+                            <!-- Card goes here -->
+                            <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black" StrokeShape="RoundRectangle, 20,20,20,20">
+                                <VerticalStackLayout x:Name="SubTaskCard" BackgroundColor="#B5ECE7" >
+                                    <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="1*,6*,2*" Padding="5">
+                                        <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding SubTaskId}" VerticalOptions="Center" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:SubTask">
+                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Text="{Binding Name }" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
 
-                    <VerticalStackLayout BackgroundColor="#79A9A6">
-                        <!-- Card goes here -->
-                        <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black" StrokeShape="RoundRectangle, 20,20,20,20">
-                            <VerticalStackLayout x:Name="SubTaskCard" BackgroundColor="#B5ECE7" >
-                                <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="1*,6*,2*" Padding="5">
-                                    <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding SubTaskId}" VerticalOptions="Center" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+                                        <CheckBox Grid.Column="2" IsChecked="{Binding IsCompleted}" IsEnabled="True" HorizontalOptions="End" VerticalOptions="Center" Color="Black"/>
+                                    </Grid>
 
-                                    <Label HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Text="{Binding Name }" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                    </DataTemplate>
 
-                                    <CheckBox Grid.Column="2" IsChecked="{Binding IsCompleted}" IsEnabled="True" HorizontalOptions="End" VerticalOptions="Center" Color="Black"/>
-                                </Grid>
+                </CollectionView.ItemTemplate>
 
-                            </VerticalStackLayout>
-                        </Border>
-                    </VerticalStackLayout>
-                </DataTemplate>
-
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-
+            </CollectionView>
+        </ScrollView>
         <!-- Note part goes here -->
         <Label Text="Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
 
@@ -104,7 +107,7 @@
 
         <!-- Find a way to bind to the SubTaskPageViewModel instead of the code behind-->
 
-        <SwipeView Margin="20,25" WidthRequest="350" Threshold="400">
+        <SwipeView Margin="20,15" WidthRequest="350" Threshold="400">
             <!-- SwipeEnded="OnSwipeEnded" -->
 
             <SwipeView.LeftItems >

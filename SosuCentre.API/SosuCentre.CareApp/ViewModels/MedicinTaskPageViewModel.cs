@@ -45,7 +45,7 @@ namespace SosuCentre.CareApp.ViewModels
         }
 
         [RelayCommand]
-        private async void OnSwipeEnded()
+        private async Task OnSwipeEnded()
         {
             if (Assignment.SubTasks.All(x => x.IsCompleted))
             {
