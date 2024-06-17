@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SosuCentre.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatingTestData : Migration
+    public partial class testing : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -148,6 +148,7 @@ namespace SosuCentre.DataAccess.Migrations
                     TimeEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResidentId = table.Column<int>(type: "int", nullable: true),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MedicinNotes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Completed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -341,14 +342,14 @@ namespace SosuCentre.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Assignments",
-                columns: new[] { "AssignmentId", "Completed", "Notes", "ResidentId", "TimeEnd", "TimeStart" },
+                columns: new[] { "AssignmentId", "Completed", "MedicinNotes", "Notes", "ResidentId", "TimeEnd", "TimeStart" },
                 values: new object[,]
                 {
-                    { 1, false, "PlaceHolder", 1, new DateTime(2024, 6, 13, 18, 37, 43, 232, DateTimeKind.Local).AddTicks(3271), new DateTime(2024, 6, 13, 16, 37, 43, 232, DateTimeKind.Local).AddTicks(3254) },
-                    { 2, false, "PlaceHolder", 1, new DateTime(2024, 6, 13, 19, 37, 43, 232, DateTimeKind.Local).AddTicks(3283), new DateTime(2024, 6, 13, 18, 37, 43, 232, DateTimeKind.Local).AddTicks(3282) },
-                    { 3, false, "PlaceHolder", 1, new DateTime(2024, 6, 13, 21, 37, 43, 232, DateTimeKind.Local).AddTicks(3294), new DateTime(2024, 6, 13, 19, 37, 43, 232, DateTimeKind.Local).AddTicks(3293) },
-                    { 4, false, "PlaceHolder", 1, new DateTime(2024, 6, 14, 1, 37, 43, 232, DateTimeKind.Local).AddTicks(3305), new DateTime(2024, 6, 13, 22, 37, 43, 232, DateTimeKind.Local).AddTicks(3304) },
-                    { 5, false, "PlaceHolder", 1, new DateTime(2024, 6, 14, 3, 37, 43, 232, DateTimeKind.Local).AddTicks(3314), new DateTime(2024, 6, 14, 1, 37, 43, 232, DateTimeKind.Local).AddTicks(3313) }
+                    { 1, false, null, "PlaceHolder", 1, new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6074), new DateTime(2024, 6, 17, 8, 45, 26, 930, DateTimeKind.Local).AddTicks(6027) },
+                    { 2, false, null, "PlaceHolder", 1, new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6095), new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6093) },
+                    { 3, false, null, "PlaceHolder", 1, new DateTime(2024, 6, 17, 13, 45, 26, 930, DateTimeKind.Local).AddTicks(6111), new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6110) },
+                    { 4, false, null, "PlaceHolder", 1, new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6127), new DateTime(2024, 6, 17, 14, 45, 26, 930, DateTimeKind.Local).AddTicks(6125) },
+                    { 5, false, null, "PlaceHolder", 1, new DateTime(2024, 6, 17, 19, 45, 26, 930, DateTimeKind.Local).AddTicks(6142), new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6140) }
                 });
 
             migrationBuilder.InsertData(

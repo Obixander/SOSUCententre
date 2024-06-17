@@ -126,8 +126,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 16, 12, 41, 2, 695, DateTimeKind.Local).AddTicks(2049),
-                            TimeStart = new DateTime(2024, 6, 16, 10, 41, 2, 695, DateTimeKind.Local).AddTicks(2012)
+                            TimeEnd = new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6074),
+                            TimeStart = new DateTime(2024, 6, 17, 8, 45, 26, 930, DateTimeKind.Local).AddTicks(6027)
                         },
                         new
                         {
@@ -135,8 +135,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 16, 13, 41, 2, 695, DateTimeKind.Local).AddTicks(2063),
-                            TimeStart = new DateTime(2024, 6, 16, 12, 41, 2, 695, DateTimeKind.Local).AddTicks(2062)
+                            TimeEnd = new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6095),
+                            TimeStart = new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6093)
                         },
                         new
                         {
@@ -144,8 +144,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 16, 15, 41, 2, 695, DateTimeKind.Local).AddTicks(2073),
-                            TimeStart = new DateTime(2024, 6, 16, 13, 41, 2, 695, DateTimeKind.Local).AddTicks(2072)
+                            TimeEnd = new DateTime(2024, 6, 17, 13, 45, 26, 930, DateTimeKind.Local).AddTicks(6111),
+                            TimeStart = new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6110)
                         },
                         new
                         {
@@ -153,8 +153,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 16, 19, 41, 2, 695, DateTimeKind.Local).AddTicks(2083),
-                            TimeStart = new DateTime(2024, 6, 16, 16, 41, 2, 695, DateTimeKind.Local).AddTicks(2082)
+                            TimeEnd = new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6127),
+                            TimeStart = new DateTime(2024, 6, 17, 14, 45, 26, 930, DateTimeKind.Local).AddTicks(6125)
                         },
                         new
                         {
@@ -162,8 +162,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 16, 21, 41, 2, 695, DateTimeKind.Local).AddTicks(2093),
-                            TimeStart = new DateTime(2024, 6, 16, 19, 41, 2, 695, DateTimeKind.Local).AddTicks(2092)
+                            TimeEnd = new DateTime(2024, 6, 17, 19, 45, 26, 930, DateTimeKind.Local).AddTicks(6142),
+                            TimeStart = new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6140)
                         });
                 });
 
