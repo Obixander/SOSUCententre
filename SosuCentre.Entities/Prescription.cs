@@ -8,32 +8,44 @@ namespace SosuCentre.Entities
 {
     public class Prescription
     {
+        private int prescriptionId;
+        private int name;
+        private int amount;
+        private string unit;
+
+        public Prescription(int prescriptionId, int name, int amount, string unit)
+        {
+            PrescriptionId = prescriptionId;
+            Name = name;
+            Amount = amount;
+            Unit = unit;
+        }
 
 
         #region Properties
-        
+
         public int PrescriptionId
         {
-            get;
-            set;
+            get => prescriptionId;
+            set => prescriptionId = value;
         }
-        
+
         public int Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
 
         public int Amount
         {
-            get;
-            set;
+            get => amount;
+            set => amount = value;
         }
 
         public string Unit
         {
-            get;
-            set;
+            get => unit;
+            set => unit = value;
         }
 
         #endregion

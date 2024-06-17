@@ -8,24 +8,34 @@ namespace SosuCentre.Entities
 {
     public class Role
     {
+        private int roleId;
+        private string roleName;
+        private List<Employee> employees;
+
+        public Role(int roleId, string roleName, List<Employee> employees)
+        {
+            RoleId = roleId;
+            RoleName = roleName;
+            Employees = employees;
+        }
 
 
         #region Properties
         public int RoleId
         {
-            get;
-            set;
+            get => roleId;
+            set => roleId = value;
         }
         public string RoleName
         {
-            get;
-            set;
+            get => roleName;
+            set => roleName = value;
         }
 
         public List<Employee> Employees
         {
-            get;
-            set;
+            get => employees;
+            set => employees = value;
         }
         #endregion
     }

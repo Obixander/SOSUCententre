@@ -8,41 +8,57 @@ namespace SosuCentre.Entities
 {
     public class Resident
     {
+        private int residentId;
+        private string name;
+        private string roomNumber;
+        private ICollection<Diagnosis> diagnoses;
+        private ICollection<Prescription> prescriptions;
+        private string notes;
+
+        public Resident(int residentId, string name, string roomNumber, ICollection<Diagnosis> diagnoses, ICollection<Prescription> prescriptions, string notes)
+        {
+            ResidentId = residentId;
+            Name = name;
+            RoomNumber = roomNumber;
+            Diagnoses = diagnoses;
+            Prescriptions = prescriptions;
+            Notes = notes;
+        }
 
 
         #region Properties
         public int ResidentId
         {
-            get;
-            set;
+            get => residentId;
+            set => residentId = value;
         }
         public string Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
         public string RoomNumber
         {
-            get;
-            set;
+            get => roomNumber;
+            set => roomNumber = value;
         }
 
         public ICollection<Diagnosis> Diagnoses
         {
-            get;
-            set;
+            get => diagnoses;
+            set => diagnoses = value;
         }
 
         public ICollection<Prescription> Prescriptions
         {
-            get;
-            set;
+            get => prescriptions;
+            set => prescriptions = value;
         }
 
         public string Notes
         {
-            get;
-            set;
+            get => notes;
+            set => notes = value;
         }
 
         #endregion

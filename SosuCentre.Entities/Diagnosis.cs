@@ -10,23 +10,33 @@ namespace SosuCentre.Entities
 {
     public class Diagnosis
     {
+        private int diagnosisId;
+        private string name;
+        private string description;
+
+        public Diagnosis(int diagnosisId, string name, string description)
+        {
+            DiagnosisId = diagnosisId;
+            Name = name;
+            Description = description;
+        }
 
         #region Properties
         public int DiagnosisId
         {
-            get;
-            set;
+            get => diagnosisId;
+            set => diagnosisId = value;
         }
         public string Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
-        
+
         public string Description
         {
-            get;
-            set;
+            get => description;
+            set => description = value;
         }
 
         #endregion

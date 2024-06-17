@@ -8,22 +8,33 @@ namespace SosuCentre.Entities
 {
     public class SubTask
     {
+        private int subTaskId;
+        private string name;
+        private bool isCompleted;
+
+        public SubTask(int subTaskId, string name, bool isCompleted)
+        {
+            SubTaskId = subTaskId;
+            Name = name;
+            IsCompleted = isCompleted;
+        }
+
         public int SubTaskId
         {
-            get;
-            set;
+            get => subTaskId;
+            set => subTaskId = value;
         }
 
         public string Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
 
         public bool IsCompleted
-        { 
-            get;
-            set;
+        {
+            get => isCompleted;
+            set => isCompleted = value;
         }
     }
 }

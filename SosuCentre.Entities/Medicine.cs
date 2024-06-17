@@ -9,18 +9,26 @@ namespace SosuCentre.Entities
 {
     public class Medicine
     {
-  
+        private int medicineId;
+        private string name;
+
+        public Medicine(int medicineId, string name)
+        {
+            MedicineId = medicineId;
+            Name = name;
+        }
+
         #region Properties
 
         public int MedicineId
         {
-            get;
-            set;
+            get => medicineId;
+            set => medicineId = value;
         }
         public string Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
 
         #endregion

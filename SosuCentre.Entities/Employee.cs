@@ -9,33 +9,47 @@ namespace SosuCentre.Entities
 {
     public class Employee
     {
-       
+        private int employeeId;
+        private ICollection<Assignment> tasks;
+        private ICollection<Role> role;
+        private string name;
+        private CareCenter careCenter;
+
+        public Employee(int employeeId, ICollection<Assignment> tasks, ICollection<Role> role, string name, CareCenter careCenter)
+        {
+            EmployeeId = employeeId;
+            Tasks = tasks;
+            Role = role;
+            Name = name;
+            CareCenter = careCenter;
+        }
+
         #region Properties
         public int EmployeeId
         {
-            get;
-            set;
+            get => employeeId;
+            set => employeeId = value;
         }
-        
+
         public ICollection<Assignment> Tasks
         {
-            get;
-            set;
+            get => tasks;
+            set => tasks = value;
         }
         public ICollection<Role> Role
         {
-            get;
-            set;
+            get => role;
+            set => role = value;
         }
         public string Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
         public CareCenter CareCenter
         {
-            get;
-            set;
+            get => careCenter;
+            set => careCenter = value;
         }
 
         #endregion
