@@ -21,6 +21,10 @@ namespace SosuCentre.Entities
             Unit = unit;
         }
 
+        public Prescription()
+        {
+            
+        }
 
         #region Properties
 

@@ -101,7 +101,7 @@
         <!-- Note part goes here -->
         <Label Text="Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
 
-        <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
+        <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="125" Margin="20,0">
             <Entry  Text="{Binding Assignment.Notes}" Placeholder="Notes om Dagen.." BackgroundColor="White" />
         </Border>
 

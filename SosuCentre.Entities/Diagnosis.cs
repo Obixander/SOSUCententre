@@ -21,6 +21,11 @@ namespace SosuCentre.Entities
             Description = description;
         }
 
+        public Diagnosis()
+        {
+            
+        }
+
         #region Properties
         public int DiagnosisId
         {

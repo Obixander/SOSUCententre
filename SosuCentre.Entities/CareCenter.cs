@@ -16,6 +16,10 @@ namespace SosuCentre.Entities
             Residents = residents;
         }
 
+        public CareCenter()
+        {
+            
+        }
 
         #region Properties
 

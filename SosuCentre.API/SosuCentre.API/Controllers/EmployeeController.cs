@@ -8,6 +8,7 @@ namespace SosuCentre.API.Controllers
     [ApiController]
     public class EmployeeController(IEmployeeRepository repository) : Controller
     {
+        //this is not needed in theory
         private readonly IEmployeeRepository repository = repository;
 
         [HttpPut]

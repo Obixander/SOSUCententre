@@ -48,14 +48,12 @@
                 <SwipeGestureRecognizer Direction="Right" Command="{Binding GoToSubTaskPageCommand}" CommandParameter="{Binding Assignment}"/>
             </Grid.GestureRecognizers>
             <!-- add tap gesture to go to the right page-->
-            <Border WidthRequest="15" HeightRequest="15" HorizontalOptions="End" Margin="0,5,7.5,0" StrokeShape="RoundRectangle, 50" Stroke="White">
+            <Border WidthRequest="15" HeightRequest="15" HorizontalOptions="End" Margin="0,5,7.5,0" StrokeShape="RoundRectangle, 50" Stroke="White" BackgroundColor="White">
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoToSubTaskPageCommand}" CommandParameter="{Binding Assignment}"/>
                 </Border.GestureRecognizers>
-                <Label Grid.Column="0" BackgroundColor="White"/>
             </Border>
-            <Border Grid.Column="1" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" Margin="7.5,5,0,0" StrokeShape="RoundRectangle, 50" Stroke="Black">
-                <Label Grid.Column="1" BackgroundColor="Black"/>
+            <Border Grid.Column="1" WidthRequest="15" HeightRequest="15" HorizontalOptions="Start" Margin="7.5,5,0,0" StrokeShape="RoundRectangle, 50" Stroke="Black" BackgroundColor="Black">
             </Border>
         </Grid>
 
@@ -104,7 +102,7 @@
         <!-- Note part goes here -->
         <Label Text="Medicin Notater" TextColor="White" FontAttributes="Bold" FontSize="30" FontFamily="Segoe UI" HorizontalOptions="Center" Padding="0,0,0,20"/>
 
-        <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="150" Margin="20,0">
+        <Border StrokeShape="RoundRectangle, 15,15,15,15" HeightRequest="125" Margin="20,0">
             <Entry  Text="{Binding Assignment.MedicinNotes}" Placeholder="Notater om Dagen.." BackgroundColor="White" />
         </Border>
 

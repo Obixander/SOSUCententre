@@ -24,7 +24,6 @@ namespace SosuCentre.DataAccess
         Resident GetById(int id);
     }
 
-
     public interface ITaskRepository : IRepository<Entities.Assignment>
     {
         IEnumerable<Entities.Assignment> GetAssignmentsOn(Employee employee, DateTime date);
@@ -44,4 +43,16 @@ namespace SosuCentre.DataAccess
     {
         Role GetById(int id);
     }
+
+    public interface ISubTaskRepository : IRepository<SubTask>
+    {
+        //Add the methods here if needed
+    }
+
+    public interface IMedicineTaskRepository : IRepository<MedicineTask>
+    {
+        //Add the methods here if needed
+    }
+
+
 }

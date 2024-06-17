@@ -34,8 +34,11 @@ namespace SosuCentre.API
 
             builder.Services.AddScoped<ITaskRepository, TaskRepository>();
             builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<ISubTaskRepository, SubTaskRepository>();
+            builder.Services.AddScoped<IMedicineTaskRepository, MedicineTaskRepository>();
             builder.Services.AddScoped<IRepository<Role>, Repository<Role>>();
             builder.Services.AddScoped<IRepository<Resident>, Repository<Resident>>();
+            
 
             builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

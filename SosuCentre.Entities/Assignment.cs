@@ -27,7 +27,12 @@ namespace SosuCentre.Entities
             MedicinNotes = medicinNotes;
             Completed = completed;
         }
-        
+
+        public Assignment()
+        {
+            
+        }
+
         #region Properties        
         public int AssignmentId
         {

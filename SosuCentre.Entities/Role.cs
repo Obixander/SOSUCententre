@@ -19,6 +19,11 @@ namespace SosuCentre.Entities
             Employees = employees;
         }
 
+        public Role()
+        {
+            
+        }
+
 
         #region Properties
         public int RoleId

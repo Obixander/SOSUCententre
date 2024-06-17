@@ -19,6 +19,12 @@ namespace SosuCentre.Entities
             IsCompleted = isCompleted;
         }
 
+
+        public SubTask()
+        {
+            
+        }
+
         public int SubTaskId
         {
             get => subTaskId;

@@ -18,6 +18,11 @@ namespace SosuCentre.Entities
             Name = name;
         }
 
+        public Medicine()
+        {
+            
+        }
+
         #region Properties
 
         public int MedicineId

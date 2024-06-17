@@ -25,6 +25,10 @@ namespace SosuCentre.Entities
             Notes = notes;
         }
 
+        public Resident()
+        {
+            
+        }
 
         #region Properties
         public int ResidentId

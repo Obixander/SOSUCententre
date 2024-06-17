@@ -24,6 +24,11 @@ namespace SosuCentre.Entities
             CareCenter = careCenter;
         }
 
+        public Employee()
+        {
+            
+        }
+
         #region Properties
         public int EmployeeId
         {

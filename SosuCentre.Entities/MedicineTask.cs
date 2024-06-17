@@ -25,6 +25,11 @@ namespace SosuCentre.Entities
             Unit = unit;
         }
 
+        public MedicineTask()
+        {
+            
+        }
+
         public int MedicineTaskId
         {
             get => medicineTaskId;
