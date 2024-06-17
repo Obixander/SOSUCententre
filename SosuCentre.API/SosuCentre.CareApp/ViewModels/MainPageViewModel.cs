@@ -4,6 +4,8 @@ using SosuCentre.CareApp.Views;
 using SosuCentre.Entities;
 using SosuCentre.Services;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SosuCentre.CareApp.ViewModels
 {
@@ -22,7 +24,6 @@ namespace SosuCentre.CareApp.ViewModels
             TodaysAssignments = new ObservableCollection<Entities.Assignment>();
             this.userService = userService;
             UpdateAssignments();
-
         }
         public ObservableCollection<Entities.Assignment> TodaysAssignments { get; set; }
 
@@ -42,6 +43,8 @@ namespace SosuCentre.CareApp.ViewModels
           
         }
 
+      
+
         [RelayCommand]
         private async Task UpdateAssignments()
         {
@@ -55,7 +58,16 @@ namespace SosuCentre.CareApp.ViewModels
                 foreach (var task in tasks)
                 {
                     TodaysAssignments.Add(task);
+                    //there is probably a better way to do this
+                    if (task.Employees.Any(t => t.EmployeeId == userService.GetUserId()))
+                    {
+                        User = task.Employees.First(t => t.EmployeeId == userService.GetUserId()); 
+                    }
                 }
+
+
+
+
             }
             catch (Exception ex)
             {

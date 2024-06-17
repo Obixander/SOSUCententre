@@ -19,6 +19,16 @@
           RowDefinitions="50,50,*"
           BackgroundColor="#79A9A6">
 
+        <ActivityIndicator 
+            ZIndex="100"
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}">
+        </ActivityIndicator>
+
         <Border StrokeShape="RoundRectangle 50,50,50,50" WidthRequest="150" Margin="5">
             <Button Text="Recepter"
                 Grid.Row="0"
@@ -31,7 +41,7 @@
                 BackgroundColor="#B5ECE7"/>
         </Border>
 
-        <Label Text="Mads Mikkel"
+        <Label Text="{Binding User.Name}"
                Grid.Row="0"
                Grid.Column="1"
                FontSize="20"
@@ -64,46 +74,46 @@
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding TodaysAssignments}"
                         >
-                        
+
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Assignment">
 
                     <VerticalStackLayout BackgroundColor="#79A9A6">
                         <!-- Card goes here -->
-                            <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToSubTaskPageCommand}" />
-                                </Border.GestureRecognizers>
-                                <VerticalStackLayout x:Name="TaskCard" BackgroundColor="#B5ECE7" >
+                        <Border WidthRequest="350" StrokeThickness="1" Margin="0,15" Stroke="Black">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToSubTaskPageCommand}" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout x:Name="TaskCard" BackgroundColor="#B5ECE7" >
 
-                                    <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*,*" Padding="5">
-                                        <Label Text="{Binding AssignmentId}" VerticalOptions="Start" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+                                <Grid x:Name="TopRow" HorizontalOptions="FillAndExpand" ColumnDefinitions="*,*,*" Padding="5">
+                                    <Label Text="{Binding AssignmentId}" VerticalOptions="Start" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
 
-                                        <Label HorizontalOptions="Center" Grid.Column="1" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI">
-                                            <Label.Text>
-                                                <MultiBinding Converter="{StaticResource TimeRangeConverter}">
-                                                    <Binding Path="TimeStart" />
-                                                    <Binding Path="TimeEnd" />
-                                                </MultiBinding>
-                                            </Label.Text>
-                                        </Label>
+                                    <Label HorizontalOptions="Center" Grid.Column="1" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI">
+                                        <Label.Text>
+                                            <MultiBinding Converter="{StaticResource TimeRangeConverter}">
+                                                <Binding Path="TimeStart" />
+                                                <Binding Path="TimeEnd" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
 
-                                        <Label Text="{Binding Resident.RoomNumber}" HorizontalTextAlignment="End" Grid.Column="2" Margin="0,0,10,0" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
-                                    </Grid>
+                                    <Label Text="{Binding Resident.RoomNumber}" HorizontalTextAlignment="End" Grid.Column="2" Margin="0,0,10,0" FontAttributes="Bold" FontSize="17" FontFamily="Segoe UI"/>
+                                </Grid>
 
-                                    <Border StrokeThickness="1" Stroke="Black"></Border>
-
-
-                                    <Grid x:Name="BottomRow" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand" Padding="5,20">
-                                        <Label Text="{Binding Resident.Name}" FontAttributes="Bold" FontSize="Medium" FontFamily="Segoe UI"/>
-
-                                        <CheckBox  IsChecked="{Binding Completed}" IsEnabled="False" WidthRequest="30" HeightRequest="30" Grid.Column="1" HorizontalOptions="End"/>
-                                    </Grid>
+                                <Border StrokeThickness="1" Stroke="Black"></Border>
 
 
-                                </VerticalStackLayout>
-                            </Border>
+                                <Grid x:Name="BottomRow" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand" Padding="5,20">
+                                    <Label Text="{Binding Resident.Name}" FontAttributes="Bold" FontSize="Medium" FontFamily="Segoe UI"/>
+
+                                    <CheckBox  IsChecked="{Binding Completed}" IsEnabled="False" WidthRequest="30" HeightRequest="30" Grid.Column="1" HorizontalOptions="End"/>
+                                </Grid>
+
+
+                            </VerticalStackLayout>
+                        </Border>
                     </VerticalStackLayout>
                 </DataTemplate>
 
@@ -111,14 +121,7 @@
 
         </CollectionView>
 
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsEnabled="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="3"
-                           Grid.ColumnSpan="2">
 
-        </ActivityIndicator>
 
     </Grid>
 

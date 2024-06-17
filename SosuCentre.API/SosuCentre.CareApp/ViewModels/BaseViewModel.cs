@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SosuCentre.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,8 @@ namespace SosuCentre.CareApp.ViewModels
         [ObservableProperty]
         private string title;
 
-
+        [ObservableProperty]
+        private Employee user;
 
         public BaseViewModel()
         {

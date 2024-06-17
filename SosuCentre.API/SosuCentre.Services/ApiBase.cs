@@ -44,6 +44,24 @@ namespace SosuCentre.Services
             return response;
         }
 
+        protected virtual async Task<HttpResponseMessage> GetByIdHttpAsync(string url, int id)
+        {
+            UriBuilder uriBuilder = new(baseUri + url);
+            uriBuilder.Query = $"id={id}";
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
+            using HttpClient client = new(handler);
+
+            var response = await client.GetAsync(uriBuilder.Uri);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+            }
+            return response;
+        }
+
         //This somehow works and i dont understand why
         protected virtual async void PutHttpAsync(string url, Assignment data)
         {
@@ -139,7 +157,11 @@ namespace SosuCentre.Services
         public void SetUserId(int value)
         {
             UserId = value;
+
         }
+
+        
+      
     }
 
 }

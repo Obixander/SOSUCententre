@@ -5,14 +5,15 @@ namespace SosuCentre.CareApp.Views
 {
     public partial class MainPage : ContentPage
     {
-      
+        private MainPageViewModel viewModel;
         public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = viewModel;
+            this.viewModel = viewModel;
            
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
         }
