@@ -12,8 +12,8 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    [Migration("20240617064527_testing")]
-    partial class testing
+    [Migration("20240618081857_UpdatedTestDataAgain")]
+    partial class UpdatedTestDataAgain
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,8 +129,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6074),
-                            TimeStart = new DateTime(2024, 6, 17, 8, 45, 26, 930, DateTimeKind.Local).AddTicks(6027)
+                            TimeEnd = new DateTime(2024, 6, 18, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(7888),
+                            TimeStart = new DateTime(2024, 6, 18, 10, 18, 57, 76, DateTimeKind.Local).AddTicks(7835)
                         },
                         new
                         {
@@ -138,8 +138,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6095),
-                            TimeStart = new DateTime(2024, 6, 17, 10, 45, 26, 930, DateTimeKind.Local).AddTicks(6093)
+                            TimeEnd = new DateTime(2024, 6, 18, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(7921),
+                            TimeStart = new DateTime(2024, 6, 18, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(7918)
                         },
                         new
                         {
@@ -147,8 +147,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 17, 13, 45, 26, 930, DateTimeKind.Local).AddTicks(6111),
-                            TimeStart = new DateTime(2024, 6, 17, 11, 45, 26, 930, DateTimeKind.Local).AddTicks(6110)
+                            TimeEnd = new DateTime(2024, 6, 18, 15, 18, 57, 76, DateTimeKind.Local).AddTicks(7943),
+                            TimeStart = new DateTime(2024, 6, 18, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(7941)
                         },
                         new
                         {
@@ -156,8 +156,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6127),
-                            TimeStart = new DateTime(2024, 6, 17, 14, 45, 26, 930, DateTimeKind.Local).AddTicks(6125)
+                            TimeEnd = new DateTime(2024, 6, 18, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(7965),
+                            TimeStart = new DateTime(2024, 6, 18, 16, 18, 57, 76, DateTimeKind.Local).AddTicks(7962)
                         },
                         new
                         {
@@ -165,8 +165,53 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 17, 19, 45, 26, 930, DateTimeKind.Local).AddTicks(6142),
-                            TimeStart = new DateTime(2024, 6, 17, 17, 45, 26, 930, DateTimeKind.Local).AddTicks(6140)
+                            TimeEnd = new DateTime(2024, 6, 18, 21, 18, 57, 76, DateTimeKind.Local).AddTicks(7986),
+                            TimeStart = new DateTime(2024, 6, 18, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(7985)
+                        },
+                        new
+                        {
+                            AssignmentId = 6,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 19, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(8010),
+                            TimeStart = new DateTime(2024, 6, 19, 10, 18, 57, 76, DateTimeKind.Local).AddTicks(8007)
+                        },
+                        new
+                        {
+                            AssignmentId = 7,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 19, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(8032),
+                            TimeStart = new DateTime(2024, 6, 19, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(8030)
+                        },
+                        new
+                        {
+                            AssignmentId = 8,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 19, 15, 18, 57, 76, DateTimeKind.Local).AddTicks(8056),
+                            TimeStart = new DateTime(2024, 6, 19, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(8053)
+                        },
+                        new
+                        {
+                            AssignmentId = 9,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 19, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(8082),
+                            TimeStart = new DateTime(2024, 6, 19, 16, 18, 57, 76, DateTimeKind.Local).AddTicks(8079)
+                        },
+                        new
+                        {
+                            AssignmentId = 10,
+                            Completed = false,
+                            Notes = "PlaceHolder",
+                            ResidentId = 1,
+                            TimeEnd = new DateTime(2024, 6, 19, 21, 18, 57, 76, DateTimeKind.Local).AddTicks(8107),
+                            TimeStart = new DateTime(2024, 6, 19, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(8105)
                         });
                 });
 
@@ -543,12 +588,152 @@ namespace SosuCentre.DataAccess.Migrations
                         new
                         {
                             MedicineTaskId = 15,
-                            Amount = 75.0,
-                            AssignmentId = 5,
+                            Amount = 50.0,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            MedicineId = 4,
+                            Name = "Pain Relief Administration",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 16,
+                            Amount = 200.0,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            MedicineId = 9,
+                            Name = "Antibiotic Course",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 17,
+                            Amount = 1.0,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            MedicineId = 2,
+                            Name = "Blood Pressure Medication",
+                            Unit = "tablet"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 18,
+                            Amount = 10.0,
+                            AssignmentId = 6,
                             IsCompleted = false,
                             MedicineId = 5,
-                            Name = "PlaceHolder",
+                            Name = "Insulin Injection",
                             Unit = "units"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 19,
+                            Amount = 1000.0,
+                            AssignmentId = 9,
+                            IsCompleted = false,
+                            MedicineId = 8,
+                            Name = "Vitamin D Supplement",
+                            Unit = "IU"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 20,
+                            Amount = 2.0,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            MedicineId = 3,
+                            Name = "Heart Medication",
+                            Unit = "capsules"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 21,
+                            Amount = 5.0,
+                            AssignmentId = 6,
+                            IsCompleted = false,
+                            MedicineId = 7,
+                            Name = "Antifungal Treatment",
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 22,
+                            Amount = 10.0,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            MedicineId = 6,
+                            Name = "Cough Syrup",
+                            Unit = "ml"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 23,
+                            Amount = 25.0,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            MedicineId = 1,
+                            Name = "Diuretic Medication",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 24,
+                            Amount = 1.0,
+                            AssignmentId = 9,
+                            IsCompleted = false,
+                            MedicineId = 10,
+                            Name = "Antihistamine Dose",
+                            Unit = "tablet"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 25,
+                            Amount = 65.0,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            MedicineId = 2,
+                            Name = "Iron Supplement",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 26,
+                            Amount = 500.0,
+                            AssignmentId = 6,
+                            IsCompleted = false,
+                            MedicineId = 4,
+                            Name = "Calcium Tablet",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 27,
+                            Amount = 1.5,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            MedicineId = 9,
+                            Name = "Thyroid Medication",
+                            Unit = "tablet"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 28,
+                            Amount = 20.0,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            MedicineId = 5,
+                            Name = "Antidepressant Dosage",
+                            Unit = "mg"
+                        },
+                        new
+                        {
+                            MedicineTaskId = 29,
+                            Amount = 2.0,
+                            AssignmentId = 9,
+                            IsCompleted = false,
+                            MedicineId = 3,
+                            Name = "Eye Drops",
+                            Unit = "drops"
                         });
                 });
 
@@ -829,9 +1014,107 @@ namespace SosuCentre.DataAccess.Migrations
                         new
                         {
                             SubTaskId = 15,
-                            AssignmentId = 5,
+                            AssignmentId = 9,
                             IsCompleted = false,
-                            Name = "Støtte til mobilitet"
+                            Name = "Patient Medication Administration"
+                        },
+                        new
+                        {
+                            SubTaskId = 16,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            Name = "Elderly Mobility Support"
+                        },
+                        new
+                        {
+                            SubTaskId = 17,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            Name = "Health Monitoring"
+                        },
+                        new
+                        {
+                            SubTaskId = 18,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            Name = "Nutrition Assistance"
+                        },
+                        new
+                        {
+                            SubTaskId = 19,
+                            AssignmentId = 6,
+                            IsCompleted = false,
+                            Name = "Rehabilitation Exercises"
+                        },
+                        new
+                        {
+                            SubTaskId = 20,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            Name = "Patient Hygiene Support"
+                        },
+                        new
+                        {
+                            SubTaskId = 21,
+                            AssignmentId = 9,
+                            IsCompleted = false,
+                            Name = "Daily Living Activities"
+                        },
+                        new
+                        {
+                            SubTaskId = 22,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            Name = "Mental Health Support"
+                        },
+                        new
+                        {
+                            SubTaskId = 23,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            Name = "Wound Care"
+                        },
+                        new
+                        {
+                            SubTaskId = 24,
+                            AssignmentId = 6,
+                            IsCompleted = false,
+                            Name = "Medication Reminders"
+                        },
+                        new
+                        {
+                            SubTaskId = 25,
+                            AssignmentId = 10,
+                            IsCompleted = false,
+                            Name = "Physical Therapy Assistance"
+                        },
+                        new
+                        {
+                            SubTaskId = 26,
+                            AssignmentId = 9,
+                            IsCompleted = false,
+                            Name = "Dietary Monitoring"
+                        },
+                        new
+                        {
+                            SubTaskId = 27,
+                            AssignmentId = 7,
+                            IsCompleted = false,
+                            Name = "Health Check-Ups"
+                        },
+                        new
+                        {
+                            SubTaskId = 28,
+                            AssignmentId = 8,
+                            IsCompleted = false,
+                            Name = "Patient Record Keeping"
+                        },
+                        new
+                        {
+                            SubTaskId = 29,
+                            AssignmentId = 6,
+                            IsCompleted = false,
+                            Name = "Emergency Response Preparedness"
                         });
                 });
 

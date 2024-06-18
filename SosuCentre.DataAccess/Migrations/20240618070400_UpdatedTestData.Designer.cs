@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SosuCentre.DataAccess;
 
@@ -11,9 +12,11 @@ using SosuCentre.DataAccess;
 namespace SosuCentre.DataAccess.Migrations
 {
     [DbContext(typeof(SosuCentreContext))]
-    partial class SosuCentreContextModelSnapshot : ModelSnapshot
+    [Migration("20240618070400_UpdatedTestData")]
+    partial class UpdatedTestData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,8 +129,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 18, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(7888),
-                            TimeStart = new DateTime(2024, 6, 18, 10, 18, 57, 76, DateTimeKind.Local).AddTicks(7835)
+                            TimeEnd = new DateTime(2024, 6, 18, 11, 3, 59, 876, DateTimeKind.Local).AddTicks(6500),
+                            TimeStart = new DateTime(2024, 6, 18, 9, 3, 59, 876, DateTimeKind.Local).AddTicks(6457)
                         },
                         new
                         {
@@ -135,8 +138,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 18, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(7921),
-                            TimeStart = new DateTime(2024, 6, 18, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(7918)
+                            TimeEnd = new DateTime(2024, 6, 18, 12, 3, 59, 876, DateTimeKind.Local).AddTicks(6527),
+                            TimeStart = new DateTime(2024, 6, 18, 11, 3, 59, 876, DateTimeKind.Local).AddTicks(6526)
                         },
                         new
                         {
@@ -144,8 +147,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 18, 15, 18, 57, 76, DateTimeKind.Local).AddTicks(7943),
-                            TimeStart = new DateTime(2024, 6, 18, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(7941)
+                            TimeEnd = new DateTime(2024, 6, 18, 14, 3, 59, 876, DateTimeKind.Local).AddTicks(6544),
+                            TimeStart = new DateTime(2024, 6, 18, 12, 3, 59, 876, DateTimeKind.Local).AddTicks(6542)
                         },
                         new
                         {
@@ -153,8 +156,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 18, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(7965),
-                            TimeStart = new DateTime(2024, 6, 18, 16, 18, 57, 76, DateTimeKind.Local).AddTicks(7962)
+                            TimeEnd = new DateTime(2024, 6, 18, 18, 3, 59, 876, DateTimeKind.Local).AddTicks(6560),
+                            TimeStart = new DateTime(2024, 6, 18, 15, 3, 59, 876, DateTimeKind.Local).AddTicks(6558)
                         },
                         new
                         {
@@ -162,8 +165,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 18, 21, 18, 57, 76, DateTimeKind.Local).AddTicks(7986),
-                            TimeStart = new DateTime(2024, 6, 18, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(7985)
+                            TimeEnd = new DateTime(2024, 6, 18, 20, 3, 59, 876, DateTimeKind.Local).AddTicks(6577),
+                            TimeStart = new DateTime(2024, 6, 18, 18, 3, 59, 876, DateTimeKind.Local).AddTicks(6576)
                         },
                         new
                         {
@@ -171,8 +174,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 19, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(8010),
-                            TimeStart = new DateTime(2024, 6, 19, 10, 18, 57, 76, DateTimeKind.Local).AddTicks(8007)
+                            TimeEnd = new DateTime(2024, 6, 19, 11, 3, 59, 876, DateTimeKind.Local).AddTicks(6594),
+                            TimeStart = new DateTime(2024, 6, 19, 9, 3, 59, 876, DateTimeKind.Local).AddTicks(6591)
                         },
                         new
                         {
@@ -180,8 +183,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 19, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(8032),
-                            TimeStart = new DateTime(2024, 6, 19, 12, 18, 57, 76, DateTimeKind.Local).AddTicks(8030)
+                            TimeEnd = new DateTime(2024, 6, 19, 12, 3, 59, 876, DateTimeKind.Local).AddTicks(6610),
+                            TimeStart = new DateTime(2024, 6, 19, 11, 3, 59, 876, DateTimeKind.Local).AddTicks(6608)
                         },
                         new
                         {
@@ -189,8 +192,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 19, 15, 18, 57, 76, DateTimeKind.Local).AddTicks(8056),
-                            TimeStart = new DateTime(2024, 6, 19, 13, 18, 57, 76, DateTimeKind.Local).AddTicks(8053)
+                            TimeEnd = new DateTime(2024, 6, 19, 14, 3, 59, 876, DateTimeKind.Local).AddTicks(6627),
+                            TimeStart = new DateTime(2024, 6, 19, 12, 3, 59, 876, DateTimeKind.Local).AddTicks(6625)
                         },
                         new
                         {
@@ -198,8 +201,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 19, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(8082),
-                            TimeStart = new DateTime(2024, 6, 19, 16, 18, 57, 76, DateTimeKind.Local).AddTicks(8079)
+                            TimeEnd = new DateTime(2024, 6, 19, 18, 3, 59, 876, DateTimeKind.Local).AddTicks(6643),
+                            TimeStart = new DateTime(2024, 6, 19, 15, 3, 59, 876, DateTimeKind.Local).AddTicks(6641)
                         },
                         new
                         {
@@ -207,8 +210,8 @@ namespace SosuCentre.DataAccess.Migrations
                             Completed = false,
                             Notes = "PlaceHolder",
                             ResidentId = 1,
-                            TimeEnd = new DateTime(2024, 6, 19, 21, 18, 57, 76, DateTimeKind.Local).AddTicks(8107),
-                            TimeStart = new DateTime(2024, 6, 19, 19, 18, 57, 76, DateTimeKind.Local).AddTicks(8105)
+                            TimeEnd = new DateTime(2024, 6, 19, 20, 3, 59, 876, DateTimeKind.Local).AddTicks(6661),
+                            TimeStart = new DateTime(2024, 6, 19, 18, 3, 59, 876, DateTimeKind.Local).AddTicks(6659)
                         });
                 });
 
@@ -585,152 +588,12 @@ namespace SosuCentre.DataAccess.Migrations
                         new
                         {
                             MedicineTaskId = 15,
-                            Amount = 50.0,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            MedicineId = 4,
-                            Name = "Pain Relief Administration",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 16,
-                            Amount = 200.0,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            MedicineId = 9,
-                            Name = "Antibiotic Course",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 17,
-                            Amount = 1.0,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            MedicineId = 2,
-                            Name = "Blood Pressure Medication",
-                            Unit = "tablet"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 18,
-                            Amount = 10.0,
-                            AssignmentId = 6,
+                            Amount = 75.0,
+                            AssignmentId = 5,
                             IsCompleted = false,
                             MedicineId = 5,
-                            Name = "Insulin Injection",
+                            Name = "PlaceHolder",
                             Unit = "units"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 19,
-                            Amount = 1000.0,
-                            AssignmentId = 9,
-                            IsCompleted = false,
-                            MedicineId = 8,
-                            Name = "Vitamin D Supplement",
-                            Unit = "IU"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 20,
-                            Amount = 2.0,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            MedicineId = 3,
-                            Name = "Heart Medication",
-                            Unit = "capsules"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 21,
-                            Amount = 5.0,
-                            AssignmentId = 6,
-                            IsCompleted = false,
-                            MedicineId = 7,
-                            Name = "Antifungal Treatment",
-                            Unit = "ml"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 22,
-                            Amount = 10.0,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            MedicineId = 6,
-                            Name = "Cough Syrup",
-                            Unit = "ml"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 23,
-                            Amount = 25.0,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            MedicineId = 1,
-                            Name = "Diuretic Medication",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 24,
-                            Amount = 1.0,
-                            AssignmentId = 9,
-                            IsCompleted = false,
-                            MedicineId = 10,
-                            Name = "Antihistamine Dose",
-                            Unit = "tablet"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 25,
-                            Amount = 65.0,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            MedicineId = 2,
-                            Name = "Iron Supplement",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 26,
-                            Amount = 500.0,
-                            AssignmentId = 6,
-                            IsCompleted = false,
-                            MedicineId = 4,
-                            Name = "Calcium Tablet",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 27,
-                            Amount = 1.5,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            MedicineId = 9,
-                            Name = "Thyroid Medication",
-                            Unit = "tablet"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 28,
-                            Amount = 20.0,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            MedicineId = 5,
-                            Name = "Antidepressant Dosage",
-                            Unit = "mg"
-                        },
-                        new
-                        {
-                            MedicineTaskId = 29,
-                            Amount = 2.0,
-                            AssignmentId = 9,
-                            IsCompleted = false,
-                            MedicineId = 3,
-                            Name = "Eye Drops",
-                            Unit = "drops"
                         });
                 });
 
@@ -1011,107 +874,9 @@ namespace SosuCentre.DataAccess.Migrations
                         new
                         {
                             SubTaskId = 15,
-                            AssignmentId = 9,
+                            AssignmentId = 5,
                             IsCompleted = false,
-                            Name = "Patient Medication Administration"
-                        },
-                        new
-                        {
-                            SubTaskId = 16,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            Name = "Elderly Mobility Support"
-                        },
-                        new
-                        {
-                            SubTaskId = 17,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            Name = "Health Monitoring"
-                        },
-                        new
-                        {
-                            SubTaskId = 18,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            Name = "Nutrition Assistance"
-                        },
-                        new
-                        {
-                            SubTaskId = 19,
-                            AssignmentId = 6,
-                            IsCompleted = false,
-                            Name = "Rehabilitation Exercises"
-                        },
-                        new
-                        {
-                            SubTaskId = 20,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            Name = "Patient Hygiene Support"
-                        },
-                        new
-                        {
-                            SubTaskId = 21,
-                            AssignmentId = 9,
-                            IsCompleted = false,
-                            Name = "Daily Living Activities"
-                        },
-                        new
-                        {
-                            SubTaskId = 22,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            Name = "Mental Health Support"
-                        },
-                        new
-                        {
-                            SubTaskId = 23,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            Name = "Wound Care"
-                        },
-                        new
-                        {
-                            SubTaskId = 24,
-                            AssignmentId = 6,
-                            IsCompleted = false,
-                            Name = "Medication Reminders"
-                        },
-                        new
-                        {
-                            SubTaskId = 25,
-                            AssignmentId = 10,
-                            IsCompleted = false,
-                            Name = "Physical Therapy Assistance"
-                        },
-                        new
-                        {
-                            SubTaskId = 26,
-                            AssignmentId = 9,
-                            IsCompleted = false,
-                            Name = "Dietary Monitoring"
-                        },
-                        new
-                        {
-                            SubTaskId = 27,
-                            AssignmentId = 7,
-                            IsCompleted = false,
-                            Name = "Health Check-Ups"
-                        },
-                        new
-                        {
-                            SubTaskId = 28,
-                            AssignmentId = 8,
-                            IsCompleted = false,
-                            Name = "Patient Record Keeping"
-                        },
-                        new
-                        {
-                            SubTaskId = 29,
-                            AssignmentId = 6,
-                            IsCompleted = false,
-                            Name = "Emergency Response Preparedness"
+                            Name = "Støtte til mobilitet"
                         });
                 });
 

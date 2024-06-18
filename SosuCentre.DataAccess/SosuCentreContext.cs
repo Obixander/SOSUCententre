@@ -108,7 +108,21 @@ namespace SosuCentre.DataAccess
             modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 12, Name = "Hjælp med teknologi", IsCompleted = false, AssignmentId = 4 });
             modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 13, Name = "Følelsesmæssig støtte", IsCompleted = false, AssignmentId = 5 });
             modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 14, Name = "Koordinering med sundhedstjenester", IsCompleted = false, AssignmentId = 5 });
-            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 15, Name = "Støtte til mobilitet", IsCompleted = false, AssignmentId = 5 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 15, Name = "Patient Medication Administration", IsCompleted = false, AssignmentId = 9 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 16, Name = "Elderly Mobility Support", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 17, Name = "Health Monitoring", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 18, Name = "Nutrition Assistance", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 19, Name = "Rehabilitation Exercises", IsCompleted = false, AssignmentId = 6 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 20, Name = "Patient Hygiene Support", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 21, Name = "Daily Living Activities", IsCompleted = false, AssignmentId = 9 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 22, Name = "Mental Health Support", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 23, Name = "Wound Care", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 24, Name = "Medication Reminders", IsCompleted = false, AssignmentId = 6 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 25, Name = "Physical Therapy Assistance", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 26, Name = "Dietary Monitoring", IsCompleted = false, AssignmentId = 9 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 27, Name = "Health Check-Ups", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 28, Name = "Patient Record Keeping", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<SubTask>().HasData(new { SubTaskId = 29, Name = "Emergency Response Preparedness", IsCompleted = false, AssignmentId = 6 });
             #endregion
 
             #region MedicineTask
@@ -127,7 +141,21 @@ namespace SosuCentre.DataAccess
             modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 12, Name = "PlaceHolder", MedicineId = 7, Amount = 50.0, Unit = "mg", IsCompleted = false, AssignmentId = 4 });
             modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 13, Name = "PlaceHolder", MedicineId = 3, Amount = 4.0, Unit = "capsules", IsCompleted = false, AssignmentId = 4 });
             modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 14, Name = "PlaceHolder", MedicineId = 1, Amount = 0.25, Unit = "liters", IsCompleted = false, AssignmentId = 5 });
-            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 15, Name = "PlaceHolder", MedicineId = 5, Amount = 75.0, Unit = "units", IsCompleted = false, AssignmentId = 5 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 15, Name = "Pain Relief Administration", MedicineId = 4, Amount = 50.0, Unit = "mg", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 16, Name = "Antibiotic Course", MedicineId = 9, Amount = 200.0, Unit = "mg", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 17, Name = "Blood Pressure Medication", MedicineId = 2, Amount = 1.0, Unit = "tablet", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 18, Name = "Insulin Injection", MedicineId = 5, Amount = 10.0, Unit = "units", IsCompleted = false, AssignmentId = 6 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 19, Name = "Vitamin D Supplement", MedicineId = 8, Amount = 1000.0, Unit = "IU", IsCompleted = false, AssignmentId = 9 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 20, Name = "Heart Medication", MedicineId = 3, Amount = 2.0, Unit = "capsules", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 21, Name = "Antifungal Treatment", MedicineId = 7, Amount = 5.0, Unit = "ml", IsCompleted = false, AssignmentId = 6 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 22, Name = "Cough Syrup", MedicineId = 6, Amount = 10.0, Unit = "ml", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 23, Name = "Diuretic Medication", MedicineId = 1, Amount = 25.0, Unit = "mg", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 24, Name = "Antihistamine Dose", MedicineId = 10, Amount = 1.0, Unit = "tablet", IsCompleted = false, AssignmentId = 9 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 25, Name = "Iron Supplement", MedicineId = 2, Amount = 65.0, Unit = "mg", IsCompleted = false, AssignmentId = 10 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 26, Name = "Calcium Tablet", MedicineId = 4, Amount = 500.0, Unit = "mg", IsCompleted = false, AssignmentId = 6 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 27, Name = "Thyroid Medication", MedicineId = 9, Amount = 1.5, Unit = "tablet", IsCompleted = false, AssignmentId = 7 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 28, Name = "Antidepressant Dosage", MedicineId = 5, Amount = 20.0, Unit = "mg", IsCompleted = false, AssignmentId = 8 });
+            modelBuilder.Entity<MedicineTask>().HasData(new { MedicineTaskId = 29, Name = "Eye Drops", MedicineId = 3, Amount = 2.0, Unit = "drops", IsCompleted = false, AssignmentId = 9 });
             #endregion
 
             #region Assignment
@@ -137,6 +165,11 @@ namespace SosuCentre.DataAccess
             modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 4, TimeStart = DateTime.Now.AddHours(6), TimeEnd = DateTime.Now.AddHours(9), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
             modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 5, TimeStart = DateTime.Now.AddHours(9), TimeEnd = DateTime.Now.AddHours(11), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
 
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 6, TimeStart = DateTime.Now.AddDays(1), TimeEnd = DateTime.Now.AddHours(2).AddDays(1), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 7, TimeStart = DateTime.Now.AddHours(2).AddDays(1), TimeEnd = DateTime.Now.AddHours(3).AddDays(1), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 8, TimeStart = DateTime.Now.AddHours(3).AddDays(1), TimeEnd = DateTime.Now.AddHours(5).AddDays(1), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 9, TimeStart = DateTime.Now.AddHours(6).AddDays(1), TimeEnd = DateTime.Now.AddHours(9).AddDays(1), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
+            modelBuilder.Entity<Entities.Assignment>().HasData(new { AssignmentId = 10, TimeStart = DateTime.Now.AddHours(9).AddDays(1), TimeEnd = DateTime.Now.AddHours(11).AddDays(1), ResidentId = 1, Notes = "PlaceHolder", Completed = false });
 
             #endregion
 

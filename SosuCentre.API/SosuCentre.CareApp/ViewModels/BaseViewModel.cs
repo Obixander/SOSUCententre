@@ -18,6 +18,7 @@ namespace SosuCentre.CareApp.ViewModels
         [ObservableProperty]
         private string title;
 
+        //What the fuck why here??? move later to the user service if there is time
         [ObservableProperty]
         private Employee user;
 

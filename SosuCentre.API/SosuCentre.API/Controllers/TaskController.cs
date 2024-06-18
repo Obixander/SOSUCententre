@@ -13,26 +13,34 @@ namespace SosuCentre.API.Controllers
         private readonly ITaskRepository repository = repository;
 
         [HttpPut]
-        public void UpdateBy(Assignment dto ) //dto = data transfer object
+        public void UpdateBy(Assignment dto) //dto = data transfer object
         {
-            //move the logic to the Taskrepository later
-            var assignment = repository.GetBy(dto.AssignmentId);
+            try
+            {
+                //move the logic to the Taskrepository later
+                var assignment = repository.GetBy(dto.AssignmentId);
 
-            //Update database entity with changes from dto
-            assignment.Completed = dto.Completed;
-            assignment.Notes = dto.Notes;
-            assignment.MedicinNotes = dto.MedicinNotes;
-            foreach (var subTask in assignment.SubTasks)
-            {
-                var dtoSubTask = dto.SubTasks.Find(x => x.SubTaskId == subTask.SubTaskId);
-                subTask.IsCompleted = dtoSubTask.IsCompleted;
+                //Update database entity with changes from dto
+                assignment.Completed = dto.Completed;
+                assignment.Notes = dto.Notes;
+                assignment.MedicinNotes = dto.MedicinNotes;
+                foreach (var subTask in assignment.SubTasks)
+                {
+                    var dtoSubTask = dto.SubTasks.Find(x => x.SubTaskId == subTask.SubTaskId);
+                    subTask.IsCompleted = dtoSubTask.IsCompleted;
+                }
+                foreach (var MedicinTask in assignment.MedicineTasks)
+                {
+                    var dtoMedicinTask = dto.MedicineTasks.Find(x => x.MedicineTaskId == MedicinTask.MedicineTaskId);
+                    MedicinTask.IsCompleted = dtoMedicinTask.IsCompleted;
+                }
+                repository.Update(assignment);
             }
-            foreach (var MedicinTask in assignment.MedicineTasks)
+            catch (Exception ex)
             {
-                var dtoMedicinTask = dto.MedicineTasks.Find(x => x.MedicineTaskId == MedicinTask.MedicineTaskId);
-                MedicinTask.IsCompleted = dtoMedicinTask.IsCompleted;
+                Console.WriteLine(ex);
+                throw;
             }
-            repository.Update(assignment);
         }
 
         //TODO: FIX SOON
@@ -40,15 +48,32 @@ namespace SosuCentre.API.Controllers
         [HttpGet("{id}")]
         public ActionResult<Entities.Assignment> GetBy(int id)
         {
+            try
+            {
             return repository.GetBy(id);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            } 
         }
 
 
         //this is the main endpoint that will be used
         [HttpGet(nameof(GetAssignmentsOn))]
-        public IEnumerable<Entities.Assignment> GetAssignmentsOn([FromQuery] Employee employee, [FromQuery]DateTime date = default)
+        public IEnumerable<Entities.Assignment> GetAssignmentsOn([FromQuery] Employee employee, [FromQuery] DateTime date = default)
         {
-            return repository.GetAssignmentsOn(employee,date);
+            try
+            {
+                return repository.GetAssignmentsOn(employee, date);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                    throw;
+            }
         }
 
         //Dont use not working
@@ -61,8 +86,8 @@ namespace SosuCentre.API.Controllers
         [HttpPost]
         public void AddNew(Entities.Assignment task)
         {
-           repository.Add(task);
-           
+            repository.Add(task);
+
         }
 
         [HttpDelete]
@@ -77,7 +102,7 @@ namespace SosuCentre.API.Controllers
         public void AddEmployeeToTask([FromQuery] int taskId, [FromQuery] int employeeId)
         {
             repository.AddEmployeeToTask(taskId, employeeId);
-            
+
         }
     }
 }
