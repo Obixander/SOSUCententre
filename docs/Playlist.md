@@ -1,5 +1,4 @@
 1. Present the Case and talk about Github version control
- -
 
 2. Talk About the processe (Inception, Elaboration, Construction og Testing)
 - Inception: Vi lavde functionale krav og ikke functionale krav
@@ -7,19 +6,16 @@
 - Construction: 
 - Testing: Debugging under Construction Delen 
 
-
 3. Show UI/UX and compare against design and showcase the functiality of the system
- -
 
 4. Systemudvikling og Seperations of Concerns(Abstraktion og modularitet)
- - 
 
 6.  Princippet indkapsling Princippet Komposition (aggregation) (Show Entities like Task)
  -dont focus to much on this
 
 5. abstrakte typer (klasser og interfaces)
  - Abstrakte klasser kan ikke instansieres og bruges som basisklasser for andre klasser.
- - 
+ 
 7. Design mønster Generic Repository med EF
  - Helps with Separates of concerns by abstraction
  - Helps with maintainablity by making a generic Repository that contains generic operations like CRUD that you can inherit
